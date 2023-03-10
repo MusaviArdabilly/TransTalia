@@ -4,12 +4,21 @@
 
 <script type="text/javascript">
     document.getElementById('jadwal').classList.add('fw-bold', 'border-bottom', 'border-primary', 'rounded-bottom');
+    document.getElementById('header').classList.add('header-fixed');
 </script>
 
-    <div class="minvh100-157">
-        Hello World jadwal
-        <div class="container">
-            <div id='calendar'></div>
+    <div class="mt-5rem">
+        <div class="container mt-5rem" id="calendar-container">
+            <div id='calendar' class="py-5"></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="col-12 col-md-6 mx-auto">
+            <div class="alert alert-primary text-center" role="alert">
+                Sudah menentukan jadwal? <br> Masuk dan buat pesananmu sekarang! <br>
+                <button type="button" class="btn btn-primary mt-3">Masuk</button>
+            </div>
         </div>
     </div>
     
@@ -17,18 +26,17 @@
     <script src='{{ asset('vendor/fullcalendar/dist/index.global.js') }}'></script>
     <script src='{{ asset('vendor/fullcalendar/package/core/locales/id.global.min.js') }}'></script>
     <script>
-
-      document.addEventListener('DOMContentLoaded', function() {
-        var calendarEl = document.getElementById('calendar');
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-            locale: 'id',
-            themeSystem: 'bootstrap5',
-            aspectRatio: 3,
-            initialView: 'dayGridMonth'
+        document.addEventListener('DOMContentLoaded', function() {
+          var calendarEl = document.getElementById('calendar');
+          var calendar = new FullCalendar.Calendar(calendarEl, {
+                locale: 'id',
+                themeSystem: 'bootstrap5',
+                contentHeight: '100%',
+                contentWidth: '100%',
+                initialView: 'dayGridMonth'
+          });
+          calendar.render();
         });
-        calendar.render();
-      });
-
     </script>
 
 @endsection
