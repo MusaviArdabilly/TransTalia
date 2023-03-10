@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <!-- Card Body -->
-                <div class="card-body">
+                <div class="card-body" id="calendar-container">
                     <div id='calendar'></div>
                 </div>
             </div>
@@ -61,7 +61,8 @@
         var calendar = new FullCalendar.Calendar(calendarEl, {
             locale: 'id',
             themeSystem: 'bootstrap5',
-            aspectRatio: 3,
+            contentHeight: '100%',
+            contentWidth: '100%',
             initialView: 'dayGridMonth'
         });
         calendar.render();

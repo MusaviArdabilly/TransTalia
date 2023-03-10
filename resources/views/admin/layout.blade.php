@@ -28,6 +28,23 @@
         .minvh100-233 {
             min-height: calc(100vh - 233px);
         }
+        #calendar-container {
+            width: 100%;
+            min-height: 550px;
+        }
+        #calendar {
+            width: 100%;
+            min-height: 550px;
+        }
+        .fc .fc-button{
+            font-size: 0.75rem !important;
+            font-weight: 700 !important;
+        }
+        .fc .fc-toolbar-title {
+            font-size: 1em !important;
+            font-weight: 700 !important;
+            color: #007bff;
+        }
     </style>
 </head>
 
@@ -37,7 +54,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion d-none d-sm-block" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
@@ -412,6 +429,17 @@
     <script src="{{ asset('vendor/sbadmin/js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('vendor/sbadmin/js/demo/chart-pie-demo.js') }}"></script>
     
+    <script>
+        // Get the button and the element to add the class to
+        const addClassButton = $("#sidebarToggleTop");
+        const elementToAddClass = $("#accordionSidebar");
+
+        // Add an event listener to the button
+        addClassButton.click(function() {
+        // Call the addClass() function to add the "newClass" class to the element
+        elementToAddClass.removeClass("d-none");
+        });
+    </script>
 </body>
 
 </html>
