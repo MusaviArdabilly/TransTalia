@@ -1,5 +1,5 @@
 @extends('guest.layout')
-@section('title', 'Profil')
+@section('title', 'Profil - Trans Talia')
 @section('content')
 
 <script type="text/javascript">

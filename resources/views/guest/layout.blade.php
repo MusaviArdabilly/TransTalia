@@ -29,6 +29,9 @@
         .minvh100-157{
             min-height: calc(100vh - 157px);
         }
+        .minvh100-xx{
+            min-height: calc(100vh - 185px);
+        }
         .innershadow {
             box-shadow: inset 0 0 5px #f8a100;
         }
@@ -59,10 +62,14 @@
         .navbar-toggler-icon {
             color: #f8f9fa;
         }
+        .mt-nav{
+            margin-top: 104px;
+        }
     </style>
 </head>
 
 <body class="f-poppins">
+    
     <!-- Vendor JavaScript-->
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -188,7 +195,7 @@
                         <div class="vr mx-3 d-none d-lg-flex text-light"></div>
                         <hr class="d-lg-none">
                         <div class="d-flex justify-content-around ms-md-1">
-                            <a href="/daftar" class="d-flex text-light text-decoration-none me-2 dropshadow">DAFTAR</a>
+                            {{-- <a href="/daftar" class="d-flex text-light text-decoration-none me-2 dropshadow">DAFTAR</a> --}}
                             <a href="/masuk" class="d-flex text-light text-decoration-none ms-2 dropshadow">MASUK</a>
                         </div>
                     </div>
@@ -212,6 +219,14 @@
           <span class="d-flex justify-content-center my-2 text-muted">Trans Talia &copy; {{ now()->year }}</span>
         </footer>
     </div> --}}
+
+    <footer id="footer">
+        <div class="container">
+          <div class="copyright">
+            &copy; Trans Talia {{ now()->year }}. All Rights Reserved
+          </div>
+        </div>
+      </footer>
       
     <script>
         jQuery(document).ready(function ($) {

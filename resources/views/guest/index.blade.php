@@ -1,5 +1,5 @@
 @extends('guest.layout')
-@section('title', 'Trans Talia')
+@section('title', 'Beranda - Trans Talia')
 @section('content')
 
 <script type="text/javascript">
@@ -46,13 +46,13 @@
     <section id="hero">
         <div class="hero-container">
             <h1>Trans Talia</h1>
-            <h2>Menyediakan jasa yang bergerak dibidang transportasi darat</h2>
+            <h2>Menyediakan jasa yang bergerak di bidang transportasi darat</h2>
             {{-- <h2>We are team of talanted designers making websites with Bootstrap</h2> --}}
-            <a href="#about" class="btn-get-started">Lihat Jadwal</a>
+            <a href="#about" class="btn-get-started text-light">Lihat Jadwal</a>
         </div>
     </section>
 
-    <section id="facts">
+    <section id="facts" class="bgc-primary">
         <div class="container wow fadeIn">
             <div class="section-header">
                 <h3 class="section-title">Menyediakan Layanan</h3>
@@ -93,13 +93,13 @@
         </div>
     </section>
 
-    <section id="facts">
+    <section id="facts" class="bgc-secondary">
         <div class="container wow fadeIn">
             <div class="section-header">
                 <h3 class="section-title">Informasi Kami</h3>
-                <p class="section-description">&nbsp;</p>
+                {{-- <p class="section-description">&nbsp;</p> --}}
             </div>
-            <div class="row counters f-poppins">
+            <div class="row counters f-poppins mt-5">
                 <div class="col-lg-4 col-12 text-center">
                     <span data-toggle="counter-up" class="text-primary">11<sup>+</sup></span>
                     <p>Armada Bus</p>
