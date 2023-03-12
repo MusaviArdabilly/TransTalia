@@ -7,13 +7,26 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+
+.bgc-primary{
+  background-color:#F2F2F2 !important;
+}
+
+.bgc-secondary{
+  background-color: #E6E6E6 !important;
+}
+
+.bgc-tertiary{
+  background-color: #CCCCCC !important;
+}
+
 body {
     background: #fff;
     color: #666666;
     font-family: "Open Sans", sans-serif;
   }
   
-  a {
+  /* a {
     color: #2dc997;
   }
   
@@ -21,7 +34,7 @@ body {
     color: #2dca98;
     outline: none;
     text-decoration: none;
-  }
+  } */
   
   p {
     padding: 0;
@@ -124,7 +137,8 @@ body {
   }
   
   #header.header-fixed {
-    background: rgba(52, 59, 64, 0.9);
+    /* background: rgba(52, 59, 64, 0.9); */
+    background: rgba(39, 39, 39);
     transition: all 0.5s;
   }
 
@@ -212,8 +226,7 @@ body {
     border-radius: 50px;
     transition: 0.5s;
     margin: 10px;
-    border: 2px solid #fff;
-    color: #fff;
+    border: 2px solid;
   }
   
   #hero .btn-get-started:hover {
