@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\PerawatanArmadaController;
 use App\Http\Controllers\Admin\PerformaPegawaiController;
 use App\Http\Controllers\Admin\TransaksiController;
 use App\Http\Controllers\Guest\GuestController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,11 @@ Route::get('/jadwal', [GuestController::class, 'jadwal']);
 Route::get('/masuk', [GuestController::class, 'login']);
 Route::get('/daftar', [GuestController::class, 'register']);
 Route::get('/logo', [GuestController::class, 'logo']);
+
+// ========================== Auth ==========================
+
+Route::get('/register', [AuthController::class, 'register']);
+Route::get('/login', [AuthController::class, 'login']);
 
 // ========================== User ===========================
 
