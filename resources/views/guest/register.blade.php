@@ -6,7 +6,7 @@
     document.getElementById('header').classList.add('header-fixed');
 </script>
 
-<div class="minvh100-xx d-flex align-items-center mt-nav p-3">
+<div class="minvh100-185 d-flex align-items-center mt-nav p-3">
     <div class="container">
         <div class="col-12 col-md-6 mx-auto my-auto">
             <h3 class="text-center fw-bold">Daftar</h3>
@@ -35,7 +35,7 @@
                     <button type="submit" class="btn btn-primary mt-2">Daftar</button> <br>
                 </div>
                 <div class="d-flex justify-content-center">
-                    <div id="emailHelp" class="form-text">Sudah mempunyai akun? <a href="/daftar">Masuk</a></div>
+                    <div id="emailHelp" class="form-text">Sudah mempunyai akun? <a href="/masuk">Masuk</a></div>
                 </div>
             </form>
         </div>
