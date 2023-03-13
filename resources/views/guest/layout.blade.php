@@ -29,7 +29,7 @@
         .minvh100-157{
             min-height: calc(100vh - 157px);
         }
-        .minvh100-xx{
+        .minvh100-185{
             min-height: calc(100vh - 185px);
         }
         .innershadow {
