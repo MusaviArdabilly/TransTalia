@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\PembaruanArmadaController;
 use App\Http\Controllers\Admin\PerawatanArmadaController;
 use App\Http\Controllers\Admin\PerformaPegawaiController;
 use App\Http\Controllers\Admin\TransaksiController;
+use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Guest\GuestController;
 use App\Http\Controllers\AuthController;
 
@@ -46,6 +47,8 @@ Route::get('/login', [AuthController::class, 'login']);
 // ========================== User ===========================
 
 
+Route::get('/reservasi', [UserController::class, 'reservation']);
+Route::get('/riwayat-reservasi', [UserController::class, 'reservationHistory']);
 
 // ========================== Admin ========================== 
 Route::prefix('admin')->group(function () {
