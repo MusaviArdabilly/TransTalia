@@ -59,27 +59,27 @@ Route::prefix('admin')->group(function () {
     Route::prefix('armada_bus')->group(function () {
         Route::get('/', [ArmadaBusController::class, 'index']);
         Route::get('/tambah', [ArmadaBusController::class, 'add']);
-        Route::get('/tambah_data', [ArmadaBusController::class, 'store']);
+        Route::get('/tambah-data', [ArmadaBusController::class, 'store']);
         Route::get('/ubah', [ArmadaBusController::class, 'edit']);
-        Route::get('/ubah_data', [ArmadaBusController::class, 'update']);
+        Route::get('/ubah-data', [ArmadaBusController::class, 'update']);
     });
 
     // -------------------- Kode Perawatan --------------------
     Route::prefix('kode_perawatan')->group(function () {
         Route::get('/', [KodePerawatanController::class, 'index']);
         Route::get('/tambah', [KodePerawatanController::class, 'add']);
-        Route::get('/tambah_data', [KodePerawatanController::class, 'store']);
+        Route::get('/tambah-data', [KodePerawatanController::class, 'store']);
         Route::get('/ubah', [KodePerawatanController::class, 'edit']);
-        Route::get('/ubah_data', [KodePerawatanController::class, 'update']);
+        Route::get('/ubah-data', [KodePerawatanController::class, 'update']);
     });
     
     // ------------------------ Pegawai ------------------------
     Route::prefix('pegawai')->group(function () {
         Route::get('/', [PegawaiController::class, 'index']);
         Route::get('/tambah', [PegawaiController::class, 'add']);
-        Route::get('/tambah_data', [PegawaiController::class, 'store']);
+        Route::get('/tambah-data', [PegawaiController::class, 'store']);
         Route::get('/ubah', [PegawaiController::class, 'edit']);
-        Route::get('/ubah_data', [PegawaiController::class, 'update']);
+        Route::get('/ubah-data', [PegawaiController::class, 'update']);
     });
     
     // ------------------------ Jadwal ------------------------
@@ -91,33 +91,33 @@ Route::prefix('admin')->group(function () {
     Route::prefix('transaksi')->group(function () {
         Route::get('/', [TransaksiController::class, 'index']);
         Route::get('/tambah', [TransaksiController::class, 'add']);
-        Route::get('/tambah_data', [TransaksiController::class, 'store']);
+        Route::get('/tambah-data', [TransaksiController::class, 'store']);
         Route::get('/ubah', [TransaksiController::class, 'edit']);
-        Route::get('/ubah_data', [TransaksiController::class, 'update']);
+        Route::get('/ubah-data', [TransaksiController::class, 'update']);
     });
     
     // ------------------- Perawatan Armada -------------------
     Route::prefix('perawatan_armada')->group(function () {
         Route::get('/', [PerawatanArmadaController::class, 'index']);
         Route::get('/tambah', [PerawatanArmadaController::class, 'add']);
-        Route::get('/tambah_data', [PerawatanArmadaController::class, 'store']);
+        Route::get('/tambah-data', [PerawatanArmadaController::class, 'store']);
         Route::get('/ubah', [PerawatanArmadaController::class, 'edit']);
-        Route::get('/ubah_data', [PerawatanArmadaController::class, 'update']);
+        Route::get('/ubah-data', [PerawatanArmadaController::class, 'update']);
     });
     
     // ------------------- Pembaruan Armada -------------------
     Route::prefix('pembaruan_armada')->group(function () {
         Route::get('/', [PembaruanArmadaController::class, 'index']);
         Route::get('/tambah', [PembaruanArmadaController::class, 'add']);
-        Route::get('/tambah_data', [PembaruanArmadaController::class, 'store']);
+        Route::get('/tambah-data', [PembaruanArmadaController::class, 'store']);
         Route::get('/ubah', [PembaruanArmadaController::class, 'edit']);
-        Route::get('/ubah_data', [PembaruanArmadaController::class, 'update']);
+        Route::get('/ubah-data', [PembaruanArmadaController::class, 'update']);
     });
     
     // ------------------- Performa Pegawai -------------------
-    Route::prefix('performa_pegawai')->group(function () {
+    Route::prefix('performa-pegawai')->group(function () {
         Route::get('/', [PerformaPegawaiController::class, 'index']);
         Route::get('/ubah', [PerformaPegawaiController::class, 'edit']);
-        Route::get('/ubah_data', [PerformaPegawaiController::class, 'update']);
+        Route::get('/ubah-data', [PerformaPegawaiController::class, 'update']);
     });
 });
