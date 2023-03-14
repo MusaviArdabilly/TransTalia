@@ -48,7 +48,7 @@
             <h1>Trans Talia</h1>
             <h2>Menyediakan jasa yang bergerak di bidang transportasi darat</h2>
             {{-- <h2>We are team of talanted designers making websites with Bootstrap</h2> --}}
-            <a href="#about" class="btn-get-started text-light">Lihat Jadwal</a>
+            <a href="/jadwal" class="btn-get-started text-light">Lihat Jadwal</a>
         </div>
     </section>
 

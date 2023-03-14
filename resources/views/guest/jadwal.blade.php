@@ -17,7 +17,9 @@
         <div class="col-12 col-md-6 mx-auto pb-0 pb-sm-5">
             <div class="alert alert-primary text-center" role="alert">
                 Sudah menentukan jadwal? <br> Masuk dan buat pesananmu sekarang! <br>
-                <button type="button" class="btn btn-primary mt-3">Masuk</button>
+                <a href="/masuk">
+                    <button type="button" class="btn btn-primary mt-3">Masuk</button>
+                </a>
             </div>
         </div>
     </div>

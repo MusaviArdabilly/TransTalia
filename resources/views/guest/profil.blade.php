@@ -28,12 +28,11 @@
             <div class="col-md-6 mt-5 mt-sm-2">
                 <img src="{{ asset('assets/3x2/TRM1.jpg') }}" class="img-fluid">
             </div>
-            <div class="col-md-6 mt-4 mt-sm-2 d-flex align-items-center">
+            <div class="col-md-6 mt-4 mt-sm-2 d-flex align-items-center f-poppipns">
                 <div>
-                    <h3>Tentang</h3>
-                    <h1 class="fw-semi-bold">Trans Talia</h1>
-                     berawal dari tahun 2008 (sejarah) 
-                    <P>Trans Talia adalah perusahaan jasa yang bergerak dibidang transportasi darat. <br> Memiliki (10) armada bus yang terbagi menjadi dua kategori yaitu big bus dan medium bus.</p>
+                    <h3 class="fw-bold text-dark">TENTANG</h3>
+                    <h2 class="fw-bold mb-3">Trans Talia</h2>
+                    <P>Trans Talia adalah perusahaan jasa yang bergerak dibidang transportasi darat. Berdiri sejak tahun 2008, PO. Trans Talia memulai bisnis dengan satu bus yang berukuran medium. Namun, sekarang memiliki 12 armada bus yang terbagi menjadi dua kategori yaitu big bus dan medium bus.</p>
                 </div>
             </div>
         </div>
@@ -43,7 +42,7 @@
         <div class="container wow fadeInUp">
             <div class="section-header">
                 <h3 class="section-title">Lokasi</h3>
-                <p class="section-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
+                <p class="section-description">PO Trans Talia beroperasi di Jombang, Jawa Timur</p>
             </div>
         </div>
         <div class="container">
