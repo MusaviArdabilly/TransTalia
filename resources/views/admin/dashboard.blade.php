@@ -129,7 +129,7 @@
                         </div>
                     </div>
                     <!-- Card Body -->
-                    <div class="card-body">
+                    <div class="card-body p-0 p-md-3">
                         <div class="chart-area">
                             <canvas id="myAreaChart"></canvas>
                         </div>
@@ -219,7 +219,7 @@
                         </div>
                     </div>
                     <!-- Card Body -->
-                    <div class="card-body">
+                    <div class="card-body p-0 p-md-3">
                         <div class="chart-area">
                             <canvas id="areaChartKas"></canvas>
                         </div>
