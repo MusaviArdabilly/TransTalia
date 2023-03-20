@@ -9,7 +9,7 @@
 <div class="minvh100-185 d-flex align-items-center mt-nav p-3">
     <div class="container">
         <div class="col-12 col-md-6 mx-auto my-auto">
-            <h3 class="text-center fw-bold">Masuk</h3>
+            <h3 class="text-center fw-bold">MASUK</h3>
             <form>
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Email</label>
