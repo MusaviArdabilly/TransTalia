@@ -100,14 +100,14 @@
 
             <!-- Nav Item - Bus -->
             <li class="nav-item" id="armadabus">
-                <a class="nav-link" href="/admin/armada-bus">
+                <a class="nav-link" href="/admin/armada_bus">
                     <i class="fas fa-fw fa-bus"></i>
                     <span>Armada Bus</span></a>
             </li>
 
             <!-- Nav Item - Kode Perawatan -->
             <li class="nav-item" id="kodeperawatan">
-                <a class="nav-link" href="/admin/kode-perawatan">
+                <a class="nav-link" href="/admin/kode_perawatan">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Kode Perawatan</span></a>
             </li>
@@ -134,6 +134,13 @@
                     <span>Jadwal</span></a>
             </li>
 
+            <!-- Nav Item - Reservasi -->
+            <li class="nav-item" id="reservasi">
+                <a class="nav-link" href="/admin/reservasi">
+                    <i class="far fa-fw fa-calendar"></i>
+                    <span>Reservasi</span></a>
+            </li>
+
             <!-- Nav Item - Transaksi -->
             <li class="nav-item" id="transaksi">
                 <a class="nav-link" href="/admin/transaksi">
@@ -143,21 +150,21 @@
 
             <!-- Nav Item - Perawatan Armada -->
             <li class="nav-item" id="perawatanarmada">
-                <a class="nav-link" href="/admin/perawatan-armada">
+                <a class="nav-link" href="/admin/perawatan_armada">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Perawatan Armada</span></a>
             </li>
 
             <!-- Nav Item - Pembaruan Armada -->
             <li class="nav-item" id="pembaruanarmada">
-                <a class="nav-link" href="/admin/pembaruan-armada">
+                <a class="nav-link" href="/admin/pembaruan_armada">
                     <i class="fas fa-fw fa-cogs"></i>
                     <span>Pembaruan Armada</span></a>
             </li>
 
             <!-- Nav Item - Performa Pegawai -->
             <li class="nav-item" id="performapegawai">
-                <a class="nav-link" href="/admin/performa-pegawai">
+                <a class="nav-link" href="/admin/performa_pegawai">
                     <i class="fas fa-fw fa-chart-line"></i>
                     <span>Performa Pegawai</span></a>
             </li>
