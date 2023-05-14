@@ -12,7 +12,7 @@ class ArmadaBusController extends Controller
     public function index(Request $request){
         $data_armada_bus = ArmadaBus::when($request->searchInput, function($query) use($request){
             $query->where('nama', 'LIKE', '%'.$request->searchInput.'%');
-        })->sortable()->paginate(10);
+        })->sortable('nama')->paginate(10);
         return view('admin.armadabus.index', compact('data_armada_bus'));
     }
 
