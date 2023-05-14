@@ -79,18 +79,20 @@ Route::prefix('admin')->group(function () {
     Route::prefix('kode-perawatan')->group(function () {
         Route::get('/', [KodePerawatanController::class, 'index']);
         Route::get('/tambah', [KodePerawatanController::class, 'add']);
-        Route::get('/tambah-data', [KodePerawatanController::class, 'store']);
-        Route::get('/ubah', [KodePerawatanController::class, 'edit']);
-        Route::get('/ubah-data', [KodePerawatanController::class, 'update']);
+        Route::post('/tambah/post', [KodePerawatanController::class, 'store']);
+        Route::get('/ubah/{id}', [KodePerawatanController::class, 'edit']);
+        Route::post('/ubah/{id}/post', [KodePerawatanController::class, 'update']);
+        Route::get('/hapus/{id}', [KodePerawatanController::class, 'destroy']);
     });
     
     // ------------------------ Pegawai ------------------------
     Route::prefix('pegawai')->group(function () {
         Route::get('/', [PegawaiController::class, 'index']);
         Route::get('/tambah', [PegawaiController::class, 'add']);
-        Route::get('/tambah-data', [PegawaiController::class, 'store']);
-        Route::get('/ubah', [PegawaiController::class, 'edit']);
-        Route::get('/ubah-data', [PegawaiController::class, 'update']);
+        Route::post('/tambah/post', [PegawaiController::class, 'store']);
+        Route::get('/ubah/{id}', [PegawaiController::class, 'edit']);
+        Route::post('/ubah/{id}/post', [PegawaiController::class, 'update']);
+        Route::get('/hapus/{id}', [PegawaiController::class, 'destroy']);
     });
     
     // ------------------------ Jadwal ------------------------
@@ -102,33 +104,36 @@ Route::prefix('admin')->group(function () {
     Route::prefix('transaksi')->group(function () {
         Route::get('/', [TransaksiController::class, 'index']);
         Route::get('/tambah', [TransaksiController::class, 'add']);
-        Route::get('/tambah-data', [TransaksiController::class, 'store']);
-        Route::get('/ubah', [TransaksiController::class, 'edit']);
-        Route::get('/ubah-data', [TransaksiController::class, 'update']);
+        Route::post('/tambah/post', [TransaksiController::class, 'store']);
+        Route::get('/ubah/{id}', [TransaksiController::class, 'edit']);
+        Route::post('/ubah/{id}/post', [TransaksiController::class, 'update']);
+        Route::get('/hapus/{id}', [TransaksiController::class, 'destroy']);
     });
     
     // ------------------- Perawatan Armada -------------------
     Route::prefix('perawatan-armada')->group(function () {
         Route::get('/', [PerawatanArmadaController::class, 'index']);
         Route::get('/tambah', [PerawatanArmadaController::class, 'add']);
-        Route::get('/tambah-data', [PerawatanArmadaController::class, 'store']);
-        Route::get('/ubah', [PerawatanArmadaController::class, 'edit']);
-        Route::get('/ubah-data', [PerawatanArmadaController::class, 'update']);
+        Route::post('/tambah/post', [PerawatanArmadaController::class, 'store']);
+        Route::get('/ubah/{id}', [PerawatanArmadaController::class, 'edit']);
+        Route::post('/ubah/{id}/post', [PerawatanArmadaController::class, 'update']);
+        Route::get('/hapus/{id}', [PerawatanArmadaController::class, 'destroy']);
     });
     
     // ------------------- Pembaruan Armada -------------------
     Route::prefix('pembaruan-armada')->group(function () {
         Route::get('/', [PembaruanArmadaController::class, 'index']);
         Route::get('/tambah', [PembaruanArmadaController::class, 'add']);
-        Route::get('/tambah-data', [PembaruanArmadaController::class, 'store']);
-        Route::get('/ubah', [PembaruanArmadaController::class, 'edit']);
-        Route::get('/ubah-data', [PembaruanArmadaController::class, 'update']);
+        Route::post('/tambah/post', [PembaruanArmadaController::class, 'store']);
+        Route::get('/ubah/{id}', [PembaruanArmadaController::class, 'edit']);
+        Route::post('/ubah/{id}/post', [PembaruanArmadaController::class, 'update']);
+        Route::get('/hapus/{id}', [PembaruanArmadaController::class, 'destroy']);
     });
     
     // ------------------- Performa Pegawai -------------------
     Route::prefix('performa-pegawai')->group(function () {
         Route::get('/', [PerformaPegawaiController::class, 'index']);
-        Route::get('/ubah', [PerformaPegawaiController::class, 'edit']);
-        Route::get('/ubah-data', [PerformaPegawaiController::class, 'update']);
+        Route::get('/ubah/{id}', [PerformaPegawaiController::class, 'edit']);
+        Route::post('/ubah/{id}/post', [PerformaPegawaiController::class, 'update']);
     });
 });
