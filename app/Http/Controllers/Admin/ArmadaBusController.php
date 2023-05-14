@@ -119,6 +119,6 @@ class ArmadaBusController extends Controller
         $armada_bus = ArmadaBus::find($id);
         $armada_bus->delete();
 
-        return redirect('/admin/armada-bus/')->with('success', 'Data Armada Bus Terhapus');
+        return redirect('/admin/armada-bus/')->with('success', 'Data Armada Bus Berhasil Dihapus');
     }
 }
