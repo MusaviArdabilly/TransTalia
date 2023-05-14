@@ -42,14 +42,14 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body table-responsive">
-                    <table class="table">
+                    <table class="table" id="datatable">
                         <thead>
                           <tr>
                             <th scope="col">#</th>
                             <th scope="col">Kode</th>
                             <th scope="col">Keterangan</th>
                             <th scope="col">Kategori Barang</th>
-                            <th scope="col">Aksi</th>
+                            <th scope="col" class="text-center">Aksi</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -58,21 +58,7 @@
                             <td>01</td>
                             <td>Ban</td>
                             <td>Konsumtif</td>
-                            <td><i class="fas fa-edit text-warning"></i> &nbsp; <i class="fas fa-trash-alt text-danger"></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">2</th>
-                            <td>02</td>
-                            <td>Dinamo Wiper</td>
-                            <td>Non-Konsumtif</td>
-                            <td><i class="fas fa-edit text-warning"></i> &nbsp; <i class="fas fa-trash-alt text-danger"></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">3</th>
-                            <td>03</td>
-                            <td>Kampas Kopling</td>
-                            <td>Konsumtif</td>
-                            <td><i class="fas fa-edit text-warning"></i> &nbsp; <i class="fas fa-trash-alt text-danger"></td>
+                            <td class="text-center"><i class="fas fa-edit text-warning"></i> &nbsp; <i class="fas fa-trash-alt text-danger"></td>
                           </tr>
                         </tbody>
                     </table>

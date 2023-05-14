@@ -131,7 +131,6 @@
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                     <h6 class="m-0 font-weight-bold text-primary">Penjelasan Kode Perawatan</h6>
-                    <a href="/admin/perawatan_armada/tambah"><i class="fas fa-plus text-primary"></i></a>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
