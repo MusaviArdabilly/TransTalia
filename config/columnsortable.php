@@ -7,7 +7,7 @@ return [
     */
     'columns'                       => [
         'alpha'   => [
-            'rows'  => ['description', 'email', 'name', 'slug', 'nama', 'sassis', 'jenis_bus', 'plat_nomor'],
+            'rows'  => ['description', 'email', 'name', 'slug', 'nama', 'sassis', 'jenis_bus', 'plat_nomor', 'kode', 'keterangan', 'kategori'],
             'class' => 'fa fa-sort-alpha',
         ],
         'amount'  => [

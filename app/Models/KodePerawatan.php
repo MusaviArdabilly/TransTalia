@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Kyslik\ColumnSortable\Sortable;
 
 class KodePerawatan extends Model
 {
-    use HasFactory;
+    use HasFactory, Sortable;
 
     protected $table = 'kode_perawatan';
 
@@ -18,4 +19,6 @@ class KodePerawatan extends Model
         'keterangan',
         'kategori'
     ];
+
+    public $sortable = ['kode', 'keterangan', 'kategori'];
 }

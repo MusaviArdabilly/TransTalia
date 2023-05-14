@@ -19,24 +19,36 @@
                         </div>
                         <!-- Card Body -->
                         <div class="card-body">
-                            <form>
+                            <form method="POST" action="/admin/kode-perawatan/tambah/post">
+                                @csrf
                                 <div class="mb-3">
                                     <label for="inputKode" class="form-label">Kode</label>
-                                    <input type="name" name="kode" class="form-control" id="inputKode">
+                                    <input type="text" name="kode" class="form-control" id="inputKode">
+                                    @if ($errors->has('kode'))
+                                        <span class="ps-3 text-danger"><i class="fas fa-exclamation-circle"></i>&nbsp;{{ $errors->first('kode') }}</span>
+                                    @endif
                                 </div>
                                 <div class="mb-3">
                                     <label for="inputKeterangan" class="form-label">Keterangan</label>
-                                    <input type="number" name="keterangan" class="form-control" id="inputKeterangan">
+                                    <input type="text" name="keterangan" class="form-control" id="inputKeterangan">
+                                    @if ($errors->has('keterangan'))
+                                        <span class="ps-3 text-danger"><i class="fas fa-exclamation-circle"></i>&nbsp;{{ $errors->first('keterangan') }}</span>
+                                    @endif
                                 </div>
-                                <div class="mb-3">
-                                    <label for="inputKategoriBarang" class="form-label">Kategori Barang</label>
-                                    {{-- <input type="name" name="kategori_barang" class="form-control" id="inputKategoriBarang"> --}}
-                                    <select name="kategori_barang" class="form-select" aria-label="Default select">
-                                        <option selected value="1">Konsumtif</option>
-                                        <option value="2">Non-konsumtif</option>
+                                <div class="form-group">
+                                    <label for="formSelectKategoriBarang">Kategori Barang</label>
+                                    <select name="kategori" class="form-control" id="formSelectKategoriBarang">
+                                        <option value="Barang Habis Pakai" {{ old('kategori') === 'Barang Habis Pakai' ? 'selected' : '' }}>Barang Habis Pakai</option>
+                                        <option value="Barang Tidak Habis Pakai" {{ old('kategori') === 'Barang Tidak Habis Pakai' ? 'selected' : '' }}>Barang Tidak Habis Pakai</option>
                                     </select>
+                                    @if ($errors->has('kategori'))
+                                        <span class="ps-3 text-danger"><i class="fas fa-exclamation-circle"></i>&nbsp;{{ $errors->first('kategori') }}</span>
+                                    @endif
                                 </div>
-                                <button type="submit" class="mt-3 btn btn-primary float-end">Simpan</button>
+                                <div class="d-flex justify-content-end">
+                                    <a href="{{ URL::previous() }}" class="btn btn-outline-secondary mr-4">Batal</a>
+                                    <button type="submit" class="btn btn-primary">Simpan</button>
+                                </div>
                             </form>
                         </div>
                     </div>
