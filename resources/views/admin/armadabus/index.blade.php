@@ -13,12 +13,13 @@
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <div class="d-none d-sm-inline-block">
                 <!-- Topbar Search -->
-                <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search dropshadowlight">
+                <form method="GET" action="/admin/armada-bus/" 
+                    class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search dropshadowlight">
                     <div class="input-group">
-                        <input type="text" class="form-control bg-light border-0 small" placeholder="Pencarian"
+                        <input type="text" name="searchInput" class="form-control bg-light border-0 small" placeholder="Pencarian"
                             aria-label="Search" aria-describedby="basic-addon2">
                         <div class="input-group-append">
-                            <button class="btn btn-primary" type="button">
+                            <button class="btn btn-primary" type="submit">
                                 <i class="fas fa-search fa-sm"></i>
                             </button>
                         </div>
@@ -35,117 +36,68 @@
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                     <h6 class="m-0 font-weight-bold text-primary">Armada Bus</h6>
-                    <a href="/admin/armada_bus/tambah">
+                    <a href="/admin/armada-bus/tambah">
                         <i class="fas fa-plus text-primary"></i>
                     </a>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body table-responsive">
-                    <table class="table">
-                        <thead>
+                    <table class="table" id="datatable">
+                        <thead >
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Nama Bus</th>
-                            <th scope="col">Kursi</th>
-                            <th scope="col">Sasis</th>
-                            <th scope="col">Mesin</th>
-                            <th scope="col">Warna</th>
-                            <th scope="col">Plat Nomor</th>
-                            <th scope="col">Posisi</th>
-                            <th scope="col">Aksi</th>
+                            <th scope="col">@sortablelink('nama', 'Nama Bus', [], ['class' => 'text-decoration-none text-secondary'])</th>
+                            <th scope="col">@sortablelink('kursi', 'Kursi', [], ['class' => 'text-decoration-none text-secondary'])</th>
+                            <th scope="col">@sortablelink('sassis', 'Sasis', [], ['class' => 'text-decoration-none text-secondary'])</th>
+                            <th scope="col">@sortablelink('jenis_bus', 'Jenis Bus', [], ['class' => 'text-decoration-none text-secondary'])</th>
+                            <th scope="col">@sortablelink('warna', 'Warna', [], ['class' => 'text-decoration-none text-secondary'])</th>
+                            <th scope="col">@sortablelink('plat_nomor', 'Plat Nomor', [], ['class' => 'text-decoration-none text-secondary'])</th>
+                            <th scope="col" class="text-center">Posisi</th>
+                            <th scope="col" class="text-center">Aksi</th>
                         </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>CONVINCER</td>
-                                <td>59</td>
-                                <td>K410</td>
-                                <td>Mercedes</td>
-                                <td>Biru</td>
-                                <td>S 1234 GG</td>
-                                <td><a href="google.com"><i class="fas fa-map-marked-alt"></i></a></td>
-                                <td><i class="fas fa-edit text-warning"></i> &nbsp; <i class="fas fa-trash-alt text-danger"></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>CONVINCER</td>
-                                <td>59</td>
-                                <td>K410</td>
-                                <td>Mercedes</td>
-                                <td>Biru</td>
-                                <td>S 1234 GG</td>
-                                <td><a href="google.com"><i class="fas fa-map-marked-alt"></i></a></td>
-                                <td><i class="fas fa-edit text-warning"></i> &nbsp; <i class="fas fa-trash-alt text-danger"></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>CONVINCER</td>
-                                <td>59</td>
-                                <td>K410</td>
-                                <td>Mercedes</td>
-                                <td>Biru</td>
-                                <td>S 1234 GG</td>
-                                <td><a href="google.com"><i class="fas fa-map-marked-alt"></i></a></td>
-                                <td><i class="fas fa-edit text-warning"></i> &nbsp; <i class="fas fa-trash-alt text-danger"></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">4</th>
-                                <td>CONVINCER</td>
-                                <td>59</td>
-                                <td>K410</td>
-                                <td>Mercedes</td>
-                                <td>Biru</td>
-                                <td>S 1234 GG</td>
-                                <td><a href="google.com"><i class="fas fa-map-marked-alt"></i></a></td>
-                                <td><i class="fas fa-edit text-warning"></i> &nbsp; <i class="fas fa-trash-alt text-danger"></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">5</th>
-                                <td>CONVINCER</td>
-                                <td>59</td>
-                                <td>K410</td>
-                                <td>Mercedes</td>
-                                <td>Biru</td>
-                                <td>S 1234 GG</td>
-                                <td><a href="google.com"><i class="fas fa-map-marked-alt"></i></a></td>
-                                <td><i class="fas fa-edit text-warning"></i> &nbsp; <i class="fas fa-trash-alt text-danger"></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">6</th>
-                                <td>CONVINCER</td>
-                                <td>59</td>
-                                <td>K410</td>
-                                <td>Mercedes</td>
-                                <td>Biru</td>
-                                <td>S 1234 GG</td>
-                                <td><a href="google.com"><i class="fas fa-map-marked-alt"></i></a></td>
-                                <td><i class="fas fa-edit text-warning"></i> &nbsp; <i class="fas fa-trash-alt text-danger"></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">7</th>
-                                <td>CONVINCER</td>
-                                <td>59</td>
-                                <td>K410</td>
-                                <td>Mercedes</td>
-                                <td>Biru</td>
-                                <td>S 1234 GG</td>
-                                <td><a href="google.com"><i class="fas fa-map-marked-alt"></i></a></td>
-                                <td><i class="fas fa-edit text-warning"></i> &nbsp; <i class="fas fa-trash-alt text-danger"></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">8</th>
-                                <td>CONVINCER</td>
-                                <td>59</td>
-                                <td>K410</td>
-                                <td>Mercedes</td>
-                                <td>Biru</td>
-                                <td>S 1234 GG</td>
-                                <td><a href="google.com"><i class="fas fa-map-marked-alt"></i></a></td>
-                                <td><i class="fas fa-edit text-warning"></i> &nbsp; <i class="fas fa-trash-alt text-danger"></td>
-                            </tr>
+                            @forelse ($data_armada_bus as $key => $armada_bus)
+                                <tr>
+                                    <th scope="row">{{ $data_armada_bus->firstItem()+$key }}</th>
+                                    <td class="align-middle"><img src="/assets/images/armada_bus/{{ $armada_bus->gambar }}" class="tumbnail_armada_bus"> {{ $armada_bus->nama }}</td>
+                                    <td class="align-middle">{{ $armada_bus->kursi }}</td>
+                                    <td class="align-middle">{{ $armada_bus->sassis }}</td>
+                                    <td class="align-middle">{{ $armada_bus->jenis_bus }}</td>
+                                    <td class="align-middle"><span class="badge rounded-pil text-uppercase text-light" style="background-color: {{ $armada_bus->warna }};">{{  $armada_bus->warna  }}</span></td>
+                                    <td class="align-middle">{{ $armada_bus->plat_nomor }}</td>
+                                    <td class="align-middle text-center">
+                                        @if(isset($armada_bus->gps))
+                                        <a href="{{ $armada_bus->gps }}">
+                                            <i class="fas fa-map-marked-alt"></i>
+                                        </a>
+                                        @else
+                                                <i class="fas fa-times"></i>
+                                        @endif
+                                    </td>
+                                    <td class="align-middle text-center">
+                                        <a href="{{ url('admin/armada-bus/ubah/'.$armada_bus->id) }}" class="text-decoration-none">
+                                            <i class="fas fa-edit text-warning"></i>&nbsp;
+                                        </a>
+                                        <a href="{{ url('admin/armada-bus/hapus/'.$armada_bus->id) }}" class="text-decoration-none" onclick="return confirm('Apakah anda yakin untuk menghapus data Armada Bus {{ $armada_bus->nama }}?')">
+                                            <i class="fas fa-trash-alt text-danger"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="9">
+                                        <div class="alert alert-danger text-center" role="alert">
+                                            Belum ada data
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforelse
                         </tbody>
                     </table>
+                    <div class="d-flex justify-content-end">
+                        {{ $data_armada_bus->links() }}
+                    </div>
                 </div>
             </div>
         </div>
