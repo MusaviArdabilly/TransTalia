@@ -11,12 +11,14 @@
     <title>@yield('title')</title>
 
     <link rel="icon" href="{{ asset('assets/logo/Logo1.svg') }}">
-    <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}"" rel="stylesheet" type="text/css">
-    <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}"" rel="stylesheet" type="text/css">
+    {{-- <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"> --}}
+    <link href="{{ asset('vendor/sbadmin/css/sb-admin-2.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/toastr/toastr.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-    <link href="{{ asset('vendor/sbadmin/css/sb-admin-2.min.css') }}"" rel="stylesheet">
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet">
+    <link href="{{ asset('css/internal.css') }}" rel="stylesheet" type="text/css">
 
     <style>
         .dropshadow {
@@ -50,14 +52,24 @@
 
 <body id="page-top">
 
+    <!-- Bootstrap core JavaScript-->
+    <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('vendor/sbadmin/js/bootstrap.bundle.min.js') }}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+
+    {{-- Toastr  --}}
+    <script src="{{ asset('vendor/toastr/toastr.min.js') }}"></script>
+
     <!-- Page Wrapper -->
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion d-none d-sm-block" id="accordionSidebar">
+        <ul class="navbar-nav bg-primary sidebar sidebar-dark accordion d-none d-sm-block" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
                 <div class="sidebar-brand-icon">
                     <svg viewBox="0 0 236.08 204.09" style="height: 2rem" class="dropshadow">
                         <defs>
@@ -100,23 +112,26 @@
 
             <!-- Nav Item - Bus -->
             <li class="nav-item" id="armadabus">
-                <a class="nav-link" href="/admin/armada_bus">
+                <a class="nav-link" href="/admin/armada-bus">
                     <i class="fas fa-fw fa-bus"></i>
-                    <span>Armada Bus</span></a>
+                    <span>Armada Bus</span>
+                </a>
             </li>
 
             <!-- Nav Item - Kode Perawatan -->
             <li class="nav-item" id="kodeperawatan">
-                <a class="nav-link" href="/admin/kode_perawatan">
+                <a class="nav-link" href="/admin/kode-perawatan">
                     <i class="fas fa-fw fa-wrench"></i>
-                    <span>Kode Perawatan</span></a>
+                    <span>Kode Perawatan</span>
+                </a>
             </li>
 
             <!-- Nav Item - Pegawai -->
             <li class="nav-item" id="pegawai">
                 <a class="nav-link" href="/admin/pegawai">
                     <i class="fas fa-fw fa-user"></i>
-                    <span>Pegawai</span></a>
+                    <span>Pegawai</span>
+                </a>
             </li>
 
             <!-- Divider -->
@@ -131,50 +146,56 @@
             <li class="nav-item" id="jadwal">
                 <a class="nav-link" href="/admin/jadwal">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Jadwal</span></a>
+                    <span>Jadwal</span>
+                </a>
             </li>
 
             <!-- Nav Item - Reservasi -->
             <li class="nav-item" id="reservasi">
                 <a class="nav-link" href="/admin/reservasi">
                     <i class="far fa-fw fa-calendar"></i>
-                    <span>Reservasi</span></a>
+                    <span>Reservasi</span>
+                </a>
             </li>
 
             <!-- Nav Item - Transaksi -->
             <li class="nav-item" id="transaksi">
                 <a class="nav-link" href="/admin/transaksi">
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>Transaksi</span></a>
+                    <span>Transaksi</span>
+                </a>
             </li>
 
             <!-- Nav Item - Perawatan Armada -->
             <li class="nav-item" id="perawatanarmada">
-                <a class="nav-link" href="/admin/perawatan_armada">
+                <a class="nav-link" href="/admin/perawatan-armada">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Perawatan Armada</span></a>
+                    <span>Perawatan Armada</span>
+                </a>
             </li>
 
             <!-- Nav Item - Pembaruan Armada -->
             <li class="nav-item" id="pembaruanarmada">
-                <a class="nav-link" href="/admin/pembaruan_armada">
+                <a class="nav-link" href="/admin/pembaruan-armada">
                     <i class="fas fa-fw fa-cogs"></i>
-                    <span>Pembaruan Armada</span></a>
+                    <span>Pembaruan Armada</span>
+                </a>
             </li>
 
             <!-- Nav Item - Performa Pegawai -->
             <li class="nav-item" id="performapegawai">
-                <a class="nav-link" href="/admin/performa_pegawai">
+                <a class="nav-link" href="/admin/performa-pegawai">
                     <i class="fas fa-fw fa-chart-line"></i>
-                    <span>Performa Pegawai</span></a>
+                    <span>Performa Pegawai</span>
+                </a>
             </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
             <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            <div class="d-none d-md-flex justify-content-center">
+                <button class="mx-auto rounded-circle border-0" id="sidebarToggle"></button>
             </div>
 
         </ul>
@@ -225,7 +246,7 @@
                         <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-bell fa-fw"></i>
+                                <i class="far fa-fw fa-calendar"></i>
                                 <!-- Counter - Alerts -->
                                 <span class="badge badge-danger badge-counter">3+</span>
                             </a>
@@ -272,81 +293,15 @@
                             </div>
                         </li>
 
-                        <!-- Nav Item - Messages -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-envelope fa-fw"></i>
-                                <!-- Counter - Messages -->
-                                <span class="badge badge-danger badge-counter">7</span>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="messagesDropdown">
-                                <h6 class="dropdown-header">
-                                    Message Center
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_1.svg"
-                                            alt="...">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div class="font-weight-bold">
-                                        <div class="text-truncate">Hi there! I am wondering if you can help me with a
-                                            problem I've been having.</div>
-                                        <div class="small text-gray-500">Emily Fowler · 58m</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_2.svg"
-                                            alt="...">
-                                        <div class="status-indicator"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">I have the photos that you ordered last month, how
-                                            would you like them sent to you?</div>
-                                        <div class="small text-gray-500">Jae Chun · 1d</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_3.svg"
-                                            alt="...">
-                                        <div class="status-indicator bg-warning"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Last month's report looks great, I am very happy with
-                                            the progress so far, keep up the good work!</div>
-                                        <div class="small text-gray-500">Morgan Alvarez · 2d</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
-                                            alt="...">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Am I a good boy? The reason I ask is because someone
-                                            told me that people say this to all dogs, even if they aren't good...</div>
-                                        <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-                            </div>
-                        </li>
-
                         <div class="topbar-divider d-none d-sm-block"></div>
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->nama_depan }}{{ Auth::user()->nama_belakang }}</span>
                                 <img class="img-profile rounded-circle"
-                                    src="assets/logo/Logo.png">
+                                    src="/assets/images/users/{{ Auth::user()->foto_profil }}">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -375,7 +330,9 @@
 
                 </nav>
                 <!-- End of Topbar -->
-
+                {{-- <script> toastr.success("Test");</script> --}}
+                
+                @include('flash-message')
                 @yield('content')
 
             <!-- Footer -->
@@ -418,13 +375,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Bootstrap core JavaScript-->
-    <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('vendor/sbadmin/js/bootstrap.bundle.min.js') }}"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('vendor/sbadmin/js/sb-admin-2.min.js') }}"></script>
