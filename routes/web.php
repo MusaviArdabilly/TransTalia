@@ -13,7 +13,7 @@ use App\Http\Controllers\Admin\PerformaPegawaiController;
 use App\Http\Controllers\Admin\TransaksiController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Guest\GuestController;
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Auth\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,14 +35,17 @@ Route::get('/', function () {
 Route::get('/', [GuestController::class, 'index']);
 Route::get('/profil', [GuestController::class, 'profil']);
 Route::get('/jadwal', [GuestController::class, 'jadwal']);
-Route::get('/masuk', [GuestController::class, 'login']);
-Route::get('/daftar', [GuestController::class, 'register']);
 Route::get('/logo', [GuestController::class, 'logo']);
 
 // ========================== Auth ==========================
 
 Route::get('/register', [AuthController::class, 'register']);
+Route::post('/register/post', [AuthController::class, 'postRegister']);
+
 Route::get('/login', [AuthController::class, 'login']);
+Route::post('/login/post', [AuthController::class, 'postLogin']);
+
+Route::get('/logout', [AuthController::class, 'logout']);
 
 // ========================== User ===========================
 
@@ -50,22 +53,30 @@ Route::get('/login', [AuthController::class, 'login']);
 Route::get('/reservasi', [UserController::class, 'reservation']);
 Route::get('/riwayat-reservasi', [UserController::class, 'reservationHistory']);
 
+Route::get('/edit-akun', [UserController::class, 'editAkun']);
+Route::post('/edit-akun/post', [UserController::class, 'updateAkun']);
+
+Route::get('/edit-password', [UserController::class, 'editPassword']);
+Route::post('/edit-password/post', [UserController::class, 'updatePassword']);
+
 // ========================== Admin ========================== 
+
 Route::prefix('admin')->group(function () {
 
     Route::get('/dashboard', [DashboardController::class, 'index']);
     
     // ---------------------- Armada Bus ----------------------
-    Route::prefix('armada_bus')->group(function () {
+    Route::prefix('armada-bus')->group(function () {
         Route::get('/', [ArmadaBusController::class, 'index']);
         Route::get('/tambah', [ArmadaBusController::class, 'add']);
-        Route::get('/tambah-data', [ArmadaBusController::class, 'store']);
-        Route::get('/ubah', [ArmadaBusController::class, 'edit']);
-        Route::get('/ubah-data', [ArmadaBusController::class, 'update']);
+        Route::post('/tambah/post', [ArmadaBusController::class, 'store']);
+        Route::get('/ubah/{id}', [ArmadaBusController::class, 'edit']);
+        Route::post('/ubah/{id}/post', [ArmadaBusController::class, 'update']);
+        Route::get('/hapus/{id}', [ArmadaBusController::class, 'destroy']);
     });
 
     // -------------------- Kode Perawatan --------------------
-    Route::prefix('kode_perawatan')->group(function () {
+    Route::prefix('kode-perawatan')->group(function () {
         Route::get('/', [KodePerawatanController::class, 'index']);
         Route::get('/tambah', [KodePerawatanController::class, 'add']);
         Route::get('/tambah-data', [KodePerawatanController::class, 'store']);
@@ -97,7 +108,7 @@ Route::prefix('admin')->group(function () {
     });
     
     // ------------------- Perawatan Armada -------------------
-    Route::prefix('perawatan_armada')->group(function () {
+    Route::prefix('perawatan-armada')->group(function () {
         Route::get('/', [PerawatanArmadaController::class, 'index']);
         Route::get('/tambah', [PerawatanArmadaController::class, 'add']);
         Route::get('/tambah-data', [PerawatanArmadaController::class, 'store']);
@@ -106,7 +117,7 @@ Route::prefix('admin')->group(function () {
     });
     
     // ------------------- Pembaruan Armada -------------------
-    Route::prefix('pembaruan_armada')->group(function () {
+    Route::prefix('pembaruan-armada')->group(function () {
         Route::get('/', [PembaruanArmadaController::class, 'index']);
         Route::get('/tambah', [PembaruanArmadaController::class, 'add']);
         Route::get('/tambah-data', [PembaruanArmadaController::class, 'store']);
