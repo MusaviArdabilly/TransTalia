@@ -1,15 +1,18 @@
-@extends('user.layout')
+@extends('public-layout')
 @section('title', 'Reservasi - Trans Talia')
 @section('content')
 
 <script type="text/javascript">
-    document.getElementById('header').classList.add('header-fixed');
+    document.getElementById('reservasi').classList.add('border-bottom', 'border-dark', 'rounded-bottom');
 </script>
 
-<div class="mt-nav minvh100-185">
+<div class="fake-navbar"></div>
+<div class="minvh100-130 d-flex align-items-center p-3">
     <div class="container">
-        <h3 class="text-center fw-bold pt-5">Reservasi</h3>
-        
+        <div class="d-flex justify-content-end">
+            <a href="/riwayat-reservasi" class="btn btn-outline-primary my-2">Riwayat Reservasi</a>
+        </div>
+        <h3 class="text-center fw-bold">Reservasi</h3>
         <div class="accordion py-3" id="accordionExample">
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingOne">
@@ -74,53 +77,29 @@
         </div>
     </div>
 </div>
-
-{{-- <div class="minvh100-185 d-flex align-items-center mt-nav p-3">
-    <div class="container">
-        <div class="col-12 col-md-6 mx-auto my-auto">
-            <h3 class="text-center fw-bold">Pesan</h3>
-            <form>
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1">
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
-                </div>
-                <div class="d-flex justify-content-center my-3">
-                    <button type="submit" class="btn btn-primary mt-2">Masuk</button> <br>
-                </div>
-                <div class="d-flex justify-content-center">
-                    <div id="emailHelp" class="form-text">Belum mempunyai akun? <a href="/daftar">Daftar sekarang</a></div>
-                </div>
-            </form>
-        </div>
-    </div>
-</div> --}}
     
-    {{-- FullCalendar --}}
-    <script src='{{ asset('vendor/fullcalendar/dist/index.global.js') }}'></script>
-    <script src='{{ asset('vendor/fullcalendar/package/core/locales/id.global.min.js') }}'></script>
-    <script>
-        var calendarOptions = {
-                    locale: 'id',
-                    themeSystem: 'bootstrap5',
-                    contentHeight: '100%',
-                    initialView: 'dayGridMonth'
-        };
-        var accordionToggle = document.querySelector('.accordion-button');
-        accordionToggle.addEventListener('click', function() {
-            var calendarEl = document.querySelector('#calendar');
-            if (calendarEl.classList.contains('fc')) {
-                // FullCalendar has been initialized, so remove it now
-                calendar.destroy();
-            } else {
-                // FullCalendar hasn't been initialized yet, so do it now
-                var calendar = new FullCalendar.Calendar(calendarEl, calendarOptions);
-                calendar.render();
-            }
-        });
-    </script>
+{{-- FullCalendar --}}
+<script src='{{ asset('vendor/fullcalendar/dist/index.global.js') }}'></script>
+<script src='{{ asset('vendor/fullcalendar/package/core/locales/id.global.min.js') }}'></script>
+<script>
+    var calendarOptions = {
+                locale: 'id',
+                themeSystem: 'bootstrap5',
+                contentHeight: '100%',
+                initialView: 'dayGridMonth'
+    };
+    var accordionToggle = document.querySelector('.accordion-button');
+    accordionToggle.addEventListener('click', function() {
+        var calendarEl = document.querySelector('#calendar');
+        if (calendarEl.classList.contains('fc')) {
+            // FullCalendar has been initialized, so remove it now
+            calendar.destroy();
+        } else {
+            // FullCalendar hasn't been initialized yet, so do it now
+            var calendar = new FullCalendar.Calendar(calendarEl, calendarOptions);
+            calendar.render();
+        }
+    });
+</script>
 
 @endsection
