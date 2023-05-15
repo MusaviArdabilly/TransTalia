@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
             'nama_belakang' => 'Maulana', 
             'role' => 'user', 
             'foto_profil' => 'default_ava.png', 
-            'no_telp' => '081234567890', 
+            'no_telp' => '81234567890', 
             'email' => 'farhan.maulana@gmail.com', 
             'password' => bcrypt('password')
         ]);
@@ -30,7 +30,7 @@ class UserSeeder extends Seeder
             'nama_belakang' => 'Pratama', 
             'foto_profil' => 'default_ava.png', 
             'role' => 'user', 
-            'no_telp' => '085678901234', 
+            'no_telp' => '85678901234', 
             'email' => 'putrapratama@gmail.com', 
             'password' => bcrypt('password')
         ]);
@@ -40,7 +40,7 @@ class UserSeeder extends Seeder
             'nama_belakang' => 'Wijaya', 
             'foto_profil' => 'default_ava.png', 
             'role' => 'user', 
-            'no_telp' => '082345678901', 
+            'no_telp' => '82345678901', 
             'email' => ' rizkiwijaya@gmail.com', 
             'password' => bcrypt('password')
         ]);
@@ -50,7 +50,7 @@ class UserSeeder extends Seeder
             'nama_belakang' => 'Hidayat', 
             'foto_profil' => 'default_ava.png', 
             'role' => 'user', 
-            'no_telp' => '081345678901', 
+            'no_telp' => '81345678901', 
             'email' => ' ahmadhidayat@gmail.com', 
             'password' => bcrypt('password')
         ]);
@@ -60,7 +60,7 @@ class UserSeeder extends Seeder
             'nama_belakang' => 'Santoso', 
             'foto_profil' => 'default_ava.png', 
             'role' => 'user', 
-            'no_telp' => '085789012345', 
+            'no_telp' => '85789012345', 
             'email' => 'dikasantoso@gmail.com', 
             'password' => bcrypt('password')
         ]);
@@ -70,7 +70,7 @@ class UserSeeder extends Seeder
             'nama_belakang' => 'Pramudya', 
             'foto_profil' => 'default_ava.png', 
             'role' => 'user', 
-            'no_telp' => '082334567890', 
+            'no_telp' => '82334567890', 
             'email' => ' gilang.pramudya@gmail.com', 
             'password' => bcrypt('password')
         ]);
@@ -80,7 +80,7 @@ class UserSeeder extends Seeder
             'nama_belakang' => 'Setiawan', 
             'foto_profil' => 'default_ava.png', 
             'role' => 'user', 
-            'no_telp' => '081367890123', 
+            'no_telp' => '81367890123', 
             'email' => 'agussetiawan@gmail.com', 
             'password' => bcrypt('password')
         ]);
@@ -90,7 +90,7 @@ class UserSeeder extends Seeder
             'nama_belakang' => 'Nugroho', 
             'foto_profil' => 'default_ava.png', 
             'role' => 'user', 
-            'no_telp' => '085634567890', 
+            'no_telp' => '85634567890', 
             'email' => 'budinugroho@gmail.com', 
             'password' => bcrypt('password')
         ]);
@@ -100,7 +100,7 @@ class UserSeeder extends Seeder
             'nama_belakang' => 'Prabowo', 
             'foto_profil' => 'default_ava.png', 
             'role' => 'user', 
-            'no_telp' => '082390123456', 
+            'no_telp' => '82390123456', 
             'email' => 'hendra.prabowo@gmail.com', 
             'password' => bcrypt('password')
         ]);
@@ -110,7 +110,7 @@ class UserSeeder extends Seeder
             'nama_belakang' => 'Mahendra', 
             'foto_profil' => 'default_ava.png', 
             'role' => 'user', 
-            'no_telp' => '081278901234', 
+            'no_telp' => '81278901234', 
             'email' => 'irfan_mahendra@gmail.com', 
             'password' => bcrypt('password')
         ]);   
