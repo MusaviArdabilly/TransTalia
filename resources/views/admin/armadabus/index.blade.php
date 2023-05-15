@@ -79,7 +79,7 @@
                                         <a href="{{ url('admin/armada-bus/ubah/'.$armada_bus->id) }}" class="text-decoration-none">
                                             <i class="fas fa-edit text-warning"></i>&nbsp;
                                         </a>
-                                        <a href="{{ url('admin/armada-bus/hapus/'.$armada_bus->id) }}" class="text-decoration-none" onclick="return confirm('Apakah anda yakin untuk menghapus data Armada Bus {{ $armada_bus->nama }}?')">
+                                        <a href="{{ url('admin/armada-bus/hapus/'.$armada_bus->id) }}" class="text-decoration-none" onclick="return confirm('Apakah anda yakin untuk menghapus data Armada Bus - {{ $armada_bus->nama }}?')">
                                             <i class="fas fa-trash-alt text-danger"></i>
                                         </a>
                                     </td>
@@ -88,7 +88,7 @@
                                 <tr>
                                     <td colspan="9">
                                         <div class="alert alert-danger text-center" role="alert">
-                                            Belum ada data
+                                            Data Kosong
                                         </div>
                                     </td>
                                 </tr>

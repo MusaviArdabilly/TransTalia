@@ -67,7 +67,7 @@
                                     <a href="{{ url('admin/kode-perawatan/ubah/'.$kode_perawatan->id) }}" class="text-decoration-none">
                                         <i class="fas fa-edit text-warning"></i>&nbsp;
                                     </a>
-                                    <a href="{{ url('admin/kode-perawatan/hapus/'.$kode_perawatan->id) }}" class="text-decoration-none" onclick="return confirm('Apakah anda yakin untuk menghapus data Kode Perawatan {{ $kode_perawatan->kode }}?')">
+                                    <a href="{{ url('admin/kode-perawatan/hapus/'.$kode_perawatan->id) }}" class="text-decoration-none" onclick="return confirm('Apakah anda yakin untuk menghapus data Kode Perawatan - {{ $kode_perawatan->kode }}?')">
                                         <i class="fas fa-trash-alt text-danger"></i>
                                     </a>
                                 </td>
@@ -76,7 +76,7 @@
                             <tr>
                                 <td colspan="5">
                                     <div class="alert alert-danger text-center" role="alert">
-                                        Belum ada data
+                                        Data Kosong
                                     </div>
                                 </td>
                             </tr>
