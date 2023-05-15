@@ -16,7 +16,7 @@
                 <form method="GET" action="/admin/armada-bus/" 
                     class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search dropshadowlight">
                     <div class="input-group">
-                        <input type="text" name="searchInput" class="form-control bg-light border-0 small" placeholder="Pencarian"
+                        <input type="text" name="search" value="{{ $search_key }}" class="form-control bg-light border-0 small" placeholder="Pencarian"
                             aria-label="Search" aria-describedby="basic-addon2">
                         <div class="input-group-append">
                             <button class="btn btn-primary" type="submit">
