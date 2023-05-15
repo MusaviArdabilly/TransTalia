@@ -18,6 +18,15 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+        
+        // $this->call(ProvincesSeeder::class);
+        // $this->call(CitiesSeeder::class);
+        // $this->call(DistrictsSeeder::class);
+        // $this->call(VillagesSeeder::class);
+
+        //use php artisan laravolt:indonesia:seed
+
+        $this->call(UserSeeder::class);
         $this->call(ArmadaBusSeeder::class);
         $this->call(KodePerawatanSeeder::class);
     }
