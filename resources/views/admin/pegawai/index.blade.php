@@ -45,10 +45,10 @@
                         <thead>
                           <tr>
                             <th scope="col">#</th>
-                            <th scope="col">@sortablelink('nama_depan', ' Nama')</th>
-                            <th scope="col">@sortablelink('jabatan', 'Jabatan')</th>
-                            <th scope="col">@sortablelink('alamat', 'Alamat')</th>
-                            <th scope="col">@sortablelink('no_hp', 'No. Hp')</th>
+                            <th scope="col">@sortablelink('user.nama_depan', ' Nama', [], ['class' => 'text-decoration-none text-secondary'])</th>
+                            <th scope="col">@sortablelink('jabatan', 'Jabatan', [], ['class' => 'text-decoration-none text-secondary'])</th>
+                            <th scope="col">Alamat</th>
+                            <th scope="col">No. Hp</th>
                             <th scope="col" class="text-center">Aksi</th>
                           </tr>
                         </thead>

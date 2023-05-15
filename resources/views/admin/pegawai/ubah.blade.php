@@ -35,7 +35,7 @@
                                     <select name="jabatan" class="form-control" aria-label="Default select" id="inputJabatan">
                                         <option value="sopir" {{ $pegawai->jabatan == 'sopir' ? 'selected' : '' }}>Sopir</option>
                                         <option value="kenek" {{ $pegawai->jabatan == 'kenek' ? 'selected' : '' }}>Kenek</option>
-                                        <option value="it_support" {{ $pegawai->jabatan == 'it_support' ? 'selected' : '' }}>IT Support</option>
+                                        <option value="teknisi_audio_visual" {{ $pegawai->jabatan == 'teknisi_audio_visual' ? 'selected' : '' }}>Teknisi Audio Visual</option>
                                         <option value="mekanik" {{ $pegawai->jabatan == 'mekanik' ? 'selected' : '' }}>Mekanik</option>
                                     </select>
                                     @if ($errors->has('jabatan'))
@@ -47,23 +47,23 @@
                                     <div class="row px-2">
                                         <div class="col-4">
                                             <label for="editAlamatKota">Kota</label>
-                                            <select name="kota" class="form-control" aria-label="Default select1" id="editAlamatKota">
+                                            <select name="kota" class="form-control text-capitalize" aria-label="Default select1" id="editAlamatKota">
                                                 <option value="0" disable selected>Pilih Kota</option>
                                                 @foreach ($data_kota as $kota)
-                                                <option value="{{ $kota->id }}"  {{ $pegawai->alamat->kota_id == $kota->id ? 'selected' : '' }}>{{ $kota->name }}</option>
+                                                <option value="{{ $kota->id }}" {{ $pegawai->alamat->kota_id == $kota->id ? 'selected' : '' }}>{{ strtolower(str_replace(['KABUPATEN', 'KOTA'], ['Kab.', 'Kota'], $kota->name)) }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
                                         <div class="col-4">
                                             <label for="editAlamatKecamatan">Kecamatan</label>
-                                            <select name="distrik" class="form-control" aria-label="select2" id="editAlamatKecamatan">
+                                            <select name="distrik" class="form-control text-capitalize" aria-label="select2" id="editAlamatKecamatan">
                                                 <option value="0" disable="true" selected>Pilih Kecamatan</option>
                                             </select>
                                             <input type="hidden" id="distrik_id" value="{{ $pegawai->alamat->distrik_id }}"> {{-- helper passing value of laravel variable --}}
                                         </div>
                                         <div class="col-4">
                                             <label for="editAlamatDesa" >Desa</label>
-                                            <select name="desa" class="form-control" aria-label="select3" id="editAlamatDesa">
+                                            <select name="desa" class="form-control text-capitalize" aria-label="select3" id="editAlamatDesa">
                                                 <option value="0" disable="true" selected>Pilih Desa</option>
                                             </select>
                                             <input type="hidden" id="desa_id" value="{{ $pegawai->alamat->desa_id }}"> {{-- helper passing value of laravel variable --}}

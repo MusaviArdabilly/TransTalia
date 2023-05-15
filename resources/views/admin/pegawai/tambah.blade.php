@@ -25,7 +25,7 @@
                                     <label for="inputJabatan">Cari Pengguna</label>
                                     <select name="user_id" class="form-control select2" aria-label="Default select" id="inputJabatan">
                                         @foreach ($data_user as $user)
-                                            <option value="{{ $user->id }}">{{ $user->nama_depan }} {{ $user->nama_belakang }} - {{ $user->no_telp }}</option>
+                                            <option value="{{ $user->id }}">{{ $user->nama_depan }} {{ $user->nama_belakang }} - 0{{ $user->no_telp }}</option>
                                         @endforeach
                                     </select>
                                     @if ($errors->has('user_id'))
@@ -37,7 +37,7 @@
                                     <select name="jabatan" class="form-control" aria-label="Default select" id="inputJabatan">
                                         <option selected value="sopir">Sopir</option>
                                         <option value="kenek">Kenek</option>
-                                        <option value="it_support">IT Support</option>
+                                        <option value="teknisi_audio_visual">Teknisi Audio Visual</option>
                                         <option value="mekanik">Mekanik</option>
                                     </select>
                                     @if ($errors->has('jabatan'))
@@ -49,22 +49,22 @@
                                     <div class="row px-2">
                                         <div class="col-4">
                                             <label for="inputAlamatKota">Kota</label>
-                                            <select name="kota" class="form-control" aria-label="Default select1" id="inputAlamatKota">
+                                            <select name="kota" class="form-control text-capitalize" aria-label="Default select1" id="inputAlamatKota">
                                                 <option value="0" disable selected>Pilih Kota</option>
                                                 @foreach ($data_kota as $kota)
-                                                <option value="{{ $kota->id }}">{{ $kota->name }}</option>
+                                                <option value="{{ $kota->id }}" class="text-capitalize">{{ strtolower(str_replace(['KABUPATEN', 'KOTA'], ['Kab.', 'Kota'], $kota->name))  }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
                                         <div class="col-4">
                                             <label for="inputAlamatKecamatan">Kecamatan</label>
-                                            <select name="distrik" class="form-control" aria-label="select2" id="inputAlamatKecamatan">
+                                            <select name="distrik" class="form-control text-capitalize" aria-label="select2" id="inputAlamatKecamatan">
                                                 <option value="0" disable="true" selected>Pilih Kecamatan</option>
                                             </select>
                                         </div>
                                         <div class="col-4">
                                             <label for="inputAlamatDesa" >Desa</label>
-                                            <select name="desa" class="form-control" aria-label="select3" id="inputAlamatDesa">
+                                            <select name="desa" class="form-control text-capitalize" aria-label="select3" id="inputAlamatDesa">
                                                 <option value="0" disable="true" selected>Pilih Desa</option>
                                             </select>
                                         </div>
