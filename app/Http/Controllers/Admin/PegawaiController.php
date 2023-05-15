@@ -128,7 +128,7 @@ class PegawaiController extends Controller
         return redirect('/admin/pegawai/')->with('success', 'Data Pegawai Berhasil Diubah!');
     }
 
-    public function destroy(){
+    public function destroy($id){
         $pegawai = Pegawai::find($id);
         $pegawai->delete();
 
