@@ -96,6 +96,8 @@ Route::prefix('admin')->group(function () {
 
         Route::get('/tambah/districts', [PegawaiController::class, 'districts']);
         Route::get('/tambah/villages', [PegawaiController::class, 'villages']);
+        Route::get('/ubah/{id}/districts', [PegawaiController::class, 'districts']);
+        Route::get('/ubah/{id}/villages', [PegawaiController::class, 'villages']);
     });
 
     // ------------------------ Alamat ------------------------
