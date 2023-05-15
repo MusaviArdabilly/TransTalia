@@ -13,6 +13,9 @@
     <link rel="icon" href="{{ asset('assets/logo/Logo1.svg') }}">
     {{-- <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"> --}}
     <link href="{{ asset('vendor/sbadmin/css/sb-admin-2.min.css') }}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.min.css" rel="stylesheet" >
+    
     <link href="{{ asset('vendor/toastr/toastr.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link
@@ -47,6 +50,9 @@
             font-weight: 700 !important;
             color: #007bff;
         }
+        .select2-container .select2-selection__rendered {
+  font-size: 1rem; /* Use the same font size as Bootstrap */
+}
     </style>
 </head>
 
@@ -61,6 +67,9 @@
 
     {{-- Toastr  --}}
     <script src="{{ asset('vendor/toastr/toastr.min.js') }}"></script>
+
+    {{-- Select2 --}}
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -299,7 +308,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->nama_depan }}{{ Auth::user()->nama_belakang }}</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->nama_depan }} {{ Auth::user()->nama_belakang }}</span>
                                 <img class="img-profile rounded-circle"
                                     src="/assets/images/users/{{ Auth::user()->foto_profil }}">
                             </a>
@@ -386,7 +395,17 @@
     <script src="{{ asset('vendor/sbadmin/js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('vendor/sbadmin/js/demo/chart-pie-demo.js') }}"></script>
     
+    <!-- Alamat  -->
+    <script src="{{ asset('js/alamat.js') }}"></script>
+
     <script>
+        // Select2
+        $(document).ready(function() {
+            $('.select2').select2({
+                theme: 'bootstrap'
+            });
+        });
+        
         // Get the button and the element to add the class to
         const addClassButton = $("#sidebarToggleTop");
         const elementToAddClass = $("#accordionSidebar");
