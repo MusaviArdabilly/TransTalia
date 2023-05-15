@@ -3,8 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Model;
 use Kyslik\ColumnSortable\Sortable;
+use App\Models\PerawatanArmada;
 
 class KodePerawatan extends Model
 {
@@ -21,4 +23,8 @@ class KodePerawatan extends Model
     ];
 
     public $sortable = ['kode', 'keterangan', 'kategori'];
+
+    public function perawatan_armada():HasMany{
+        return $this->hasMany(KodePerawatan::class);
+    }
 }

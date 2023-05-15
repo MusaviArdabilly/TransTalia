@@ -3,7 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Reservasi;
 
 class Transaksi extends Model
 {
@@ -18,4 +20,8 @@ class Transaksi extends Model
         'nominal',
         'keterangan',
     ];
+
+    public function reservasi():BelongsTo{
+        return $this->belongsTo(Reservasi::class);
+    }
 }

@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use App\Models\Pegawai;
+use App\Models\Reservasi;
 
 class User extends Authenticatable
 {
@@ -20,6 +24,7 @@ class User extends Authenticatable
     protected $fillable = [
         'nama_depan',
         'nama_belakang',
+        'foto_profil',
         'role',
         'no_telp',
         'email',
@@ -43,4 +48,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function pegawai(): HasOne{
+        return $this->hasOne(Pegawai::class);
+    }
+
+    public function reservasi(): HasMany{
+        return $this->hasMany(Reservasi::class);
+    }
 }

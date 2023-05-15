@@ -3,7 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
+use App\Models\Transaksi;
 
 class Reservasi extends Model
 {
@@ -14,8 +18,7 @@ class Reservasi extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'user__id',
-        'armada_bus_id',
+        'user_id',
         'tanggal_mulai',
         'tanggal_selesai',
         'tujuan',
@@ -23,4 +26,16 @@ class Reservasi extends Model
         'dibayar',
         'status',
     ];
+
+    public function user():BelongsTo{
+        return $this->belongsTo(User::class);
+    }
+
+    public function transaksi():HasMany{
+        return $this->hasMany(Transaksi::class);
+    }
+
+    public function reservasi_armada_bus():HasMany{
+        return $this->hasMany(ReservasiArmadaBus::class);
+    }
 }
