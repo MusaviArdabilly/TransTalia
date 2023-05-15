@@ -9,12 +9,13 @@ use Illuminate\Http\Request;
 class KodePerawatanController extends Controller
 {
     public function index(Request $request){
-        $data_kode_perawatan = KodePerawatan::when($request->searchInput, function($query) use($request){
-            $query->where('kode', 'LIKE', '%'.$request->searchInput.'%')
-            ->orWhere('keterangan', 'LIKE', '%'.$request->searchInput.'%');
+        $search_key = $request->search;
+        $data_kode_perawatan = KodePerawatan::when($request->search, function($query) use($request){
+            $query->where('kode', 'LIKE', '%'.$request->search.'%')
+            ->orWhere('keterangan', 'LIKE', '%'.$request->search.'%');
         })->sortable('kode')->paginate(10);
 
-        return view('admin.kodeperawatan.index', compact('data_kode_perawatan'));
+        return view('admin.kodeperawatan.index', compact('data_kode_perawatan', 'search_key'));
     }
 
     public function add(){
