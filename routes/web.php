@@ -93,7 +93,12 @@ Route::prefix('admin')->group(function () {
         Route::get('/ubah/{id}', [PegawaiController::class, 'edit']);
         Route::post('/ubah/{id}/post', [PegawaiController::class, 'update']);
         Route::get('/hapus/{id}', [PegawaiController::class, 'destroy']);
+
+        Route::get('/tambah/districts', [PegawaiController::class, 'districts']);
+        Route::get('/tambah/villages', [PegawaiController::class, 'villages']);
     });
+
+    // ------------------------ Alamat ------------------------
     
     // ------------------------ Jadwal ------------------------
     Route::prefix('jadwal')->group(function () {
