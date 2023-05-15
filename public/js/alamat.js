@@ -12,7 +12,7 @@ $('#inputAlamatKota').on('change', function (e) {
         $('#inputAlamatDesa').append('<option value="0" disable="true" selected="true">Pilih Desa</option>');
 
         $.each(data, function (index, districtsObj) {
-            $('#inputAlamatKecamatan').append('<option value="' + districtsObj.id + '">' + districtsObj.name + '</option>');
+            $('#inputAlamatKecamatan').append('<option value="' + districtsObj.id + '">' + districtsObj.name.toLowerCase() + '</option>');
         })
     });
 });
@@ -27,8 +27,8 @@ $('#inputAlamatKecamatan').on('change', function (e) {
         $('#inputAlamatDesa').append('<option value="0" disable="true" selected="true">Pilih Desa</option>');
 
         $.each(data, function (index, villagesObj) {
-            $('#inputAlamatDesa').append('<option value="' + villagesObj.id + '">' + villagesObj.name + '</option>');
-            console.log("|" + villagesObj.id + "|" + villagesObj.district_id + "|" + villagesObj.name);
+            $('#inputAlamatDesa').append('<option value="' + villagesObj.id + '">' + villagesObj.name.toLowerCase() + '</option>');
+            // console.log("|" + villagesObj.id + "|" + villagesObj.district_id + "|" + villagesObj.name);
         })
     });
 });
@@ -50,7 +50,7 @@ $(document).ready(function() {
 
         $.each(data, function (index, districtsObj) {
             var selected = districtsObj.id == distrik_id ? 'selected' : '';
-            $('#editAlamatKecamatan').append('<option value="' + districtsObj.id + '" ' + selected + '>' + districtsObj.name + '</option>');
+            $('#editAlamatKecamatan').append('<option value="' + districtsObj.id + '" ' + selected + '>' + districtsObj.name.toLowerCase() + '</option>');
         });
     });
     
@@ -62,7 +62,7 @@ $(document).ready(function() {
 
         $.each(data, function (index, villagesObj) {
             var selected = villagesObj.id == desa_id ? 'selected' : '';
-            $('#editAlamatDesa').append('<option value="' + villagesObj.id + '" ' + selected + '>' + villagesObj.name + '</option>');
+            $('#editAlamatDesa').append('<option value="' + villagesObj.id + '" ' + selected + '>' + villagesObj.name.toLowerCase() + '</option>');
         });
     });
 });
