@@ -10,10 +10,15 @@ use Illuminate\Http\Request;
 class ArmadaBusController extends Controller
 {
     public function index(Request $request){
-        $data_armada_bus = ArmadaBus::when($request->searchInput, function($query) use($request){
-            $query->where('nama', 'LIKE', '%'.$request->searchInput.'%');
+        $search_key = $request->search;
+        $data_armada_bus = ArmadaBus::when($request->search, function($query) use($request){
+            $query->where('nama', 'LIKE', '%'.$request->search.'%')
+            ->orWhere('kursi', 'LIKE', '%'.$request->search.'%')
+            ->orWhere('sassis', 'LIKE', '%'.$request->search.'%')
+            ->orWhere('jenis_bus', 'LIKE', '%'.$request->search.'%')
+            ->orWhere('plat_nomor', 'LIKE', '%'.$request->search.'%');
         })->sortable('nama')->paginate(10);
-        return view('admin.armadabus.index', compact('data_armada_bus'));
+        return view('admin.armadabus.index', compact('data_armada_bus', 'search_key'));
     }
 
     public function add(){
