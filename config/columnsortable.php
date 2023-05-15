@@ -10,7 +10,7 @@ return [
             'rows'  => ['nama', 'sassis', 'jenis_bus', 'plat_nomor', 
                         'kode', 'keterangan', 'kategori', 
                         'nama_depan', 'jabatan', 'alamat'],
-            'class' => 'fa fa-sort-alpha',
+            'class' => 'fa fa-sort-alpha-down',
         ],
         'amount'  => [
             'rows'  => ['amount', 'price'],
@@ -50,14 +50,14 @@ return [
     'icon_text_separator'           => ' ',
 
     /*
-    suffix class that is appended when ascending direction is applied
+    suffix class that is appended when ascending direction is applied | default '-down'
      */
-    'asc_suffix'                    => '-down',
+    'asc_suffix'                    => '',
 
     /*
     suffix class that is appended when descending direction is applied
      */
-    'desc_suffix'                   => '-up',
+    'desc_suffix'                   => '-alt',
 
     /*
     default anchor class, if value is null none is added
