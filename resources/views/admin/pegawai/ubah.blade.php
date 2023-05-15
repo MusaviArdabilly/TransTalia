@@ -19,54 +19,71 @@
                         </div>
                         <!-- Card Body -->
                         <div class="card-body">
-                            <form>
+                            <form method="POST" action="{{ url('/admin/pegawai/ubah/'.$pegawai->id.'/post') }}">
+                                @csrf
                                 <div class="mb-3">
-                                    <label for="inputNamaDepan" class="form-label">Nama Depan</label>
-                                    <input type="name" name="nama_depan" class="form-control" id="inputNamaDepan">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="inputNamaBelakang" class="form-label">Nama Belakang</label>
-                                    <input type="number" name="nama_belakang" class="form-control" id="inputNamaBelakang">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="inputJabatan" class="form-label">Jabatan</label>
-                                    <select name="jabatan" class="form-select" aria-label="Default select">
-                                        <option selected value="1">Sopir</option>
-                                        <option value="2">Kenek</option>
+                                    <label for="inputJabatan">Cari Pengguna</label>
+                                    <select name="user_id" class="form-control select2" aria-label="Default select" id="inputJabatan">
+                                        <option selected value="{{ $pegawai->user_id }}">{{ $pegawai->user->nama_depan }} {{ $pegawai->user->nama_belakang }} - {{ $pegawai->user->no_telp }}</option>
                                     </select>
+                                    @if ($errors->has('user_id'))
+                                    <span class="ps-3 text-danger"><i class="fas fa-exclamation-circle"></i>&nbsp;{{ $errors->first('user_id') }}</span>
+                                    @endif
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label">Alamat</label>
+                                    <label for="inputJabatan">Jabatan</label>
+                                    <select name="jabatan" class="form-control" aria-label="Default select" id="inputJabatan">
+                                        <option value="sopir" {{ $pegawai->jabatan == 'sopir' ? 'selected' : '' }}>Sopir</option>
+                                        <option value="kenek" {{ $pegawai->jabatan == 'kenek' ? 'selected' : '' }}>Kenek</option>
+                                        <option value="it_support" {{ $pegawai->jabatan == 'it_support' ? 'selected' : '' }}>IT Support</option>
+                                        <option value="mekanik" {{ $pegawai->jabatan == 'mekanik' ? 'selected' : '' }}>Mekanik</option>
+                                    </select>
+                                    @if ($errors->has('jabatan'))
+                                    <span class="ps-3 text-danger"><i class="fas fa-exclamation-circle"></i>&nbsp;{{ $errors->first('jabatan') }}</span>
+                                    @endif
+                                </div>
+                                <div class="mb-3">
+                                    <label>Alamat</label>
                                     <div class="row px-2">
                                         <div class="col-4">
-                                            <label for="inputJabatan" class="form-text">Kota</label>
-                                            <select name="jabatan" class="form-select" aria-label="Default select1">
-                                                <option selected value="1">Sopir</option>
-                                                <option value="2">Kenek</option>
+                                            <label for="editAlamatKota">Kota</label>
+                                            <select name="kota" class="form-control" aria-label="Default select1" id="editAlamatKota">
+                                                <option value="0" disable selected>Pilih Kota</option>
+                                                @foreach ($data_kota as $kota)
+                                                <option value="{{ $kota->id }}"  {{ $pegawai->alamat->kota_id == $kota->id ? 'selected' : '' }}>{{ $kota->name }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                         <div class="col-4">
-                                            <label for="inputJabatan" class="form-text">Kecamatan</label>
-                                            <select name="jabatan" class="form-select" aria-label="Default select2">
-                                                <option selected value="1">Sopir</option>
-                                                <option value="2">Kenek</option>
+                                            <label for="editAlamatKecamatan">Kecamatan</label>
+                                            <select name="distrik" class="form-control" aria-label="select2" id="editAlamatKecamatan">
+                                                <option value="0" disable="true" selected>Pilih Kecamatan</option>
                                             </select>
+                                            <input type="hidden" id="distrik_id" value="{{ $pegawai->alamat->distrik_id }}"> {{-- helper passing value of laravel variable --}}
                                         </div>
                                         <div class="col-4">
-                                            <label for="inputJabatan" class="form-text">Desa</label>
-                                            <select name="jabatan" class="form-select" aria-label="Default select3">
-                                                <option selected value="1">Sopir</option>
-                                                <option value="2">Kenek</option>
+                                            <label for="editAlamatDesa" >Desa</label>
+                                            <select name="desa" class="form-control" aria-label="select3" id="editAlamatDesa">
+                                                <option value="0" disable="true" selected>Pilih Desa</option>
                                             </select>
+                                            <input type="hidden" id="desa_id" value="{{ $pegawai->alamat->desa_id }}"> {{-- helper passing value of laravel variable --}}
                                         </div>
                                     </div>
+                                    @if ($errors->has('desa'))
+                                    <span class="ps-3 text-danger"><i class="fas fa-exclamation-circle"></i>&nbsp;{{ $errors->first('desa') }}</span>
+                                    @endif
                                 </div>
                                 <div class="mb-3">
-                                    <label for="inputNoHp" class="form-label">No. Hp</label>
-                                    <input type="number" name="no_hp" class="form-control" id="inputNoHp">
+                                    <label for="inputJumlahOrder">Jumlah Order</label>
+                                    <input type="number" name="jumlah_order" class="form-control" id="inputJumlahOrder" value="{{ old('jumlah_order', $pegawai->jumlah_order) }}">
+                                    @if ($errors->has('jumlah_order'))
+                                    <span class="ps-3 text-danger"><i class="fas fa-exclamation-circle"></i>&nbsp;{{ $errors->first('jumlah_order') }}</span>
+                                    @endif
                                 </div>
-                                <button type="submit" class="mt-3 btn btn-primary float-end">Simpan</button>
-                                <button type="submit" class="mt-3 btn btn-danger float-end me-3">Batal</button>
+                                <div class="d-flex justify-content-end">
+                                    <a href="{{ URL::previous() }}" class="btn btn-outline-secondary mr-4">Batal</a>
+                                    <button type="submit" class="btn btn-primary">Simpan</button>
+                                </div>
                             </form>
                         </div>
                     </div>

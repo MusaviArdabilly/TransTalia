@@ -19,53 +19,71 @@
                         </div>
                         <!-- Card Body -->
                         <div class="card-body">
-                            <form>
+                            <form method="POST" action="/admin/pegawai/tambah/post">
+                                @csrf
                                 <div class="mb-3">
-                                    <label for="inputNamaDepan" class="form-label">Nama Depan</label>
-                                    <input type="name" name="nama_depan" class="form-control" id="inputNamaDepan">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="inputNamaBelakang" class="form-label">Nama Belakang</label>
-                                    <input type="number" name="nama_belakang" class="form-control" id="inputNamaBelakang">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="inputJabatan" class="form-label">Jabatan</label>
-                                    <select name="jabatan" class="form-select" aria-label="Default select">
-                                        <option selected value="1">Sopir</option>
-                                        <option value="2">Kenek</option>
+                                    <label for="inputJabatan">Cari Pengguna</label>
+                                    <select name="user_id" class="form-control select2" aria-label="Default select" id="inputJabatan">
+                                        @foreach ($data_user as $user)
+                                            <option value="{{ $user->id }}">{{ $user->nama_depan }} {{ $user->nama_belakang }} - {{ $user->no_telp }}</option>
+                                        @endforeach
                                     </select>
+                                    @if ($errors->has('user_id'))
+                                    <span class="ps-3 text-danger"><i class="fas fa-exclamation-circle"></i>&nbsp;{{ $errors->first('user_id') }}</span>
+                                    @endif
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label">Alamat</label>
+                                    <label for="inputJabatan">Jabatan</label>
+                                    <select name="jabatan" class="form-control" aria-label="Default select" id="inputJabatan">
+                                        <option selected value="sopir">Sopir</option>
+                                        <option value="kenek">Kenek</option>
+                                        <option value="it_support">IT Support</option>
+                                        <option value="mekanik">Mekanik</option>
+                                    </select>
+                                    @if ($errors->has('jabatan'))
+                                    <span class="ps-3 text-danger"><i class="fas fa-exclamation-circle"></i>&nbsp;{{ $errors->first('jabatan') }}</span>
+                                    @endif
+                                </div>
+                                <div class="mb-3">
+                                    <label>Alamat</label>
                                     <div class="row px-2">
                                         <div class="col-4">
-                                            <label for="inputJabatan" class="form-text">Kota</label>
-                                            <select name="jabatan" class="form-select" aria-label="Default select1">
-                                                <option selected value="1">Sopir</option>
-                                                <option value="2">Kenek</option>
+                                            <label for="inputAlamatKota">Kota</label>
+                                            <select name="kota" class="form-control" aria-label="Default select1" id="inputAlamatKota">
+                                                <option value="0" disable selected>Pilih Kota</option>
+                                                @foreach ($data_kota as $kota)
+                                                <option value="{{ $kota->id }}">{{ $kota->name }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                         <div class="col-4">
-                                            <label for="inputJabatan" class="form-text">Kecamatan</label>
-                                            <select name="jabatan" class="form-select" aria-label="Default select2">
-                                                <option selected value="1">Sopir</option>
-                                                <option value="2">Kenek</option>
+                                            <label for="inputAlamatKecamatan">Kecamatan</label>
+                                            <select name="distrik" class="form-control" aria-label="select2" id="inputAlamatKecamatan">
+                                                <option value="0" disable="true" selected>Pilih Kecamatan</option>
                                             </select>
                                         </div>
                                         <div class="col-4">
-                                            <label for="inputJabatan" class="form-text">Desa</label>
-                                            <select name="jabatan" class="form-select" aria-label="Default select3">
-                                                <option selected value="1">Sopir</option>
-                                                <option value="2">Kenek</option>
+                                            <label for="inputAlamatDesa" >Desa</label>
+                                            <select name="desa" class="form-control" aria-label="select3" id="inputAlamatDesa">
+                                                <option value="0" disable="true" selected>Pilih Desa</option>
                                             </select>
                                         </div>
                                     </div>
+                                    @if ($errors->has('desa'))
+                                    <span class="ps-3 text-danger"><i class="fas fa-exclamation-circle"></i>&nbsp;{{ $errors->first('desa') }}</span>
+                                    @endif
                                 </div>
                                 <div class="mb-3">
-                                    <label for="inputNoHp" class="form-label">No. Hp</label>
-                                    <input type="number" name="no_hp" class="form-control" id="inputNoHp">
+                                    <label for="inputJumlahOrder">Jumlah Order</label>
+                                    <input type="number" name="jumlah_order" class="form-control" id="inputJumlahOrder" value="{{ old('jumlah_order', 0) }}">
+                                    @if ($errors->has('jumlah_order'))
+                                    <span class="ps-3 text-danger"><i class="fas fa-exclamation-circle"></i>&nbsp;{{ $errors->first('jumlah_order') }}</span>
+                                    @endif
                                 </div>
-                                <button type="submit" class="mt-3 btn btn-primary float-end">Simpan</button>
+                                <div class="d-flex justify-content-end">
+                                    <a href="{{ URL::previous() }}" class="btn btn-outline-secondary mr-4">Batal</a>
+                                    <button type="submit" class="btn btn-primary">Simpan</button>
+                                </div>
                             </form>
                         </div>
                     </div>
