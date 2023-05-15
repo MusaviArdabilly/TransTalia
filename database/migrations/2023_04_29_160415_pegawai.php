@@ -14,12 +14,13 @@ return new class extends Migration
         Schema::create('pegawai', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('alamat_id');
             $table->string('jabatan');
-            $table->string('alamat');
             $table->integer('jumlah_order');
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('no action')->onUpdate('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('no action')->onUpdate('no action');
+            $table->foreign('alamat_id')->references('id')->on('alamat')->onDelete('no action')->onUpdate('no action');
         });
     }
 
