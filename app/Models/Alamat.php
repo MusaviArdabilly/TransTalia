@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Pegawai;
 use App\Models\Alamat\Province;
-use App\Models\Alamat\Regency;
+use App\Models\Alamat\City;
 use App\Models\Alamat\District;
 use App\Models\Alamat\Village;
 

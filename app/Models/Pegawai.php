@@ -19,12 +19,12 @@ class Pegawai extends Model
 
     protected $fillable = [
         'user_id',
-        'alamat',
+        'alamat_id',
         'jabatan',
         'jumlah_order'
     ];
 
-    public $sortable = ['user_id', 'alamat', 'jabatan'];
+    public $sortable = ['user.nama_depan', 'alamat_id', 'jabatan'];
 
     public function user(): BelongsTo{
         return $this->belongsTo(User::class);
