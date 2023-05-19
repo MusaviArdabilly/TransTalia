@@ -1,6 +1,9 @@
 .minvh100-130{
     min-height: calc(100vh - 130px);
 }
+.minvh100-114{
+    min-height: calc(100vh - 114px);
+}
 a {
     text-decoration: none;
 }
@@ -23,7 +26,7 @@ a {
 }
 .fake-navbar{
     width: 100%;
-    height: 74px;
+    height: 58px;
 }
 .fw-semibold{
     font-weight: 500 !important;
