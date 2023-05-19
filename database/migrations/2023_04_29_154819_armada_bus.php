@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('kursi');
             $table->string('sassis');
             $table->string('jenis_bus');
-            $table->string('warna')->nullable();
+            $table->string('harga_sewa');
             $table->string('plat_nomor')->unique();
             $table->string('gps')->nullable();
             $table->timestamps();
