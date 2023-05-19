@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\PembaruanArmadaController;
 use App\Http\Controllers\Admin\PerawatanArmadaController;
 use App\Http\Controllers\Admin\PerformaPegawaiController;
 use App\Http\Controllers\Admin\TransaksiController;
+use App\Http\Controllers\Admin\ReservasiController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Guest\GuestController;
 use App\Http\Controllers\Auth\AuthController;
@@ -49,15 +50,17 @@ Route::get('/logout', [AuthController::class, 'logout']);
 
 // ========================== User ===========================
 
-
-Route::get('/reservasi', [UserController::class, 'reservation']);
-Route::get('/riwayat-reservasi', [UserController::class, 'reservationHistory']);
-
 Route::get('/edit-akun', [UserController::class, 'editAkun']);
 Route::post('/edit-akun/post', [UserController::class, 'updateAkun']);
 
 Route::get('/edit-password', [UserController::class, 'editPassword']);
 Route::post('/edit-password/post', [UserController::class, 'updatePassword']);
+
+Route::get('/reservasi', [UserController::class, 'reservation']);
+Route::post('/reservasi/check-bus', [UserController::class, 'reservationCheckBus']);
+Route::post('/reservasi/check-out', [UserController::class, 'reservationCheckOut']);
+Route::post('/reservasi/check-out/post', [UserController::class, 'reservationCheckOut']);
+Route::get('/riwayat/reservasi', [UserController::class, 'reservationHistory']);
 
 // ========================== Admin ========================== 
 
@@ -99,8 +102,13 @@ Route::prefix('admin')->group(function () {
         Route::get('/ubah/{id}/districts', [PegawaiController::class, 'districts']);
         Route::get('/ubah/{id}/villages', [PegawaiController::class, 'villages']);
     });
-
-    // ------------------------ Alamat ------------------------
+    
+    // ------------------------ Jadwal ------------------------
+    Route::prefix('reservasi')->group(function () {
+        Route::get('/', [ReservasiController::class, 'index']);
+        Route::get('/ubah/{id}', [ReservasiController::class, 'edit']);
+        Route::post('/ubah/{id}/post', [ReservasiController::class, 'update']);
+    });
     
     // ------------------------ Jadwal ------------------------
     Route::prefix('jadwal')->group(function () {
