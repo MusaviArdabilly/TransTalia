@@ -14,7 +14,7 @@ class ReservasiArmadaBus extends Model
 {
     use HasFactory;
 
-    protected $table = 'transaksi';
+    protected $table = 'reservasi_armada_bus';
 
     protected $primaryKey = 'id';
 
