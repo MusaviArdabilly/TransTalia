@@ -144,12 +144,7 @@
             </li>
 
             <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading dropshadowlight">
-                Data
-            </div>
+            <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Jadwal -->
             <li class="nav-item" id="jadwal">
@@ -158,6 +153,14 @@
                     <span>Jadwal</span>
                 </a>
             </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading dropshadowlight">
+                Data
+            </div>
 
             <!-- Nav Item - Reservasi -->
             <li class="nav-item" id="reservasi">
