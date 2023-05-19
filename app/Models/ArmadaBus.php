@@ -20,15 +20,16 @@ class ArmadaBus extends Model
 
     protected $fillable = [
         'nama',
+        'gambar',
         'kursi',
         'sassis',
-        'mesin',
-        'warna',
+        'jenis_bus',
+        'harga_sewa',
         'plat_nomor',
         'gps'
     ];
 
-    public $sortable = ['nama','kursi','sassis','mesin','warna','plat_nomor'];
+    public $sortable = ['nama','gambar','kursi','sassis','jenis_bus','harga_sewa','plat_nomor'];
 
     public function reservasi_armada_bus():HasMany{
         return $this->hasMany(ReservasiArmadaBus::class);
