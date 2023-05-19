@@ -73,6 +73,28 @@
     </section>
 
     <script>
+        // Navbar Scroll Effect
+        jQuery(document).ready(function ($) {
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 20) {
+                    $('.back-to-top').fadeIn('slow');
+                    $('.navbar').removeClass('py-3 text-light');
+                    $('.navbar').addClass('bg-light shadow')
+                    $('.nav-link').removeClass('text-light');
+                } else {
+                    $('.back-to-top').fadeOut('slow');
+                    $('.navbar').addClass('py-3 text-light');
+                    $('.navbar').removeClass('bg-light shadow');
+                    $('.nav-link').addClass('text-light');
+                }
+            });
+            $('.back-to-top').click(function () {
+                $('html, body').animate({
+                scrollTop: 0
+                }, 1500, 'easeInOutExpo');
+                return false;
+            });
+        });
         jQuery(document).ready(function ($) {
             $('.nav-link').removeClass('text-body');
             $('.vr').removeClass('text-body');

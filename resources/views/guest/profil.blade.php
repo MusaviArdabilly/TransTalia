@@ -4,6 +4,7 @@
 
 <script type="text/javascript">
     document.getElementById('profil').classList.add('border-bottom', 'border-dark', 'rounded-bottom');
+    document.getElementById('navbar').classList.remove('py-3');
     document.getElementById('navbar').classList.add('bg-light');
 </script>
 

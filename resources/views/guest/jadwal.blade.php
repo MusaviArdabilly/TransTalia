@@ -4,10 +4,12 @@
 
 <script type="text/javascript">
     document.getElementById('jadwal').classList.add('border-bottom', 'border-dark', 'rounded-bottom');
+    document.getElementById('navbar').classList.remove('py-3');
+    document.getElementById('navbar').classList.add('bg-light');
 </script>
 
 <div class="fake-navbar"></div>
-<div class="minvh100-130">
+<div class="minvh100-114">
     <div class="container my-5" id="calendar-container">
         <div id="calendar"></div>
     </div>
