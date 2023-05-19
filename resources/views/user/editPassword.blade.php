@@ -3,12 +3,12 @@
 @section('content')
 
 <div class="fake-navbar"></div>
-<div class="minvh100-130 d-flex align-items-center p-3">
+<div class="minvh100-114 d-flex align-items-center p-3">
     <div class="container">
         <div class="col-12 col-md-6 mx-auto my-auto">
             <h3 class="text-center fw-bold">Edit Password</h3>
             <form method="POST" action="/edit-password/post">
-                {!! csrf_field() !!}
+                @csrf
                 <div class="mb-3">
                     <label for="inputOldPassword" class="form-label">Password Sekarang</label>
                     <div class="input-group">
