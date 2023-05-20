@@ -29,7 +29,7 @@ class UserSeeder extends Seeder
             'nama_depan' => 'Putra', 
             'nama_belakang' => 'Pratama', 
             'foto_profil' => 'default_ava.png', 
-            'role' => 'user', 
+            'role' => 'employee', 
             'no_telp' => '85678901234', 
             'email' => 'putrapratama@gmail.com', 
             'password' => bcrypt('password')
@@ -49,7 +49,7 @@ class UserSeeder extends Seeder
             'nama_depan' => 'Ahmad', 
             'nama_belakang' => 'Hidayat', 
             'foto_profil' => 'default_ava.png', 
-            'role' => 'user', 
+            'role' => 'employee', 
             'no_telp' => '81345678901', 
             'email' => ' ahmadhidayat@gmail.com', 
             'password' => bcrypt('password')
@@ -69,7 +69,7 @@ class UserSeeder extends Seeder
             'nama_depan' => 'Gilang', 
             'nama_belakang' => 'Pramudya', 
             'foto_profil' => 'default_ava.png', 
-            'role' => 'user', 
+            'role' => 'employee', 
             'no_telp' => '82334567890', 
             'email' => ' gilang.pramudya@gmail.com', 
             'password' => bcrypt('password')
@@ -89,7 +89,7 @@ class UserSeeder extends Seeder
             'nama_depan' => 'Budi', 
             'nama_belakang' => 'Nugroho', 
             'foto_profil' => 'default_ava.png', 
-            'role' => 'user', 
+            'role' => 'employee', 
             'no_telp' => '85634567890', 
             'email' => 'budinugroho@gmail.com', 
             'password' => bcrypt('password')
