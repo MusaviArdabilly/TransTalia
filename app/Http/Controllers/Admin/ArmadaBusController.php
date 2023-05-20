@@ -123,6 +123,11 @@ class ArmadaBusController extends Controller
 
     public function destroy($id){
         $armada_bus = ArmadaBus::find($id);
+        $picture_path = public_path('assets/images/armada_bus/');
+        $picture_name = $armada_bus->gambar;
+        if(File::exists($picture_path.$picture_name)){
+            File::delete($picture_path.$picture_name);
+        }
         $armada_bus->delete();
 
         return redirect('/admin/armada-bus/')->with('success', 'Data Armada Bus Berhasil Dihapus');
