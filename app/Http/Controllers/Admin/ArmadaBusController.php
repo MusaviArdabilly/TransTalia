@@ -16,6 +16,7 @@ class ArmadaBusController extends Controller
             ->orWhere('kursi', 'LIKE', '%'.$request->search.'%')
             ->orWhere('sassis', 'LIKE', '%'.$request->search.'%')
             ->orWhere('jenis_bus', 'LIKE', '%'.$request->search.'%')
+            ->orWhere('harga_sewa', 'LIKE', '%'.$request->search.'%')
             ->orWhere('plat_nomor', 'LIKE', '%'.$request->search.'%');
         })->sortable('nama')->paginate(10);
         return view('admin.armadabus.index', compact('data_armada_bus', 'search_key'));
@@ -31,13 +32,13 @@ class ArmadaBusController extends Controller
             'kursi' => 'required',
             'sassis' => 'required',
             'jenis_bus' => 'required',
-            'warna' => 'required',
+            'harga_sewa' => 'required',
             'plat_nomor' => 'required|unique:armada_bus,plat_nomor',
         ],[
             'nama.required' => 'Nama bus tidak boleh kosong',
             'kursi.required' => 'Jumlah kursi tidak boleh kosong',
             'sassis.required' => 'Sassis bus tidak boleh kosong',
-            'warna.required' => 'Warna tidak boleh kosong',
+            'harga_sewa.required' => 'Harga Sewa tidak boleh kosong',
             'plat_nomor.required' => 'Plat Nomor tidak boleh kosong',
             'plat_nomor.unique' => 'Plat Nomor sudah digunakan oleh armada lain',
         ]);
@@ -47,7 +48,7 @@ class ArmadaBusController extends Controller
         $armada_bus->kursi = $request->kursi;
         $armada_bus->sassis = $request->sassis;
         $armada_bus->jenis_bus = $request->jenis_bus;
-        $armada_bus->warna = $request->warna;
+        $armada_bus->harga_sewa = $request->harga_sewa;
         $armada_bus->plat_nomor = $request->plat_nomor;
         $armada_bus->gps = $request->gps;
         if($request->hasFile('gambar')){
@@ -82,13 +83,13 @@ class ArmadaBusController extends Controller
             'kursi' => 'required',
             'sassis' => 'required',
             'jenis_bus' => 'required',
-            'warna' => 'required',
+            'harga_sewa' => 'required',
             'plat_nomor' => 'required|exclude_if:plat_nomor,'.$armada_bus->plat_nomor.'|unique:armada_bus,plat_nomor',
         ],[
             'nama.required' => 'Nama bus tidak boleh kosong',
             'kursi.required' => 'Jumlah kursi tidak boleh kosong',
             'sassis.required' => 'Sassis bus tidak boleh kosong',
-            'warna.required' => 'Warna tidak boleh kosong',
+            'harga_sewa.required' => 'Harga Sewa tidak boleh kosong',
             'plat_nomor.required' => 'Plat Nomor tidak boleh kosong',
             'plat_nomor.unique' => 'Plat Nomor sudah digunakan oleh armada lain',
         ]);
@@ -97,7 +98,7 @@ class ArmadaBusController extends Controller
         $armada_bus->kursi = $request->kursi;
         $armada_bus->sassis = $request->sassis;
         $armada_bus->jenis_bus = $request->jenis_bus;
-        $armada_bus->warna = $request->warna;
+        $armada_bus->harga_sewa = $request->harga_sewa;
         $armada_bus->plat_nomor = $request->plat_nomor;
         $armada_bus->gps = $request->gps;
         if($request->hasFile('gambar')){

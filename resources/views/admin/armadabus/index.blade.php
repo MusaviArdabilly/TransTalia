@@ -50,7 +50,7 @@
                             <th scope="col">@sortablelink('kursi', 'Kursi', [], ['class' => 'text-decoration-none text-secondary'])</th>
                             <th scope="col">@sortablelink('sassis', 'Sasis', [], ['class' => 'text-decoration-none text-secondary'])</th>
                             <th scope="col">@sortablelink('jenis_bus', 'Jenis Bus', [], ['class' => 'text-decoration-none text-secondary'])</th>
-                            <th scope="col">@sortablelink('warna', 'Warna', [], ['class' => 'text-decoration-none text-secondary'])</th>
+                            <th scope="col">@sortablelink('harga_sewa', 'Harga Sewa', [], ['class' => 'text-decoration-none text-secondary'])</th>
                             <th scope="col">@sortablelink('plat_nomor', 'Plat Nomor', [], ['class' => 'text-decoration-none text-secondary'])</th>
                             <th scope="col" class="text-center">Posisi</th>
                             <th scope="col" class="text-center">Aksi</th>
@@ -64,15 +64,14 @@
                                     <td class="align-middle">{{ $armada_bus->kursi }}</td>
                                     <td class="align-middle">{{ $armada_bus->sassis }}</td>
                                     <td class="align-middle">{{ $armada_bus->jenis_bus }}</td>
-                                    <td class="align-middle"><span class="badge rounded-pil text-uppercase text-light" style="background-color: {{ $armada_bus->warna }};">{{  $armada_bus->warna  }}</span></td>
+                                    <td class="align-middle">{{ $armada_bus->harga_sewa }}</td>
                                     <td class="align-middle">{{ $armada_bus->plat_nomor }}</td>
                                     <td class="align-middle text-center">
                                         @if(isset($armada_bus->gps))
                                         <a href="{{ $armada_bus->gps }}">
                                             <i class="fas fa-map-marked-alt"></i>
                                         </a>
-                                        @else
-                                                <i class="fas fa-times"></i>
+                                        @else<i class="fas fa-eye-slash"></i>
                                         @endif
                                     </td>
                                     <td class="align-middle text-center">

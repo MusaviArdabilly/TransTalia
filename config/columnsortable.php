@@ -13,8 +13,8 @@ return [
             'class' => 'fa fa-sort-alpha-down',
         ],
         'amount'  => [
-            'rows'  => ['amount', 'price'],
-            'class' => 'fa fa-sort-amount',
+            'rows'  => ['amount', 'price', 'harga_sewa'],
+            'class' => 'fa fa-sort-amount-down',
         ],
         'numeric' => [
             'rows'  => ['created_at', 'updated_at', 'level', 'id', 'phone_number', 

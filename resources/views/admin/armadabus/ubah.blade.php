@@ -61,10 +61,10 @@
                                     @endif
                                 </div>
                                 <div class="mb-3">
-                                    <label for="exampleColorInput" class="form-label">Warna</label>
-                                    <input type="color" name="warna" class="form-control form-control-color w-25" id="exampleColorInput" title="Pilih Warna" value="{{ $armada_bus->warna }}">
-                                    @if ($errors->has('warna'))
-                                        <span class="ps-3 text-danger"><i class="fas fa-exclamation-circle"></i>&nbsp;{{ $errors->first('warna') }}</span>
+                                    <label for="inputHargaSewa" class="form-label">Harga Sewa per Kilometer</label>
+                                    <input type="text" name="harga_sewa" class="form-control" id="inputHargaSewa" value="{{ $armada_bus->harga_sewa }}">
+                                    @if ($errors->has('harga_sewa'))
+                                        <span class="ps-3 text-danger"><i class="fas fa-exclamation-circle"></i>&nbsp;{{ $errors->first('harga_sewa') }}</span>
                                     @endif
                                 </div>
                                 <div class="mb-3">
