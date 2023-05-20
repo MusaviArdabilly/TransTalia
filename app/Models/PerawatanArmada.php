@@ -21,6 +21,8 @@ class PerawatanArmada extends Model
         'kode_perawatan_id',
     ];
 
+    public $sortable = ['armada_bus.nama', 'created_at', 'kode_perawatan.kode'];
+
     public function armada_bus():BelongsTo{
         return $this->belongsTo(ArmadaBus::class);
     }
