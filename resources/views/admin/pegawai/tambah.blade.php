@@ -22,8 +22,8 @@
                             <form method="POST" action="/admin/pegawai/tambah/post">
                                 @csrf
                                 <div class="mb-3">
-                                    <label for="inputJabatan">Cari Pengguna</label>
-                                    <select name="user_id" class="form-control select2" aria-label="Default select" id="inputJabatan">
+                                    <label for="inputPengguna">Cari Pengguna</label>
+                                    <select name="user_id" class="form-control select2" aria-label="Default select" id="inputPengguna">
                                         @foreach ($data_user as $user)
                                             <option value="{{ $user->id }}">{{ $user->nama_depan }} {{ $user->nama_belakang }} - 0{{ $user->no_telp }}</option>
                                         @endforeach
