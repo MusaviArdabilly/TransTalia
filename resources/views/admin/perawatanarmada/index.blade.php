@@ -26,8 +26,8 @@
                     </div>
                 </form>
             </div>
-            <div class="d-none d-sm-inline-block btn bg-primary text-white shadow-sm">
-                {{ str_replace('-', ' ', now()->format('d-M-y')) }}
+            <div class="d-none d-sm-inline-block btn bg-primary disabled text-white shadow-sm">
+                {{ \Carbon\Carbon::parse(now())->locale('id')->isoFormat('DD MMM YY') }}
             </div>
         </div>
 
@@ -41,7 +41,7 @@
                 <!-- Card Body -->
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table table-hover">
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
@@ -56,7 +56,7 @@
                                     <tr>
                                         <th scope="row">{{ $data_perawatan_armada->firstItem()+$key }}</th>
                                         <td>{{ $perawatan_armada->armada_bus->nama }}</td>
-                                        <td>{{ $perawatan_armada->created_at }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($perawatan_armada->created_at)->locale('id')->isoFormat('DD MMMM YYYY, HH:mm') }}</td>
                                         <td>{{ $perawatan_armada->kode_perawatan->kode }} - {{ $perawatan_armada->kode_perawatan->keterangan }}</td>
                                         <td class="text-center">
                                             <a href="{{ url('admin/perawatan-armada/ubah/'.$perawatan_armada->id) }}" class="text-decoration-none">
@@ -77,6 +77,9 @@
                                     @endforelse
                             </tbody>
                         </table>
+                        <div class="d-flex justify-content-end">
+                            {{ $data_perawatan_armada->links() }}
+                        </div>
                     </div>
                 </div>
             </div>

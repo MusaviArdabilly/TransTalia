@@ -25,8 +25,8 @@
                     </div>
                 </form>
             </div>
-            <div class="d-none d-sm-inline-block btn bg-primary text-white shadow-sm">
-                {{ str_replace('-', ' ', now()->format('d-M-y')) }}
+            <div class="d-none d-sm-inline-block btn bg-primary disabled text-white shadow-sm">
+                {{ \Carbon\Carbon::parse(now())->locale('id')->isoFormat('DD MMM YY') }}
             </div>
         </div>
 
@@ -39,7 +39,7 @@
                 <!-- Card Body -->
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table table-hover">
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>

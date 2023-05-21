@@ -26,8 +26,8 @@
                     </div>
                 </form>
             </div>
-            <div class="d-none d-sm-inline-block btn bg-primary text-white shadow-sm">
-                {{ str_replace('-', ' ', now()->format('d-M-y')) }}
+            <div class="d-none d-sm-inline-block btn bg-primary disabled text-white shadow-sm">
+                {{ \Carbon\Carbon::parse(now())->locale('id')->isoFormat('DD MMM YY') }}
             </div>
         </div>
 
@@ -41,7 +41,7 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body table-responsive">
-                    <table class="table">
+                    <table class="table table-hover">
                         <thead>
                           <tr>
                             <th scope="col">#</th>
@@ -66,7 +66,7 @@
                                 <td>+62{{ $pegawai->user->no_telp }}</td>
                                 <td class="text-center">
                                     <a href="{{ url('admin/pegawai/ubah/'.$pegawai->id) }}" class="text-decoration-none">
-                                        <i class="fas fa-edit text-warning"></i>&nbsp; 
+                                        <i class="fas fa-edit text-warning"></i> &emsp;
                                     </a>
                                     <a href="{{ url('admin/pegawai/hapus/'.$pegawai->id) }}" class="text-decoration-none" onclick="return confirm('Apakah anda yakin untuk menghapus data Pegawai - {{ $pegawai->user->nama_depan }}?')">
                                         <i class="fas fa-trash-alt text-danger"></i>
