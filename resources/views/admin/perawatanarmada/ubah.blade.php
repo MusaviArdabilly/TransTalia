@@ -19,21 +19,34 @@
                         </div>
                         <!-- Card Body -->
                         <div class="card-body">
-                            <form>
+                            <form method="POST" action="{{ url('admin/perawatan-armada/ubah/'.$perawatan_armada->id.'/post') }}">
+                                @csrf
                                 <div class="mb-3">
-                                    <label for="inputNamaBus" class="form-label">Nama Bus</label>
-                                    <input type="name" name="nama_bus" class="form-control" id="inputNamaBus">
+                                    <label for="inputArmadaBus">Cari Armada Bus</label>
+                                    <select name="armada_bus_id" class="form-control select2" aria-label="Default select" id="inputArmadaBus">
+                                        @foreach ($data_armada_bus as $armada_bus)
+                                            <option value="{{ $armada_bus->id }}" {{ $armada_bus->id == $perawatan_armada->armada_bus_id ? 'selected' : '' }}>{{ $armada_bus->nama }}</option>
+                                        @endforeach
+                                    </select>
+                                    @if ($errors->has('armada_bus_id'))
+                                    <span class="ps-3 text-danger"><i class="fas fa-exclamation-circle"></i>&nbsp;{{ $errors->first('armada_bus_id') }}</span>
+                                    @endif
                                 </div>
                                 <div class="mb-3">
-                                    <label for="inputTanggal" class="form-label">Tanggal</label>
-                                    <input type="date" name="tanggal" class="form-control" id="inputTanggal">
+                                    <label for="inputKodePerawatan">Cari Kode Perawatan</label>
+                                    <select name="kode_perawatan_id" class="form-control select2" aria-label="Default select" id="inputKodePerawatan">
+                                        @foreach ($data_kode_perawatan as $kode_perawatan)
+                                            <option value="{{ $kode_perawatan->id }}" {{ $kode_perawatan->id == $perawatan_armada->kode_perawatan_id ? 'selected' : '' }}>{{ $kode_perawatan->kode }} - {{ $kode_perawatan->keterangan }}</option>
+                                        @endforeach
+                                    </select>
+                                    @if ($errors->has('kode_perawatan_id'))
+                                    <span class="ps-3 text-danger"><i class="fas fa-exclamation-circle"></i>&nbsp;{{ $errors->first('kode_perawatan_id') }}</span>
+                                    @endif
                                 </div>
-                                <div class="mb-3">
-                                    <label for="inputKodePerawatan" class="form-label">Kode Perawatan</label>
-                                    <input type="name" name="kode_perawatan" class="form-control" id="inputKodePerawatan">
+                                <div class="d-flex justify-content-end">
+                                    <a href="{{ URL::previous() }}" class="btn btn-outline-secondary mr-4">Batal</a>
+                                    <button type="submit" class="btn btn-primary">Simpan</button>
                                 </div>
-                                <button type="submit" class="mt-3 btn btn-primary float-end">Simpan</button>
-                                <button type="submit" class="mt-3 btn btn-danger float-end me-3">Batal</button>
                             </form>
                         </div>
                     </div>

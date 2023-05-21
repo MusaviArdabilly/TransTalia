@@ -13,12 +13,13 @@
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <div class="d-none d-sm-inline-block">
                 <!-- Topbar Search -->
-                <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search dropshadowlight">
+                <form action="/admin/perawatan-armada"
+                class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search dropshadowlight">
                     <div class="input-group">
-                        <input type="text" class="form-control bg-light border-0 small" placeholder="Pencarian"
+                        <input type="text" name="search" value="{{ $search_key }}" class="form-control bg-light border-0 small" placeholder="Pencarian"
                             aria-label="Search" aria-describedby="basic-addon2">
                         <div class="input-group-append">
-                            <button class="btn btn-primary" type="button">
+                            <button class="btn btn-primary" type="submit">
                                 <i class="fas fa-search fa-sm"></i>
                             </button>
                         </div>
@@ -35,7 +36,7 @@
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                     <h6 class="m-0 font-weight-bold text-primary">Perawatan Armada</h6>
-                    <a href="/admin/perawatan_armada/tambah"><i class="fas fa-plus text-primary"></i></a>
+                    <a href="/admin/perawatan-armada/tambah"><i class="fas fa-plus text-primary"></i></a>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
@@ -44,143 +45,36 @@
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Nama Bus</th>
-                                    <th scope="col">Tanggal</th>
-                                    <th scope="col">Kode Perawatan</th>
-                                    <th scope="col">Aksi</th>
+                                    <th scope="col">@sortablelink('armada_bus.nama', 'Nama Bus', [], ['class' => 'text-decoration-none text-secondary'])</th>
+                                    <th scope="col">@sortablelink('acreated_at', 'Waktu', [], ['class' => 'text-decoration-none text-secondary'])</th>
+                                    <th scope="col">@sortablelink('kode_perawatan.kode', 'Kode Perawatan', [], ['class' => 'text-decoration-none text-secondary'])</th>
+                                    <th scope="col" class="text-center">Aksi</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>ORION</td>
-                                    <td>12 Februari 2023</td>
-                                    <td>M01</td>
-                                    <td><i class="fas fa-edit text-warning"></i> &nbsp; <i class="fas fa-trash-alt text-danger"></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>ORION</td>
-                                    <td>12 Februari 2023</td>
-                                    <td>M01</td>
-                                    <td><i class="fas fa-edit text-warning"></i> &nbsp; <i class="fas fa-trash-alt text-danger"></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>ORION</td>
-                                    <td>12 Februari 2023</td>
-                                    <td>M01</td>
-                                    <td><i class="fas fa-edit text-warning"></i> &nbsp; <i class="fas fa-trash-alt text-danger"></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">4</th>
-                                    <td>ORION</td>
-                                    <td>12 Februari 2023</td>
-                                    <td>M01</td>
-                                    <td><i class="fas fa-edit text-warning"></i> &nbsp; <i class="fas fa-trash-alt text-danger"></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">5</th>
-                                    <td>ORION</td>
-                                    <td>12 Februari 2023</td>
-                                    <td>M01</td>
-                                    <td><i class="fas fa-edit text-warning"></i> &nbsp; <i class="fas fa-trash-alt text-danger"></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">6</th>
-                                    <td>ORION</td>
-                                    <td>12 Februari 2023</td>
-                                    <td>M01</td>
-                                    <td><i class="fas fa-edit text-warning"></i> &nbsp; <i class="fas fa-trash-alt text-danger"></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">7</th>
-                                    <td>ORION</td>
-                                    <td>12 Februari 2023</td>
-                                    <td>M01</td>
-                                    <td><i class="fas fa-edit text-warning"></i> &nbsp; <i class="fas fa-trash-alt text-danger"></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">8</th>
-                                    <td>ORION</td>
-                                    <td>12 Februari 2023</td>
-                                    <td>M01</td>
-                                    <td><i class="fas fa-edit text-warning"></i> &nbsp; <i class="fas fa-trash-alt text-danger"></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">9</th>
-                                    <td>ORION</td>
-                                    <td>12 Februari 2023</td>
-                                    <td>M01</td>
-                                    <td><i class="fas fa-edit text-warning"></i> &nbsp; <i class="fas fa-trash-alt text-danger"></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">10</th>
-                                    <td>ORION</td>
-                                    <td>12 Februari 2023</td>
-                                    <td>M01</td>
-                                    <td><i class="fas fa-edit text-warning"></i> &nbsp; <i class="fas fa-trash-alt text-danger"></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Penjelasan Kode Perawatan</h6>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Kode</th>
-                                    <th scope="col">Keterangan</th>
-                                    <th scope="col">Kategori Barang</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>M01</td>
-                                    <td>Ban</td>
-                                    <td>M01</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>M02</td>
-                                    <td>Kanvas Rem</td>
-                                    <td>M01</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>D01</td>
-                                    <td>Oli Mesin</td>
-                                    <td>M01</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">4</th>
-                                    <td>D02</td>
-                                    <td>Oli Gardan</td>
-                                    <td>M01</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">5</th>
-                                    <td>D03</td>
-                                    <td>Air Radiator</td>
-                                    <td>M01</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">6</th>
-                                    <td>K01</td>
-                                    <td>Dinamo Wiper</td>
-                                    <td>M01</td>
-                                </tr>
+                                    @forelse($data_perawatan_armada as $key => $perawatan_armada)
+                                    <tr>
+                                        <th scope="row">{{ $data_perawatan_armada->firstItem()+$key }}</th>
+                                        <td>{{ $perawatan_armada->armada_bus->nama }}</td>
+                                        <td>{{ $perawatan_armada->created_at }}</td>
+                                        <td>{{ $perawatan_armada->kode_perawatan->kode }} - {{ $perawatan_armada->kode_perawatan->keterangan }}</td>
+                                        <td class="text-center">
+                                            <a href="{{ url('admin/perawatan-armada/ubah/'.$perawatan_armada->id) }}" class="text-decoration-none">
+                                                <i class="fas fa-edit text-warning"></i> &emsp;
+                                            </a>
+                                            <a href="{{ url('admin/perawatan-armada/hapus/'.$perawatan_armada->id) }}" class="text-decoration-none" onclick="return confirm('Apakah anda yakin untuk menghapus data Perawatan Armada - {{ $perawatan_armada->armada_bus->nama }}?')">
+                                                <i class="fas fa-trash-alt text-danger"></i></td>
+                                            </a>
+                                    </tr>
+                                    @empty
+                                    <tr>
+                                        <td colspan="5">
+                                            <div class="alert alert-danger text-center" role="alert">
+                                                Data Kosong
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    @endforelse
                             </tbody>
                         </table>
                     </div>
