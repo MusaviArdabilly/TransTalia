@@ -29,5 +29,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ArmadaBusSeeder::class);
         $this->call(KodePerawatanSeeder::class);
         $this->call(PegawaiSeeder::class);
+        $this->call(PerawatanArmadaSeeder::class);
     }
 }
