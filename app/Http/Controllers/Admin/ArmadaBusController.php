@@ -130,6 +130,6 @@ class ArmadaBusController extends Controller
         }
         $armada_bus->delete();
 
-        return redirect('/admin/armada-bus/')->with('success', 'Data Armada Bus Berhasil Dihapus');
+        return redirect('/admin/armada-bus/')->with('success', 'Data Armada Bus "'.$armada_bus->nama.'" Berhasil Dihapus');
     }
 }
