@@ -63,8 +63,9 @@
                                         <a href="{{ url('admin/pembaruan-armada/ubah/'.$pembaruan_armada->id) }}" class="text-decoration-none">
                                             <i class="fas fa-edit text-warning"></i> &emsp; 
                                         </a>
-                                        <a href="{{ url('admin/pembaruan-armada/hapus/'.$pembaruan_armada->id) }}" class="text-decoration-none" onclick="return confirm('Apakah anda yakin untuk menghapus data Pembaruan Armada - {{ $pembaruan_armada->armada_bus->nama }}?')"></a>
-                                        <i class="fas fa-trash-alt text-danger"></i>
+                                        <a href="{{ url('admin/pembaruan-armada/hapus/'.$pembaruan_armada->id) }}" class="text-decoration-none" onclick="return confirm('Apakah anda yakin untuk menghapus data Pembaruan Armada - {{ $pembaruan_armada->armada_bus->nama }}?')">
+                                            <i class="fas fa-trash-alt text-danger"></i>
+                                        </a>
                                     </td>
                                 </tr>
                                 @empty
