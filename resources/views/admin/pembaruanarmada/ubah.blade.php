@@ -19,25 +19,30 @@
                         </div>
                         <!-- Card Body -->
                         <div class="card-body">
-                            <form>
+                            <form method="POST" action="{{ url('admin/pembaruan-armada/ubah/'.$pembaruan_armada->id.'/post') }}">
+                                @csrf
                                 <div class="mb-3">
-                                    <label for="inputNamaBus" class="form-label">Nama Bus</label>
-                                    <input type="name" name="nama_bus" class="form-control" id="inputNamaBus">
+                                    <label for="inputArmadaBus">Armada Bus</label>
+                                    <select name="armada_bus_id" class="form-control select2" aria-label="Default select" id="inputArmadaBus">
+                                        @foreach ($data_armada_bus as $armada_bus)
+                                            <option value="{{ $armada_bus->id }}" {{ $armada_bus->id == $pembaruan_armada->armada_bus_id ? 'selected' : '' }}>{{ $armada_bus->nama }}</option>
+                                        @endforeach
+                                    </select>
+                                    @if ($errors->has('armada_bus_id'))
+                                    <span class="ps-3 text-danger"><i class="fas fa-exclamation-circle"></i>&nbsp;{{ $errors->first('armada_bus_id') }}</span>
+                                    @endif
                                 </div>
                                 <div class="mb-3">
                                     <label for="inputPembaruan" class="form-label">Pembaruan</label>
-                                    <input type="number" name="pembaruan" class="form-control" id="inputPembaruan">
+                                    <input type="text" name="pembaruan" value="{{ $pembaruan_armada->pembaruan }}" class="form-control" id="inputPembaruan">            
+                                    @if ($errors->has('pembaruan'))
+                                    <span class="ps-3 text-danger"><i class="fas fa-exclamation-circle"></i>&nbsp;{{ $errors->first('pembaruan') }}</span>
+                                    @endif
                                 </div>
-                                <div class="mb-3">
-                                    <label for="inputDetailPembaruan" class="form-label">Detail Pembaruan</label>
-                                    <input type="name" name="detail_pembaruan" class="form-control" id="inputDetailPembaruan">
+                                <div class="d-flex justify-content-end">
+                                    <a href="{{ URL::previous() }}" class="btn btn-outline-secondary mr-4">Batal</a>
+                                    <button type="submit" class="btn btn-primary">Simpan</button>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="inputTanggal" class="form-label">Tanggal</label>
-                                    <input type="date" name="tanggal" class="form-control" id="inputTanggal">
-                                </div>
-                                <button type="submit" class="mt-3 btn btn-primary float-end">Simpan</button>
-                                <button type="submit" class="mt-3 btn btn-danger float-end me-3">Batal</button>
                             </form>
                         </div>
                     </div>

@@ -13,12 +13,13 @@
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <div class="d-none d-sm-inline-block">
                 <!-- Topbar Search -->
-                <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search dropshadowlight">
+                <form action="/admin/pembaruan-armada"
+                class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search dropshadowlight">
                     <div class="input-group">
-                        <input type="text" class="form-control bg-light border-0 small" placeholder="Pencarian"
+                        <input type="text" name="search" value="{{ $search_key }}" class="form-control bg-light border-0 small" placeholder="Pencarian"
                             aria-label="Search" aria-describedby="basic-addon2">
                         <div class="input-group-append">
-                            <button class="btn btn-primary" type="button">
+                            <button class="btn btn-primary" type="submit">
                                 <i class="fas fa-search fa-sm"></i>
                             </button>
                         </div>
@@ -36,7 +37,7 @@
                 <div
                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                     <h6 class="m-0 font-weight-bold text-primary">Pembaruan Armada</h6>
-                    <a href="/admin/pembaruan_armada/tambah"><i class="fas fa-plus text-primary"></i></a>
+                    <a href="/admin/pembaruan-armada/tambah"><i class="fas fa-plus text-primary"></i></a>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
@@ -45,40 +46,41 @@
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Nama Bus</th>
-                                    <th scope="col">Pembaruan</th>
-                                    <th scope="col">Detail Pembaruan</th>
-                                    <th scope="col">Tanggal</th>
-                                    <th scope="col">Aksi</th>
+                                    <th scope="col">@sortablelink('armada_bus.nama', 'Nama Bus', [], ['class' => 'text-decoration-none text-secondary'])</th>
+                                    <th scope="col">@sortablelink('pembaruan', 'Pembaruan', [], ['class' => 'text-decoration-none text-secondary'])</th>
+                                    <th scope="col">@sortablelink('created_at', 'Waktu', [], ['class' => 'text-decoration-none text-secondary'])</th>
+                                    <th scope="col" class="text-center">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @forelse($data_pembaruan_armada as $key => $pembaruan_armada)
                                 <tr>
-                                    <th scope="row">1</th>
-                                    <td>BERYL</td>
-                                    <td>Interior</td>
-                                    <td>Pembaruan kursi dengan seatbelt</td>
-                                    <td>12 Februari 2023</td>
-                                    <td><i class="fas fa-edit text-warning"></i> &emsp; <i class="fas fa-trash-alt text-danger"></td>
+                                    <th scope="row">{{ $data_pembaruan_armada->firstItem()+$key }}</th>
+                                    <td>{{ $pembaruan_armada->armada_bus->nama }}</td>
+                                    <td>{{ $pembaruan_armada->pembaruan }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($pembaruan_armada->created_at)->locale('id')->isoFormat('DD MMMM YYYY, HH:mm') }}</td>
+                                    <td class="text-center">
+                                        <a href="{{ url('admin/pembaruan-armada/ubah/'.$pembaruan_armada->id) }}" class="text-decoration-none">
+                                            <i class="fas fa-edit text-warning"></i> &emsp; 
+                                        </a>
+                                        <a href="{{ url('admin/pembaruan-armada/hapus/'.$pembaruan_armada->id) }}" class="text-decoration-none" onclick="return confirm('Apakah anda yakin untuk menghapus data Pembaruan Armada - {{ $pembaruan_armada->armada_bus->nama }}?')"></a>
+                                        <i class="fas fa-trash-alt text-danger"></i>
+                                    </td>
                                 </tr>
+                                @empty
                                 <tr>
-                                    <th scope="row">1</th>
-                                    <td>BERYL</td>
-                                    <td>Interior</td>
-                                    <td>Pembaruan kursi dengan seatbelt</td>
-                                    <td>12 Februari 2023</td>
-                                    <td><i class="fas fa-edit text-warning"></i> &nbsp; <i class="fas fa-trash-alt text-danger"></td>
+                                    <td colspan="5">
+                                        <div class="alert alert-danger text-center" role="alert">
+                                            Data Kosong
+                                        </div>
+                                    </td>
                                 </tr>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>BERYL</td>
-                                    <td>Interior</td>
-                                    <td>Pembaruan kursi dengan seatbelt</td>
-                                    <td>12 Februari 2023</td>
-                                    <td><i class="fas fa-edit text-warning"></i> &nbsp; <i class="fas fa-trash-alt text-danger"></td>
-                                </tr>
+                                @endforelse
                             </tbody>
                         </table>
+                        <div class="d-flex justify-content-end">
+                            {{ $data_pembaruan_armada->links() }}
+                        </div>
                     </div>
                 </div>
             </div>

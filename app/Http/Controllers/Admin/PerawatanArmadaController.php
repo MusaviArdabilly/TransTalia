@@ -7,16 +7,20 @@ use Illuminate\Http\Request;
 use App\Models\PerawatanArmada;
 use App\Models\KodePerawatan;
 use App\Models\ArmadaBus;
+use Carbon\Carbon;
 
 class PerawatanArmadaController extends Controller
 {
     public function index(Request $request){
         $search_key = $request->search;
+        $searchDateTime = Carbon::parse($search_key);
         $data_perawatan_armada = PerawatanArmada::when($request->search, function($query) use($request){
-            $query->where('armada_bus.nama', 'LIKE', '%'.$request->search.'%')
-                  ->orWhere('created_at', 'LIKE', '%'.$request->search.'%')
-                  ->orWhere('kode_perawatan.kode', 'LIKE', '%'.$request->search.'%')
-                  ->orWhere('kode_perawatan.keterangan', 'LIKE', '%'.$request->search.'%');
+            $query->where('created_at', 'LIKE', '%'.$searchDateTime.'%');
+        })->orWhereHas('armada_bus', function($query) use($request){
+            $query->where('nama', 'LIKE', '%'.$request->search.'%');
+        })->orWhereHas('kode_perawatan', function($query) use($request){
+            $query->where('kode', 'LIKE', '%'.$request->search.'%')
+                  ->orWhere('keterangan', 'LIKE', '%'.$request->search.'%');
         })->sortable()->paginate(10);
         return view('admin.perawatanarmada.index', compact('data_perawatan_armada', 'search_key'));
     }
@@ -77,6 +81,7 @@ class PerawatanArmadaController extends Controller
     public function destroy($id){
         $perawatan_armada = PerawatanArmada::find($id);
         $perawatan_armada->delete();
+
         return redirect('/admin/perawatan-armada')->with('success', 'Data Perawatan Armada "'.$perawatan_armada->armada_bus->nama.'" Berhasil Dihapus!');
     }
 }
