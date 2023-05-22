@@ -38,6 +38,7 @@ class ArmadaBusController extends Controller
             'nama.required' => 'Nama bus tidak boleh kosong',
             'kursi.required' => 'Jumlah kursi tidak boleh kosong',
             'sassis.required' => 'Sassis bus tidak boleh kosong',
+            'jenis_bus.required' => 'Sassis bus tidak boleh kosong',
             'harga_sewa.required' => 'Harga Sewa tidak boleh kosong',
             'plat_nomor.required' => 'Plat Nomor tidak boleh kosong',
             'plat_nomor.unique' => 'Plat Nomor sudah digunakan oleh armada lain',
