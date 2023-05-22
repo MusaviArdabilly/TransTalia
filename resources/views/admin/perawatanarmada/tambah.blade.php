@@ -43,7 +43,10 @@
                                     <span class="ps-3 text-danger"><i class="fas fa-exclamation-circle"></i>&nbsp;{{ $errors->first('kode_perawatan_id') }}</span>
                                     @endif
                                 </div>
-                                <button type="submit" class="mt-3 btn btn-primary float-end">Simpan</button>
+                                <div class="d-flex justify-content-end">
+                                    <a href="{{ URL::previous() }}" class="btn btn-outline-secondary mr-4">Batal</a>
+                                    <button type="submit" class="btn btn-primary">Simpan</button>
+                                </div>
                             </form>
                         </div>
                     </div>
