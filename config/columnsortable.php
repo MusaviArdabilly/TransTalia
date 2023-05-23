@@ -18,8 +18,9 @@ return [
         ],
         'numeric' => [
             'rows'  => ['created_at', 'updated_at', 'level', 'id', 'phone_number', 
-                        'kursi', 'no_telp'],
-            'class' => 'fa fa-sort-numeric',
+                        'kursi', 'no_telp',
+                        'jumlah_order'],
+            'class' => 'fa fa-sort-numeric-down',
         ],
     ],
 
