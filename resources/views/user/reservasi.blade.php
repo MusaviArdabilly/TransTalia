@@ -38,14 +38,14 @@
                     <label for="inputTanggalMulai" class="form-label">Tanggal Mulai</label>
                     <input type="date" name="tanggal_mulai" class="form-control" id="inputTanggalMulai" value="{{ old('tanggal_mulai', isset($tanggal_mulai) ? $tanggal_mulai : '') }}" @if(request()->is('reservasi/check-bus')) disabled @endif>
                     @if ($errors->has('tanggal_mulai'))
-                        <span class="ps-3 text-danger"><i class="fas fa-exclamation-circle"></i>&nbsp;{{ $errors->first('tanggal_mulai') }}</span>
+                        <span class="text-danger"><i class="fas fa-exclamation-circle"></i>&nbsp;{{ $errors->first('tanggal_mulai') }}</span>
                     @endif
                 </div>
                 <div class="col-md-6">
                     <label for="inputTanggalSelesai" class="form-label">Tanggal Selesai</label>
                     <input type="date" name="tanggal_selesai" class="form-control" id="inputTanggalSelesai" value="{{ old('tanggal_selesai', isset($tanggal_selesai) ? $tanggal_selesai : '') }}" @if(request()->is('reservasi/check-bus')) disabled @endif>
                     @if ($errors->has('tanggal_selesai'))
-                        <span class="ps-3 text-danger"><i class="fas fa-exclamation-circle"></i>&nbsp;{{ $errors->first('tanggal_selesai') }}</span>
+                        <span class="text-danger"><i class="fas fa-exclamation-circle"></i>&nbsp;{{ $errors->first('tanggal_selesai') }}</span>
                     @endif
                 </div>
                 <div class="col-12">
@@ -54,15 +54,15 @@
                         <div class="col-md-6">
                             <label for="inputTake" class="form-text">Pilih Kota Penjemputan</label>
                             <input type="text" name="kota_jemput" id="inputTake" class="form-control" placeholder="Nama Kota" value="{{ old('kota_jemput', isset($kota_jemput) ? $kota_jemput : '') }}" @if(request()->is('reservasi/check-bus')) disabled @endif>
-                            @if ($errors->has('provinsi'))
-                                <span class="ps-3 text-danger"><i class="fas fa-exclamation-circle"></i>&nbsp;{{ $errors->first('provinsi') }}</span>
+                            @if ($errors->has('kota_jemput'))
+                                <span class="text-danger"><i class="fas fa-exclamation-circle"></i>&nbsp;{{ $errors->first('kota_jemput') }}</span>
                             @endif
                         </div>
                         <div class="col-md-6">
                             <label for="inputDeliver" class="form-text">Pilih Kota Tujuan</label>
                             <input type="text" name="kota_tujuan" id="inputDeliver" class="form-control" placeholder="Nama Kota" value="{{ old('kota_tujuan', isset($kota_tujuan) ? $kota_tujuan : '') }}" @if(request()->is('reservasi/check-bus')) disabled @endif>
-                            @if ($errors->has('kota'))
-                                <span class="ps-3 text-danger"><i class="fas fa-exclamation-circle"></i>&nbsp;{{ $errors->first('kota') }}</span>
+                            @if ($errors->has('kota_tujuan'))
+                                <span class="text-danger"><i class="fas fa-exclamation-circle"></i>&nbsp;{{ $errors->first('kota_tujuan') }}</span>
                             @endif
                         </div>
                     </div>
@@ -91,7 +91,7 @@
                     @endif
                     <div class="row" id="container-selected-bus"></div>
                     <div class="row px-3">
-                    <label for="daftarBus" class="form-text"> Berikut merupakan bus yang tersedia pada jadwal yang anda pilih:</label>
+                    <label for="daftarBus" class="form-text"> Berikut merupakan bus yang tersedia pada jadwal yang anda cantumkan:</label>
                         @forelse($data_bus_tidak_terpakai as $key => $armada_bus)
                         <div class="col-lg-3 col-md-6 col-12">
                             <div class="card my-3" id="item-bus{{ $armada_bus->id }}">
