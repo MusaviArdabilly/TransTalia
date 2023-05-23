@@ -19,17 +19,23 @@
                         </div>
                         <!-- Card Body -->
                         <div class="card-body">
-                            <form>
+                            <form method="POST" action="{{ url('/admin/performa-pegawai/ubah/'.$pegawai->id.'/post') }}">
+                                @csrf
                                 <div class="mb-3">
                                     <label for="inputNamaPegawai" class="form-label">Nama Pegawai</label>
-                                    <input type="name" name="nama_pegawai" class="form-control" id="inputNamaPegawai">
+                                    <input type="name" name="nama_pegawai" value="{{ $pegawai->user->nama_depan }} {{ $pegawai->user->nama_belakang }}" disabled class="form-control" id="inputNamaPegawai">
                                 </div>
                                 <div class="mb-3">
                                     <label for="inputJumlahOrder" class="form-label">Jumlah Order</label>
-                                    <input type="number" name="jumlah_order" class="form-control" id="inputJumlahOrder">
+                                    <input type="number" name="jumlah_order" value="{{ $pegawai->jumlah_order }}" class="form-control" id="inputJumlahOrder">
                                 </div>
-                                <button type="submit" class="mt-3 btn btn-primary float-end">Simpan</button>
-                                <button type="submit" class="mt-3 btn btn-danger float-end me-3">Batal</button>
+                                @if ($errors->has('jumlah_order'))
+                                <span class="ps-3 text-danger"><i class="fas fa-exclamation-circle"></i>&nbsp;{{ $errors->first('jumlah_order') }}</span>
+                                @endif
+                                <div class="d-flex justify-content-end">
+                                    <a href="{{ URL::previous() }}" class="btn btn-outline-secondary mr-4">Batal</a>
+                                    <button type="submit" class="btn btn-primary">Simpan</button>
+                                </div>
                             </form>
                         </div>
                     </div>

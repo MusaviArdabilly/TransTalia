@@ -13,12 +13,13 @@
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <div class="d-none d-sm-inline-block">
                 <!-- Topbar Search -->
-                <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search dropshadowlight">
+                <form action="/admin/performa-pegawai" 
+                class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search dropshadowlight">
                     <div class="input-group">
-                        <input type="text" class="form-control bg-light border-0 small" placeholder="Pencarian"
+                        <input type="text" name="search" value="{{ $search_key }}" class="form-control bg-light border-0 small" placeholder="Pencarian"
                             aria-label="Search" aria-describedby="basic-addon2">
                         <div class="input-group-append">
-                            <button class="btn btn-primary" type="button">
+                            <button class="btn btn-primary" type="submit">
                                 <i class="fas fa-search fa-sm"></i>
                             </button>
                         </div>
@@ -43,32 +44,47 @@
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Nama Pegawai</th>
-                                    <th scope="col">Jumlah order</th>
-                                    <th scope="col">Aksi</th>
+                                    <th scope="col">@sortablelink('user.nama_depan', 'Nama Pegawai', [], ['class' => 'text-decoration-none text-secondary'])</th>
+                                    <th scope="col">@sortablelink('jumlah_order', 'Jumlah Order', [], ['class' => 'text-decoration-none text-secondary'])</th>
+                                    <th scope="col" class="text-center">Aksi</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Kabul Andra</td>
-                                    <td>12</td>
-                                    <td><i class="fas fa-edit text-warning"></i></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Silo Panji</td>
-                                    <td>8</td>
-                                    <td><i class="fas fa-edit text-warning"></i></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Yasin Daffa</td>
-                                    <td>5</td>
-                                    <td><i class="fas fa-edit text-warning"></i></td>
-                                </tr>
+                                    @forelse($data_pegawai as $key => $pegawai)
+                                    <tr>
+                                        <th scope="row">{{ $data_pegawai->firstItem()+$key }}</th>
+                                        <td>{{ $pegawai->user->nama_depan }} {{ $pegawai->user->nama_belakang }}</td>
+                                        <td>{{ $pegawai->jumlah_order }}</td>
+                                        <td class="text-center">
+                                            <a href="{{ url('/admin/performa-pegawai/ubah/'.$pegawai->id) }}">
+                                                <i class="fas fa-edit text-warning"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    @empty
+                                    <tr>
+                                        <td colspan="4">
+                                            <div class="alert alert-danger text-center" role="alert">
+                                                Data Kosong
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    @endforelse
                             </tbody>
                         </table>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Performa Pegawai</h6>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <div class="chart-bar">
+                        <canvas id="myBarChart"></canvas>
                     </div>
                 </div>
             </div>
