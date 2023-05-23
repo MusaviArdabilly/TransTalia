@@ -23,17 +23,17 @@ class UserController extends Controller
     }
 
     public function reservationCheckBus(Request $request){
-        // $this->validate($request, [
-        //     'tanggal_mulai' => 'required',
-        //     'tanggal_selesai' => 'required',
-        //     'kota_jemput' => 'required',
-        //     'kota_tujuan' => 'required',
-        // ],[
-        //     'tanggal_mulai.required' => 'Tanggal Mulai tidak boleh kosong',
-        //     'tanggal_selesai.required' => 'Tanggal Selesai tidak boleh kosong',
-        //     'kota_jemput.required' => 'Lokasi penjemputan tidak boleh kosong',
-        //     'kota_tujuan.required' => 'Lokasi Tujuan tidak boleh kosong',
-        // ]);
+        $this->validate($request, [
+            'tanggal_mulai' => 'required',
+            'tanggal_selesai' => 'required',
+            'kota_jemput' => 'required',
+            'kota_tujuan' => 'required',
+        ],[
+            'tanggal_mulai.required' => 'Tanggal Mulai tidak boleh kosong',
+            'tanggal_selesai.required' => 'Tanggal Selesai tidak boleh kosong',
+            'kota_jemput.required' => 'Lokasi penjemputan tidak boleh kosong',
+            'kota_tujuan.required' => 'Lokasi Tujuan tidak boleh kosong',
+        ]);
         $disableInput = true;
         $tanggal_mulai = $request->tanggal_mulai;
         $tanggal_selesai = $request->tanggal_selesai;
