@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="fake-navbar"></div>
-<div class="minvh100-130 d-flex align-items-center p-3">
+<div class="minvh100-114 d-flex align-items-center p-3">
     <div class="container">
         <div class="col-12 col-md-6 mx-auto my-auto">
             <h3 class="text-center fw-bold">DAFTAR</h3>
@@ -13,14 +13,14 @@
                     <label for="inputNamaDepan" class="form-label">Nama Depan</label>
                     <input name="nama_depan" type="name" class="form-control" id="inputNamaDepan" value="{{ old('nama_depan') }}">
                     @if ($errors->has('nama_depan'))
-                        <span class="ps-3 text-danger"><i class="fas fa-exclamation-circle"></i>&nbsp;{{ $errors->first('nama_depan') }}</span>
+                        <span class="text-danger"><i class="fas fa-exclamation-circle"></i>&nbsp;{{ $errors->first('nama_depan') }}</span>
                     @endif
                 </div>
                 <div class="mb-3">
                     <label for="inputNamaBelakang" class="form-label">Nama Belakang</label>
                     <input name="nama_belakang" type="name" class="form-control" id="inputNamaBelakang" value="{{ old('nama_belakang') }}">
                     @if ($errors->has('nama_belakang'))
-                        <span class="ps-3 text-danger"><i class="fas fa-exclamation-circle"></i>&nbsp;{{ $errors->first('nama_belakang') }}</span>
+                        <span class="text-danger"><i class="fas fa-exclamation-circle"></i>&nbsp;{{ $errors->first('nama_belakang') }}</span>
                     @endif
                 </div>
                 <div class="mb-3">
