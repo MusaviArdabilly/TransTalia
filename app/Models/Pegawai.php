@@ -24,7 +24,7 @@ class Pegawai extends Model
         'jumlah_order'
     ];
 
-    public $sortable = ['user.nama_depan', 'jabatan'];
+    public $sortable = ['user.nama_depan', 'user.nama_belakang', 'jabatan', 'jumlah_order'];
 
     public function user(): BelongsTo{
         return $this->belongsTo(User::class);
