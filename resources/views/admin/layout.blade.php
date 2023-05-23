@@ -397,6 +397,7 @@
     <!-- Page level custom scripts -->
     <script src="{{ asset('vendor/sbadmin/js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('vendor/sbadmin/js/demo/chart-pie-demo.js') }}"></script>
+    <script src="{{ asset('vendor/sbadmin/js/demo/chart-bar-demo.js') }}"></script>
     
     <!-- Alamat  -->
     <script src="{{ asset('js/alamat.js') }}"></script>
