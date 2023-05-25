@@ -81,7 +81,10 @@
                                     <label for="inputTanggalSelesai" class="form-label">Tanggal Selesai</label>
                                     <input type="date" name="tanggal_selesai" class="form-control" id="inputTanggalSelesai">
                                 </div>
-                                <button type="submit" class="mt-3 btn btn-primary float-end">Simpan</button>
+                                <div class="d-flex justify-content-end">
+                                    <a href="{{ URL::previous() }}" class="btn btn-outline-secondary mr-4">Batal</a>
+                                    <button type="submit" class="btn btn-primary">Simpan</button>
+                                </div>
                             </form>
                         </div>
                     </div>

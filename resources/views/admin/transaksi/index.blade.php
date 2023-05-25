@@ -44,148 +44,21 @@
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Nama Bus</th>
-                                    <th scope="col">Tujuan</th>
-                                    <th scope="col">Penyewa</th>
-                                    <th scope="col">Harga</th>
-                                    <th scope="col">Crew</th>
-                                    <th scope="col">Dp</th>
-                                    <th scope="col">Tanggal Mulai</th>
-                                    <th scope="col">Tanggal Selesai</th>
-                                    <th scope="col">Posisi</th>
-                                    <th scope="col">Aksi</th>
+                                    <th scope="col">Kode Reservasi</th>
+                                    <th scope="col">Nama Pelanggan</th>
+                                    <th scope="col">Nominal</th>
+                                    <th scope="col">Keterangan</th>
+                                    <th scope="col" class="text-center">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <th scope="row">1</th>
-                                    <td>RESOLUTE</td>
-                                    <td>Bali</td>
-                                    <td>Bu Nur</td>
-                                    <td>Rp. 5.000.000</td>
-                                    <td>Rp. 2.500.000</td>
-                                    <td>Rp. 2.000.000</td>
-                                    <td>4 Maret 2023</td>
-                                    <td>8 Maret 2023</td>
-                                    <td><a href="google.com"><i class="fas fa-map-marked-alt"></i></a></td>
-                                    <td><i class="fas fa-edit text-warning"></i> &nbsp; <i class="fas fa-trash-alt text-danger"></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>AURORA</td>
-                                    <td>Batu</td>
-                                    <td>Kabol</td>
-                                    <td>Rp. 2.400.000</td>
-                                    <td>Rp. 1.250.000</td>
-                                    <td>Rp. 1.000.000</td>
-                                    <td>5 Maret 2023</td>
-                                    <td>7 Maret 2023</td>
-                                    <td><a href="google.com"><i class="fas fa-map-marked-alt"></i></a></td>
-                                    <td><i class="fas fa-edit text-warning"></i> &nbsp; <i class="fas fa-trash-alt text-danger"></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>INTERCEPTOR</td>
-                                    <td>Yogyakarya</td>
-                                    <td>Silo</td>
-                                    <td>Rp. 5.800.000</td>
-                                    <td>Rp. 2.550.000</td>
-                                    <td>Rp. 1.500.000</td>
-                                    <td>4 Maret 2023</td>
-                                    <td>8 Maret 2023</td>
-                                    <td><a href="google.com"><i class="fas fa-map-marked-alt"></i></a></td>
-                                    <td><i class="fas fa-edit text-warning"></i> &nbsp; <i class="fas fa-trash-alt text-danger"></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">4</th>
-                                    <td>AURORA</td>
-                                    <td>Batu</td>
-                                    <td>Rp. 2.400.000</td>
-                                    <td>Rp. 1.250.000</td>
-                                    <td>Rp. 1.000.000</td>
-                                    <td>-</td>
-                                    <td>5 Maret 2023</td>
-                                    <td>7 Maret 2023</td>
-                                    <td><a href="google.com"><i class="fas fa-map-marked-alt"></i></a></td>
-                                    <td><i class="fas fa-edit text-warning"></i> &nbsp; <i class="fas fa-trash-alt text-danger"></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">5</th>
-                                    <td>AURORA</td>
-                                    <td>Batu</td>
-                                    <td>Rp. 2.400.000</td>
-                                    <td>Rp. 1.250.000</td>
-                                    <td>Rp. 1.000.000</td>
-                                    <td>-</td>
-                                    <td>5 Maret 2023</td>
-                                    <td>7 Maret 2023</td>
-                                    <td><a href="google.com"><i class="fas fa-map-marked-alt"></i></a></td>
-                                    <td><i class="fas fa-edit text-warning"></i> &nbsp; <i class="fas fa-trash-alt text-danger"></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">6</th>
-                                    <td>AURORA</td>
-                                    <td>Batu</td>
-                                    <td>Rp. 2.400.000</td>
-                                    <td>Rp. 1.250.000</td>
-                                    <td>Rp. 1.000.000</td>
-                                    <td>-</td>
-                                    <td>5 Maret 2023</td>
-                                    <td>7 Maret 2023</td>
-                                    <td><a href="google.com"><i class="fas fa-map-marked-alt"></i></a></td>
-                                    <td><i class="fas fa-edit text-warning"></i> &nbsp; <i class="fas fa-trash-alt text-danger"></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">7</th>
-                                    <td>AURORA</td>
-                                    <td>Batu</td>
-                                    <td>Rp. 2.400.000</td>
-                                    <td>Rp. 1.250.000</td>
-                                    <td>Rp. 1.000.000</td>
-                                    <td>-</td>
-                                    <td>5 Maret 2023</td>
-                                    <td>7 Maret 2023</td>
-                                    <td><a href="google.com"><i class="fas fa-map-marked-alt"></i></a></td>
-                                    <td><i class="fas fa-edit text-warning"></i> &nbsp; <i class="fas fa-trash-alt text-danger"></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">8</th>
-                                    <td>AURORA</td>
-                                    <td>Batu</td>
-                                    <td>Rp. 2.400.000</td>
-                                    <td>Rp. 1.250.000</td>
-                                    <td>Rp. 1.000.000</td>
-                                    <td>-</td>
-                                    <td>5 Maret 2023</td>
-                                    <td>7 Maret 2023</td>
-                                    <td><a href="google.com"><i class="fas fa-map-marked-alt"></i></a></td>
-                                    <td><i class="fas fa-edit text-warning"></i> &nbsp; <i class="fas fa-trash-alt text-danger"></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">9</th>
-                                    <td>AURORA</td>
-                                    <td>Batu</td>
-                                    <td>Rp. 2.400.000</td>
-                                    <td>Rp. 1.250.000</td>
-                                    <td>Rp. 1.000.000</td>
-                                    <td>-</td>
-                                    <td>5 Maret 2023</td>
-                                    <td>7 Maret 2023</td>
-                                    <td><a href="google.com"><i class="fas fa-map-marked-alt"></i></a></td>
-                                    <td><i class="fas fa-edit text-warning"></i> &nbsp; <i class="fas fa-trash-alt text-danger"></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">10</th>
-                                    <td>AURORA</td>
-                                    <td>Batu</td>
-                                    <td>Rp. 2.400.000</td>
-                                    <td>Rp. 1.250.000</td>
-                                    <td>Rp. 1.000.000</td>
-                                    <td>-</td>
-                                    <td>5 Maret 2023</td>
-                                    <td>7 Maret 2023</td>
-                                    <td><a href="google.com"><i class="fas fa-map-marked-alt"></i></a></td>
-                                    <td><i class="fas fa-edit text-warning"></i> &nbsp; <i class="fas fa-trash-alt text-danger"></td>
+                                    <td>TRM-Musavi20230522</td>
+                                    <td>Musavi Ardabilly</td>
+                                    <td>1000000</td>
+                                    <td>Pembayaran Uang Muka</td>
+                                    <td class="text-center"><i class="fas fa-edit text-warning"></i> &nbsp; <i class="fas fa-trash-alt text-danger"></td>
                                 </tr>
                             </tbody>
                         </table>
