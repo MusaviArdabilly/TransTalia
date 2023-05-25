@@ -112,38 +112,6 @@
             </li>
 
             <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading dropshadowlight">
-                Master
-            </div>
-
-            <!-- Nav Item - Bus -->
-            <li class="nav-item" id="armadabus">
-                <a class="nav-link" href="/admin/armada-bus">
-                    <i class="fas fa-fw fa-bus"></i>
-                    <span>Armada Bus</span>
-                </a>
-            </li>
-
-            <!-- Nav Item - Kode Perawatan -->
-            <li class="nav-item" id="kodeperawatan">
-                <a class="nav-link" href="/admin/kode-perawatan">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Kode Perawatan</span>
-                </a>
-            </li>
-
-            <!-- Nav Item - Pegawai -->
-            <li class="nav-item" id="pegawai">
-                <a class="nav-link" href="/admin/pegawai">
-                    <i class="fas fa-fw fa-user"></i>
-                    <span>Pegawai</span>
-                </a>
-            </li>
-
-            <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Jadwal -->
@@ -204,6 +172,35 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Heading -->
+            <div class="sidebar-heading dropshadowlight">
+                Master
+            </div>
+
+            <!-- Nav Item - Bus -->
+            <li class="nav-item" id="armadabus">
+                <a class="nav-link" href="/admin/armada-bus">
+                    <i class="fas fa-fw fa-bus"></i>
+                    <span>Armada Bus</span>
+                </a>
+            </li>
+
+            <!-- Nav Item - Kode Perawatan -->
+            <li class="nav-item" id="kodeperawatan">
+                <a class="nav-link" href="/admin/kode-perawatan">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Kode Perawatan</span>
+                </a>
+            </li>
+
+            <!-- Nav Item - Pegawai -->
+            <li class="nav-item" id="pegawai">
+                <a class="nav-link" href="/admin/pegawai">
+                    <i class="fas fa-fw fa-user"></i>
+                    <span>Pegawai</span>
+                </a>
+            </li>
 
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="d-none d-md-flex justify-content-center">
