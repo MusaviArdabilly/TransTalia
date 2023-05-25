@@ -113,6 +113,16 @@ class UserSeeder extends Seeder
             'no_telp' => '81278901234', 
             'email' => 'irfan_mahendra@gmail.com', 
             'password' => bcrypt('password')
+        ]);  
+        //Record 11
+        User::create([
+            'nama_depan' => 'Musavi', 
+            'nama_belakang' => 'Ardabilly', 
+            'foto_profil' => 'default_ava.png', 
+            'role' => 'user', 
+            'no_telp' => '81278909934', 
+            'email' => '201musavi@gmail.com', 
+            'password' => bcrypt('password')
         ]);   
     }
 }
