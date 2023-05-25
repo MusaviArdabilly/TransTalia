@@ -13,7 +13,7 @@ class KodePerawatanController extends Controller
         $data_kode_perawatan = KodePerawatan::when($request->search, function($query) use($request){
             $query->where('kode', 'LIKE', '%'.$request->search.'%')
             ->orWhere('keterangan', 'LIKE', '%'.$request->search.'%');
-        })->sortable('kode')->paginate(10);
+        })->sortable('kode')->paginate(20);
 
         return view('admin.kodeperawatan.index', compact('data_kode_perawatan', 'search_key'));
     }
