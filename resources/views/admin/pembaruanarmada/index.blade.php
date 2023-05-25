@@ -32,6 +32,34 @@
         </div>
 
         <div class="col-12 minvh100-233">
+            {{-- <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div
+                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Pembaruan Armada</h6>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body" id="calendar-container">
+                    <div id='calendar'></div>
+                </div>
+            </div> --}}
+            <div id="accordion" class="mb-4 shadow">
+                <div class="card">
+                    <div class="card-header d-flex flex-row align-items-center justify-content-between" id="headingOne">
+                        <button class="btn btn-outline-primary" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            Kalender
+                        </button>
+                    </div>
+                
+                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                        <div id="calendar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+              
+
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div
@@ -89,5 +117,47 @@
 
     </div>
     <!-- End of Main Content -->
+
+    {{-- FullCalendar --}}
+    <script src='{{ asset('vendor/fullcalendar/dist/index.global.js') }}'></script>
+    <script src="{{ asset('vendor/fullcalendar/packages/core/locales/id.global.min.js') }}"></script>
+    <script src="{{ asset('vendor/fullcalendar/packages/bootstrap4/index.global.min.js') }}"></script>
+    <script src="{{ asset('vendor/fullcalendar/packages/moment/index.global.min.js') }}"></script>
+    <script src="{{ asset('vendor/fullcalendar/packages/multimonth/index.global.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            var btn = $('#btn-accordion');
+            btn.on('click', function() {
+                var calendarEl = document.getElementById('calendar');
+                var myCalendar = new FullCalendar.Calendar(calendarEl, {
+                locale: 'id',
+                themeSystem: 'bootstrap4',
+                contentHeight: '100%',
+                contentWidth: '100%',
+                initialView: 'multiMonthYear',
+                multiMonthMaxColumns: 4
+                });
+                myCalendar.render();
+            });
+
+            $('#accordion').on('shown.bs.collapse', function() {
+                var calendarEl = document.getElementById('calendar');
+                    if (!calendarEl.fc) {
+                        var myCalendar = new FullCalendar.Calendar(calendarEl, {
+                            locale: 'id',
+                            themeSystem: 'bootstrap4',
+                            contentHeight: '100%',
+                            contentWidth: '100%',
+                            initialView: 'multiMonthYear',
+                            multiMonthMaxColumns: 4
+                        });
+                        calendarEl.fc = myCalendar; // Store the FullCalendar instance in a property of the calendar element
+                    }
+                calendarEl.fc.render(); // Refresh the FullCalendar when the accordion section becomes visible
+            });
+        });
+
+    </script>
+
 
 @endsection      
