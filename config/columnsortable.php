@@ -9,7 +9,8 @@ return [
         'alpha'   => [
             'rows'  => ['nama', 'sassis', 'jenis_bus', 'plat_nomor', 
                         'kode', 'keterangan', 'kategori', 
-                        'nama_depan', 'jabatan', 'alamat'],
+                        'nama_depan', 'jabatan', 'alamat',
+                        'pembaruan'],
             'class' => 'fa fa-sort-alpha-down',
         ],
         'amount'  => [
