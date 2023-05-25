@@ -70,9 +70,14 @@
                     <label for="harga" class="form-label">Total Harga:</label>
                     <input type="text" disabled class="form-control text-end" id="harga" value="Rp. {{ number_format($total_harga, 0, ',', '.') }}">
                 </div>
+                <div class="col-md-3">
+                    <label for="harga" class="form-label">Total Harga:</label>
+                    <input type="text" disabled class="form-control text-end" id="harga" value="Rp. {{$jarak_rute}}">
+                </div>
                 <hr class="mb-0">
-                <div class="col-12">
-                    <button type="submit" class="btn btn-primary float-end" onclick="return  confirm('Apakah anda sudah yakin bahwa data yang ditampilkan sudah benar?')">Proses</button>
+                <div class="d-flex justify-content-end">
+                    <a href="javascript:history.back()" class="btn btn-outline-secondary me-4">Kembali</a>
+                    <button type="submit" class="btn btn-primary">Proses</button>
                 </div>
             </form>
         </div>

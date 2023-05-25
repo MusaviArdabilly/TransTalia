@@ -11,7 +11,7 @@
 <div class="fake-navbar"></div>
 <div class="minvh100-114 d-flex align-items-center p-3">
     <div class="container">
-        <div class="d-flex justify-content-end">
+        <div class="d-flex justify-content-end my-3">
             <a href="/riwayat-reservasi" class="btn btn-outline-primary my-2">Riwayat Reservasi</a>
         </div>
         <h3 class="text-center fw-bold">Reservasi</h3>
@@ -19,7 +19,7 @@
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingOne">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#calendarCollapse" aria-expanded="true" aria-controls="calendarCollapse">
-                    Lihat Jadwal Armada bus
+                        Lihat Jadwal Armada bus
                     </button>
                 </h2>
                 <div id="calendarCollapse" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
@@ -31,35 +31,35 @@
         </div>
         <div class="mb-3 p-3 border rounded">
             <h4 class="text-center my-3">Formulir Reservasi</h4>
-            <hr class="mt-3">
-            <form method="POST" action="/reservasi/check-bus" class="row g-3 mt-2">
+            <hr class="my-3">
+            <form method="POST" action="/reservasi/check-bus" class="row g-3 my-3">
                 @csrf
                 <div class="col-md-6">
-                    <label for="inputTanggalMulai" class="form-label">Tanggal Mulai</label>
+                    <label for="inputTanggalMulai" class="form-label fw-semibold">Tanggal Mulai</label>
                     <input type="date" name="tanggal_mulai" class="form-control" id="inputTanggalMulai" value="{{ old('tanggal_mulai', isset($tanggal_mulai) ? $tanggal_mulai : '') }}" @if(request()->is('reservasi/check-bus')) disabled @endif>
                     @if ($errors->has('tanggal_mulai'))
                         <span class="text-danger"><i class="fas fa-exclamation-circle"></i>&nbsp;{{ $errors->first('tanggal_mulai') }}</span>
                     @endif
                 </div>
                 <div class="col-md-6">
-                    <label for="inputTanggalSelesai" class="form-label">Tanggal Selesai</label>
+                    <label for="inputTanggalSelesai" class="form-label fw-semibold">Tanggal Selesai</label>
                     <input type="date" name="tanggal_selesai" class="form-control" id="inputTanggalSelesai" value="{{ old('tanggal_selesai', isset($tanggal_selesai) ? $tanggal_selesai : '') }}" @if(request()->is('reservasi/check-bus')) disabled @endif>
                     @if ($errors->has('tanggal_selesai'))
                         <span class="text-danger"><i class="fas fa-exclamation-circle"></i>&nbsp;{{ $errors->first('tanggal_selesai') }}</span>
                     @endif
                 </div>
                 <div class="col-12">
-                    <label for="inputAddress" class="form-label">Rute</label>
-                    <div class="row px-3">
+                    <label for="inputTake" class="form-label m-0 fw-semibold">Rute</label>
+                    <div class="row g-3">
                         <div class="col-md-6">
-                            <label for="inputTake" class="form-text">Pilih Kota Penjemputan</label>
+                            <label for="inputTake" class="form-text ps-1">Pilih Kota Penjemputan</label>
                             <input type="text" name="kota_jemput" id="inputTake" class="form-control" placeholder="Nama Kota" value="{{ old('kota_jemput', isset($kota_jemput) ? $kota_jemput : '') }}" @if(request()->is('reservasi/check-bus')) disabled @endif>
                             @if ($errors->has('kota_jemput'))
                                 <span class="text-danger"><i class="fas fa-exclamation-circle"></i>&nbsp;{{ $errors->first('kota_jemput') }}</span>
                             @endif
                         </div>
                         <div class="col-md-6">
-                            <label for="inputDeliver" class="form-text">Pilih Kota Tujuan</label>
+                            <label for="inputDeliver" class="form-text ps-1">Pilih Kota Tujuan</label>
                             <input type="text" name="kota_tujuan" id="inputDeliver" class="form-control" placeholder="Nama Kota" value="{{ old('kota_tujuan', isset($kota_tujuan) ? $kota_tujuan : '') }}" @if(request()->is('reservasi/check-bus')) disabled @endif>
                             @if ($errors->has('kota_tujuan'))
                                 <span class="text-danger"><i class="fas fa-exclamation-circle"></i>&nbsp;{{ $errors->first('kota_tujuan') }}</span>
@@ -67,13 +67,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="d-flex justify-content-center @if(request()->is('reservasi/check-bus')) d-none @endif">
-                    <button type="submit" class="btn btn-outline-primary">Tampilkan bus yang tersedia</button>
+                <div class="d-flex justify-content-center my-3 @if(request()->is('reservasi/check-bus')) d-none @endif">
+                    <button type="submit" class="btn btn-outline-primary mt-3">Tampilkan bus yang tersedia</button>
                 </div>
             </form>
             <div class="d-flex justify-content-end my-3 @if(request()->is('reservasi')) d-none @endif">
                 <hr>
-                <a href="{{ URL::previous() }}" class="btn btn-outline-secondary">Ganti Jadwal atau Kota</a>
+                <a href="javascript:history.back()" class="btn btn-outline-primary mt-3">Ganti Jadwal atau Kota</a>
             </div>
             @if(isset($data_bus_tidak_terpakai))
             <form method="POST" action="/reservasi/check-out">
@@ -124,7 +124,8 @@
 <script>
     function cities(){
         var options = {
-            types: ['(cities)']
+            types: ['(cities)'],
+            componentRestrictions: { country: 'id' } 
         };
         
         var pickInput = document.getElementById('inputTake');
