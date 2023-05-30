@@ -49,6 +49,7 @@
 //   $('#selected-bus').remove();
 // }
 
+//ambil id bus untuk reservasi bus yang telah dipilih
 var arrSelectedIdBus = [];
 console.log(arrSelectedIdBus);
 
@@ -88,6 +89,15 @@ function updateInputValue() {
   var inputField = $('#selected_armada_bus_id');
   inputField.val(arrSelectedIdBus.join(', '));
 }
+
+//ambil id dari collection selected bus sebelumnya (dari halaman checkout) untuk store data
+
+// var arrIdSelectedBus = [];
+// console.log(arrIdSelectedBus);
+// var collectionSelectedBus = $('#selected_armada_bus_id');
+// arrIdSelectedBus.val(collectionSelectedBus.join(', '));
+// // arrIdSelectedBus.push(collectionSelectedBus);
+// console.log(arrIdSelectedBus);
 
 // function updateInputValue(){
 //   // identify the id of hidden input 
