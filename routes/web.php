@@ -59,8 +59,8 @@ Route::post('/edit-password/post', [UserController::class, 'updatePassword']);
 Route::get('/reservasi', [UserController::class, 'reservation']);
 Route::post('/reservasi/check-bus', [UserController::class, 'reservationCheckBus']);
 Route::post('/reservasi/check-out', [UserController::class, 'reservationCheckOut']);
-Route::post('/reservasi/check-out/post', [UserController::class, 'reservationCheckOut']);
-Route::get('/riwayat/reservasi', [UserController::class, 'reservationHistory']);
+Route::post('/reservasi/check-out/post', [UserController::class, 'reservationStore']);
+Route::get('/reservasi/riwayat', [UserController::class, 'reservationHistory']);
 
 // ========================== Admin ========================== 
 
@@ -103,11 +103,12 @@ Route::prefix('admin')->group(function () {
         Route::get('/ubah/{id}/villages', [PegawaiController::class, 'villages']);
     });
     
-    // ------------------------ Jadwal ------------------------
+    // ------------------------ Reservasi ------------------------
     Route::prefix('reservasi')->group(function () {
         Route::get('/', [ReservasiController::class, 'index']);
         Route::get('/ubah/{id}', [ReservasiController::class, 'edit']);
         Route::post('/ubah/{id}/post', [ReservasiController::class, 'update']);
+        Route::get('/notifikasi', [ReservasiController::class, 'notifikasi']);
     });
     
     // ------------------------ Jadwal ------------------------
