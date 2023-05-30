@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\PembaruanArmada;
 use App\Models\ArmadaBus;
+use Carbon\Carbon;
 
 class PembaruanArmadaController extends Controller
 {
@@ -17,7 +18,19 @@ class PembaruanArmadaController extends Controller
         })->orWhereHas('armada_bus', function($query) use($request){
             $query->where('nama', 'LIKE', '%'.$request->search.'%');
         })->sortable()->paginate(10);
-        return view('admin.pembaruanarmada.index', compact('data_pembaruan_armada', 'search_key'));
+
+        $events = array();
+        $jadwal_pembaruan_armada = PembaruanArmada::get();
+
+        foreach($jadwal_pembaruan_armada as $jadwal_pembaruan){
+            $events[] = [
+                'title' => $jadwal_pembaruan->armada_bus->nama . ' - ' . $jadwal_pembaruan->pembaruan,
+                'start' => Carbon::parse($jadwal_pembaruan->created_at),
+                'borderColor' => '#000',
+                'allDay' => true
+            ];
+        }
+        return view('admin.pembaruanarmada.index', compact('data_pembaruan_armada', 'search_key', 'events'));
     }
 
     public function add(){
