@@ -18,10 +18,12 @@ class Reservasi extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
+        'kode',
         'user_id',
         'tanggal_mulai',
         'tanggal_selesai',
-        'tujuan',
+        'kota_jemput',
+        'kota_tujuan',
         'total_harga',
         'dibayar',
         'status',
