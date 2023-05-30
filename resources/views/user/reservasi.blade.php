@@ -12,7 +12,7 @@
 <div class="minvh100-114 d-flex align-items-center p-3">
     <div class="container">
         <div class="d-flex justify-content-end my-3">
-            <a href="/riwayat-reservasi" class="btn btn-outline-primary my-2">Riwayat Reservasi</a>
+            <a href="/reservasi/riwayat" class="btn btn-outline-primary my-2">Riwayat Reservasi</a>
         </div>
         <h3 class="text-center fw-bold">Reservasi</h3>
         <div class="accordion py-3" id="accordionExample">
@@ -91,7 +91,7 @@
                     @endif
                     <div class="row" id="container-selected-bus"></div>
                     <div class="row px-3">
-                    <label for="daftarBus" class="form-text"> Berikut merupakan bus yang tersedia pada jadwal yang anda cantumkan:</label>
+                    <label for="daftarBus" class="form-text">Berikut merupakan bus yang tersedia pada jadwal yang anda cantumkan:</label>
                         @forelse($data_bus_tidak_terpakai as $key => $armada_bus)
                         <div class="col-lg-3 col-md-6 col-12">
                             <div class="card my-3" id="item-bus{{ $armada_bus->id }}">
@@ -135,17 +135,23 @@
         var deliverInputAutocomplete = new google.maps.places.Autocomplete(deliverInput, options);
     }
 </script>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3NfQbLS6VzWjfJqKAa-2UiHYyzAlfMRI&libraries=places&callback=cities"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3NfQbLS6VzWjfJqKAa-2UiHYyzAlfMRI&libraries=places&language=id&callback=cities"></script>
     
 {{-- FullCalendar --}}
 <script src='{{ asset('vendor/fullcalendar/dist/index.global.js') }}'></script>
-<script src='{{ asset('vendor/fullcalendar/package/core/locales/id.global.min.js') }}'></script>
+<script src='{{ asset('vendor/fullcalendar/packages/core/locales/id.global.min.js') }}'></script>
+<script src='{{ asset('vendor/fullcalendar/packages/bootstrap5/index.global.min.js') }}'></script>
 <script>
     var calendarOptions = {
-                locale: 'id',
-                themeSystem: 'bootstrap5',
-                contentHeight: '100%',
-                initialView: 'dayGridMonth'
+        locale: 'id',
+        themeSystem: 'bootstrap5',
+        contentHeight: '100%',
+        initialView: 'multiMonthYear',
+        multiMonthMaxColumns: 2,
+        headerToolbar: false,
+        titleFormat: { 
+            month: 'short', // - Display the month in three-letter format dd    
+        } 
     };
     var accordionToggle = document.querySelector('.accordion-button');
     accordionToggle.addEventListener('click', function() {
