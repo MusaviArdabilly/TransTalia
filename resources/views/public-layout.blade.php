@@ -21,8 +21,6 @@
     <link href="{{ asset('css/public.css') }}" rel="stylesheet" type="text/css">
 
 </head>
-<style>
-</style>
 
 <body class="f-poppins">
     
