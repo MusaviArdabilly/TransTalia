@@ -32,13 +32,13 @@ var ctx = document.getElementById("myBarChart");
 var myBarChart = new Chart(ctx, {
   type: 'bar',
   data: {
-    labels: ["Ahmad Hidayat", "Budi Nugroho", "Gilang Pramudya", "Putra Pratama"],
+    labels: data_array_pegawai.map(row => row.label),
     datasets: [{
       label: "Jumlah Order",
       backgroundColor: "#4e73df",
       hoverBackgroundColor: "#2e59d9",
       borderColor: "#4e73df",
-      data: [0, 3, 6, 4],
+      data: data_array_pegawai.map(row => row.data),
     }],
   },
   options: {
@@ -63,18 +63,14 @@ var myBarChart = new Chart(ctx, {
         ticks: {
           maxTicksLimit: 6
         },
-        maxBarThickness: 25,
+        maxBarThickness: 10,
       }],
       yAxes: [{
         ticks: {
           min: 0,
-          max: 10,
+          max: undefined,
           maxTicksLimit: 5,
           padding: 10,
-          // Include a dollar sign in the ticks
-          // callback: function(value, index, values) {
-          //   return '$' + number_format(value);
-          // }
         },
         gridLines: {
           color: "rgb(234, 236, 244)",
@@ -103,7 +99,7 @@ var myBarChart = new Chart(ctx, {
       callbacks: {
         label: function(tooltipItem, chart) {
           var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-          return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
+          return datasetLabel + ': ' + number_format(tooltipItem.yLabel);
         }
       }
     },
