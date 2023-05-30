@@ -120,43 +120,29 @@
 
     {{-- FullCalendar --}}
     <script src='{{ asset('vendor/fullcalendar/dist/index.global.js') }}'></script>
-    <script src="{{ asset('vendor/fullcalendar/packages/core/locales/id.global.min.js') }}"></script>
-    <script src="{{ asset('vendor/fullcalendar/packages/bootstrap4/index.global.min.js') }}"></script>
-    <script src="{{ asset('vendor/fullcalendar/packages/moment/index.global.min.js') }}"></script>
-    <script src="{{ asset('vendor/fullcalendar/packages/multimonth/index.global.js') }}"></script>
+    <script src='{{ asset('vendor/fullcalendar/package/core/locales/id.global.min.js') }}'></script>
     <script>
         $(document).ready(function() {
-            var btn = $('#btn-accordion');
-            btn.on('click', function() {
-                var calendarEl = document.getElementById('calendar');
-                var myCalendar = new FullCalendar.Calendar(calendarEl, {
-                locale: 'id',
-                themeSystem: 'bootstrap4',
-                contentHeight: '100%',
-                contentWidth: '100%',
-                initialView: 'multiMonthYear',
-                multiMonthMaxColumns: 4
-                });
-                myCalendar.render();
-            });
-
             $('#accordion').on('shown.bs.collapse', function() {
                 var calendarEl = document.getElementById('calendar');
                     if (!calendarEl.fc) {
+                        var jadwal = @json($events);
                         var myCalendar = new FullCalendar.Calendar(calendarEl, {
+                            timeZone: 'Asia/Jakarta',
                             locale: 'id',
                             themeSystem: 'bootstrap4',
                             contentHeight: '100%',
                             contentWidth: '100%',
                             initialView: 'multiMonthYear',
-                            multiMonthMaxColumns: 4
+                            multiMonthMaxColumns: 2,
+                            headerToolbar: false,
+                            events: jadwal,
                         });
                         calendarEl.fc = myCalendar; // Store the FullCalendar instance in a property of the calendar element
                     }
                 calendarEl.fc.render(); // Refresh the FullCalendar when the accordion section becomes visible
             });
         });
-
     </script>
 
 
