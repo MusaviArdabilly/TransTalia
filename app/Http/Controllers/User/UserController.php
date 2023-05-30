@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Spatie\GoogleCalendar\Event;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use Carbon\Carbon;
@@ -58,6 +59,8 @@ class UserController extends Controller
         $distance_meter_total = $distance_meter1 + $distance_meter2;
         $jarak_rute = round($distance_meter_total / 1000); //pembulatan angka dibelakang koma
 
+        // dd($jarak_rute);
+
         $id_bus_terpakai = Reservasi::whereBetween('tanggal_mulai', [$tanggal_mulai, $tanggal_selesai])
                                     ->orWhereBetween('tanggal_selesai', [$tanggal_mulai, $tanggal_selesai])
                                     ->orWhere(function($query) use($tanggal_mulai, $tanggal_selesai){
@@ -106,9 +109,9 @@ class UserController extends Controller
 
         foreach ($data_selected_armada_bus as $armadaBus) {
             $harga_sewa_bus = $armadaBus->harga_sewa;
-            $sub_total = $harga_sewa_bus * (2 * $jarak_rute);
-            $sub_totals[] = $sub_total;
-            $total_harga += $sub_total;
+            $sub_total = $harga_sewa_bus * (2 * $jarak_rute); //2x jarak = pulang + pergi
+            $sub_totals[] = $sub_total * 1.9; //subtotal x 1.9 karena biaya operasional = 90% dari biaya sewa bus 
+            $total_harga += $sub_total * 1.9;
         }
 
         $startDate = Carbon::parse($tanggal_mulai);
@@ -136,72 +139,40 @@ class UserController extends Controller
         return view ('user.reservasi-checkOut', compact('kode_reservasi', 'tanggal_mulai', 'tanggal_selesai', 'kota_jemput', 'kota_tujuan', 'jarak_rute', 'sub_totals', 'total_harga',  'data_selected_armada_bus'));
     }
 
-    // public function reservationCheckOut(Request $request){
-    //     $this->validate($request, [
-    //         'tanggal_mulai' => 'required',
-    //         'tanggal_selesai' => 'required',
-    //         'provinsi' => 'required',
-    //         'kota' => 'required',
-    //         'selected_armada_bus_id' => 'required',
-    //     ],[
-    //         'tanggal_mulai.required' => 'Tanggal Mulai tidak boleh kosong',
-    //         'tanggal_selesai.required' => 'Tanggal Selesai tidak boleh kosong',
-    //         'provinsi.required' => 'Provinsi Tujuan tidak boleh kosong',
-    //         'kota.required' => 'Kota Tujuan tidak boleh kosong',
-    //         'selected_armada_bus_id.required' => 'Silahkan memilih bus pariwisata terlebih dahulu',
-    //     ]);
-
-    //     $user_id = Auth::user()->id;
-    //     // kode reservasi
-    //     $user = User::find($user_id);
-    //     $username = $user->nama_depan;
-    //     $kode_reservasi = 'TRM-'.ucfirst($username).now()->format('ymdHis');
-    //     //request - check out data
-    //     $tanggal_mulai = $request->tanggal_mulai;
-    //     $tanggal_selesai = $request->tanggal_selesai;
-    //     $provinsi = $request->provinsi;
-    //     $kota = $request->kota;
-    //     //request - retrieve selected bus
-    //     $selected_bus = $request->selected_armada_bus_id;
-
-    //     //try to convert to array
-    //     // $array_selected_bus = explode (",", $selected_bus);
-    //     // $str_selected_bus = str_replace('"', '', $selected_bus);
-    //     // $int_selected_bus = intval($str_selected_bus);
-    //     // $array_selected_bus = explode('"', $selected_bus); latest
-
-    //     // dd($array_selected_bus);
-
-    //     $explode_selected_bus = explode('"', $selected_bus);
-    //     $exploded_selected_bus = explode(', ', $explode_selected_bus[0]);
-
-    //     // Create a new array with separate indexes
-    //     $array_selected_bus = [];
-    //     foreach ($exploded_selected_bus as $value) {
-    //         $array_selected_bus[] = $value;
-    //     }
-
-    //     // dd($array_selected_bus);
-
-    //     //show armadaBus by id
-    //     $data_selected_armada_bus = ArmadaBus::find([$array_selected_bus]);
-
-    //     // $array_length = count($array_selected_bus);
-
-    //     // dd($kode_reservasi, $array_length, $request);
-
-    //     //logic untuk menentukan harga gmap apikey: AIzaSyD3NfQbLS6VzWjfJqKAa-2UiHYyzAlfMRI
-
-    //     return view ('user.reservasi-checkOut', compact('kode_reservasi', 'tanggal_mulai', 'tanggal_selesai', 'provinsi', 'kota', 'data_selected_armada_bus'));
-    // }
-
-    public function reservationStore(){
-
+    public function reservationStore(Request $request){
+        $reservasi = new Reservasi;
+        $reservasi->kode = $request->kode_reservasi;
+        $reservasi->user_id = Auth::user()->id;
+        $reservasi->tanggal_mulai = $request->tanggal_mulai;
+        $reservasi->tanggal_selesai = $request->tanggal_selesai;
+        $reservasi->kota_jemput = $request->kota_jemput;
+        $reservasi->kota_tujuan = $request->kota_tujuan;
+        $reservasi->total_harga = $request->total_harga;
+        $reservasi->dibayar = 0;
+        $reservasi->status = 'menunggu'; //status: 'menunggu', 'dibayar', 'lunas', 'batal'
+        $reservasi->save();
+        foreach($request->selected_armada_bus_id as $key => $id_armada_bus){
+            // //store to event google calendar //store only if already paid
+            // $armada_bus = ArmadaBus::find($id_armada_bus);
+            // $event = new Event; //event from vendor gcal
+            // $event->name = $armada_bus->nama .' - '. $request->kota_tujuan;
+            // $event->startDateTime = Carbon::parse($request->tanggal_mulai)->setTime(8, 00, 01)->setTimezone('Asia/Jakarta');
+            // $event->endDateTime = Carbon::parse($request->tanggal_selesai)->setTime(23, 59, 59)->setTimezone('Asia/Jakarta');
+            // $event->save();
+            $reservasi_armada_bus = new ReservasiArmadaBus;
+            $reservasi_armada_bus->reservasi_id = $reservasi->id; 
+            $reservasi_armada_bus->armada_bus_id = $id_armada_bus;
+            $reservasi_armada_bus->sub_total = $request->sub_total[$key];
+            $reservasi_armada_bus->save();
+        }
         return redirect('/reservasi/riwayat')->with('success', 'Reservasi berhasil, data anda akan segera diproses');
     }
 
     public function reservationHistory(){
-        return view ('user.riwayatreservasi');
+        $data_reservasi = Reservasi::where('user_id', Auth::user()->id)->paginate(5);
+        
+
+        return view ('user.riwayatreservasi', compact('data_reservasi'));
     }
 
     public function editAkun(){
