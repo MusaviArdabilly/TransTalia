@@ -21,17 +21,18 @@ class ReservasiArmadaBus extends Model
     protected $fillable = [
         'reservasi_id',
         'armada_bus_id',
+        'subtotal',
     ];
 
     public function jadwal():HasMany{
-        $this->hasMany(Jadwal::class);
+        return $this->hasMany(Jadwal::class);
     }
 
     public function reservasi():BelongsTo{
-        $this->belongsTo(Reservasi::class);
+        return $this->belongsTo(Reservasi::class);
     }
 
     public function armada_bus():BelongsTo{
-        $this->belongsTo(ArmadaBus::class);
+        return $this->belongsTo(ArmadaBus::class);
     }
 }
