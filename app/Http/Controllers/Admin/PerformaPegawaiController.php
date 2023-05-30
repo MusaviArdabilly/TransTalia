@@ -18,7 +18,30 @@ class PerformaPegawaiController extends Controller
                   ->orWhere('nama_belakang', 'LIKE', '%'.$request->search.'%');
         })->sortable('user.nama_depan')->paginate(10);
 
-        return view('admin.performapegawai.index', compact('data_pegawai', 'search_key'));
+        $pegawai_with_user = Pegawai::with('user')->get();
+        $array_pegawai = array();
+        foreach($pegawai_with_user as $pegawai){
+            $array_pegawai[] = [
+                'label' => $pegawai->user->nama_depan,
+                'data' => $pegawai->jumlah_order
+            ];
+        }
+        // $data_performa_pegawai = Pegawai::with('user')->get();
+        // $nama_pegawai = array();
+        // $jumlah_order = array();
+        // foreach($data_performa_pegawai as $pegawai){
+        //     $nama_pegawai[] = $pegawai->user->nama_depan;
+        //     $jumlah_order[] = $pegawai->jumlah_order;
+        // }
+        // $array_nama_pegawai = json_encode($nama_pegawai);
+        // $array_jumlah_order = json_encode($jumlah_order);
+        // $data_performa_pegawai = Pegawai::with('user')->get();
+        // $nama_pegawai = $data_performa_pegawai->pluck('user.nama_depan')->toJson();
+        // $jumlah_order = $data_performa_pegawai->pluck('jumlah_order')->toJson();
+
+        // return $array_pegawai;
+
+        return view('admin.performapegawai.index', compact('data_pegawai', 'search_key', 'array_pegawai'));
     }
 
     public function edit($id){
