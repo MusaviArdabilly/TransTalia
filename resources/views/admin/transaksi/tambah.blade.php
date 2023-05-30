@@ -50,7 +50,7 @@
                                     @endif
                                 </div>
                                 <div class="d-flex justify-content-end">
-                                    <a href="{{ URL::previous() }}" class="btn btn-outline-secondary mr-4">Batal</a>
+                                    <a href="{{ URL::previous() }}" class="btn btn-outline-secondary mr-2">Batal</a>
                                     <button type="submit" class="btn btn-primary"{{ $data_reservasi->isEmpty() ? 'disabled' : '' }}>Simpan</button>
                                 </div>
                             </form>

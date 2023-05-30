@@ -59,8 +59,6 @@ class UserController extends Controller
         $distance_meter_total = $distance_meter1 + $distance_meter2;
         $jarak_rute = round($distance_meter_total / 1000); //pembulatan angka dibelakang koma
 
-        // dd($jarak_rute);
-
         $id_bus_terpakai = Reservasi::whereBetween('tanggal_mulai', [$tanggal_mulai, $tanggal_selesai])
                                     ->orWhereBetween('tanggal_selesai', [$tanggal_mulai, $tanggal_selesai])
                                     ->orWhere(function($query) use($tanggal_mulai, $tanggal_selesai){
