@@ -21,15 +21,15 @@
 
                         <div class="col-6 col-md-6">
                             <label for="kodeReservasi" class="form-label">Kode Reservasi</label>
-                            <input type="text" disabled class="form-control" id="kodeReservasi" value="{{ $kode_reservasi }}">
+                            <input readonly type="text" name="kode_reservasi" class="form-control" id="kodeReservasi" value="{{ $kode_reservasi }}">
                         </div>
                         <div class="col-6 col-md-3">
                             <label for="inputTanggalMulai" class="form-label">Tanggal Mulai</label>
-                            <input disabled type="text" name="tanggal_mulai" class="form-control" value="{{ $tanggal_mulai }}">
+                            <input readonly type="text" name="tanggal_mulai" class="form-control" value="{{ $tanggal_mulai }}">
                         </div>
                         <div class="col-6 col-md-3">
                             <label for="inputTanggalSelesai" class="form-label">Tanggal Selesai</label>
-                            <input disabled type="text" name="tanggal_selesai" class="form-control" value="{{ $tanggal_selesai }}">
+                            <input readonly type="text" name="tanggal_selesai" class="form-control" value="{{ $tanggal_selesai }}">
                         </div>
                     </div>
                 </div>
@@ -38,11 +38,11 @@
                     <div class="row px-3">
                         <div class="col-md-6">
                             <label for="inputState" class="form-text">Kota Penjemputan</label>
-                            <input disabled type="text" name="provinsi" class="form-control" value="{{ $kota_jemput }}">
+                            <input readonly type="text" name="kota_jemput" class="form-control" value="{{ $kota_jemput }}">
                         </div>
                         <div class="col-md-6">
                             <label for="inputState" class="form-text">Kota Tujuan</label>
-                            <input disabled type="text" name="kota" class="form-control" value="{{ $kota_tujuan }}">
+                            <input readonly type="text" name="kota_tujuan" class="form-control" value="{{ $kota_tujuan }}">
                         </div>
                     </div>
                 </div>
@@ -53,7 +53,8 @@
                         <div class="col-3" id="selectedBus">
                             <div class="card">
                                 <div class="card-body">
-                                    <input type="hidden" name="selected_armada_bus_id" value="{{ $selected_armada_bus->id }}">
+                                    <input type="hidden" name="sub_total[]" value="{{ $sub_totals[$key] }}">
+                                    <input type="hidden" name="selected_armada_bus_id[]" value="{{ $selected_armada_bus->id }}">
                                     <h6 class="card-title">{{ $selected_armada_bus->nama }}</h6>
                                     <p class="form-text my-1">Jumlah Kursi: {{ $selected_armada_bus->kursi }}</p>
                                     <p class="form-text my-1">Jenis Bus: {{ $selected_armada_bus->jenis_bus }}</p>
@@ -68,11 +69,12 @@
                 </div>
                 <div class="col-md-3">
                     <label for="harga" class="form-label">Total Harga:</label>
-                    <input type="text" disabled class="form-control text-end" id="harga" value="Rp. {{ number_format($total_harga, 0, ',', '.') }}">
+                    <input type="hidden" name="total_harga" value="{{ $total_harga }}">
+                    <input type="text" readonly class="form-control text-end" id="harga" value="Rp. {{ number_format($total_harga, 0, ',', '.') }}">
                 </div>
                 <div class="col-md-3">
-                    <label for="harga" class="form-label">Total Harga:</label>
-                    <input type="text" disabled class="form-control text-end" id="harga" value="Rp. {{$jarak_rute}}">
+                    <label for="harga" class="form-label">Jarak:</label>
+                    <input type="text" readonly class="form-control text-end" id="harga" value="Rp. {{$jarak_rute}}">
                 </div>
                 <hr class="mb-0">
                 <div class="d-flex justify-content-end">
