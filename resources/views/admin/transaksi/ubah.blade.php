@@ -19,70 +19,38 @@
                         </div>
                         <!-- Card Body -->
                         <div class="card-body">
-                            <form>
+                            <form method="POST" action="{{ url('/admin/transaksi/ubah/'.$transaksi->id.'/post') }}">
+                                @csrf
                                 <div class="mb-3">
-                                    <label for="inputNamaBus" class="form-label">Nama Bus</label>
-                                    <input type="name" name="nama_bus" class="form-control" id="inputNamaBus">
+                                    <label for="inputReservasi">Cari Reservasi</label>
+                                    <select readonly name="reservasi_id" class="form-control select2 readonly" aria-label="Default select" id="inputReservasi">
+                                        @foreach ($data_reservasi as $reservasi)
+                                            <option value="{{ $reservasi->id }}">{{ $reservasi->kode }} - {{ $reservasi->user->nama_depan }} {{ $reservasi->user->nama_belakang }} - {{ $reservasi->total_harga }} -> {{ $reservasi->dibayar }}</option>
+                                        @endforeach
+                                    </select>
+                                    @if ($errors->has('user_id'))
+                                    <span class="ps-3 text-danger"><i class="fas fa-exclamation-circle"></i>&nbsp;{{ $errors->first('user_id') }}</span>
+                                    @endif
                                 </div>
                                 <div class="mb-3">
-                                    <label for="inputTujuan" class="form-label">Tujuan</label>
-                                    <div class="row px-2">
-                                        <div class="col-12 col-md-3">
-                                            <label for="inputJabatan" class="form-text">Provinsi</label>
-                                            <select name="jabatan" class="form-select" aria-label="Default select1">
-                                                <option selected value="1">Sopir</option>
-                                                <option value="2">Kenek</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-12 col-md-3">
-                                            <label for="inputJabatan" class="form-text">Kota</label>
-                                            <select name="jabatan" class="form-select" aria-label="Default select1">
-                                                <option selected value="1">Sopir</option>
-                                                <option value="2">Kenek</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-12 col-md-3">
-                                            <label for="inputJabatan" class="form-text">Kecamatan</label>
-                                            <select name="jabatan" class="form-select" aria-label="Default select2">
-                                                <option selected value="1">Sopir</option>
-                                                <option value="2">Kenek</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-12 col-md-3">
-                                            <label for="inputJabatan" class="form-text">Desa</label>
-                                            <select name="jabatan" class="form-select" aria-label="Default select3">
-                                                <option selected value="1">Sopir</option>
-                                                <option value="2">Kenek</option>
-                                            </select>
-                                        </div>
-                                    </div>
+                                    <label for="inputNominal" class="form-label">Nominal</label>
+                                    <input type="number" name="nominal" value="{{ $transaksi->nominal }}" class="form-control" id="inputNominal">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="inputPenyewa" class="form-label">Penyewa</label>
-                                    <input type="number" name="penyewa" class="form-control" id="inputPenyewa">
+                                    <label for="inputKeterangan">Keterangan</label> 
+                                    <select name="keterangan" class="form-control select2" aria-label="Default select" id="inputKeterangan">
+                                        <option value="uang_muka"{{ $transaksi->keterangan == 'uang_muka' ? 'selected' : '' }}>Uang Muka</option>
+                                        <option value="cicilan"{{ $transaksi->keterangan == 'cicilan' ? 'selected' : '' }}>Cicilan</option>
+                                        <option value="pelunasan"{{ $transaksi->keterangan == 'pelunasan' ? 'selected' : '' }}>Pelunasan</option>
+                                    </select>
+                                    @if ($errors->has('keterangan'))
+                                    <span class="ps-3 text-danger"><i class="fas fa-exclamation-circle"></i>&nbsp;{{ $errors->first('keterangan') }}</span>
+                                    @endif
                                 </div>
-                                <div class="mb-3">
-                                    <label for="inputHarga" class="form-label">Harga</label>
-                                    <input type="number" name="harga" class="form-control" id="inputHarga">
+                                <div class="d-flex justify-content-end">
+                                    <a href="{{ URL::previous() }}" class="btn btn-outline-secondary mr-4">Batal</a>
+                                    <button type="submit" class="btn btn-primary">Simpan</button>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="inputCrew" class="form-label">Crew</label>
-                                    <input type="number" name="crew" class="form-control" id="inputCrew">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="inputDp" class="form-label">Dp</label>
-                                    <input type="number" name="dp" class="form-control" id="inputDp">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="inputTanggalMulai" class="form-label">Tanggal Mulai</label>
-                                    <input type="date" name="tanggal_mulai" class="form-control" id="inputTanggalMulai">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="inputTanggalSelesai" class="form-label">Tanggal Selesai</label>
-                                    <input type="date" name="tanggal_selesai" class="form-control" id="inputTanggalSelesai">
-                                </div>
-                                <button type="submit" class="mt-3 btn btn-primary float-end">Simpan</button>
-                                <button type="submit" class="mt-3 btn btn-danger float-end me-3">Batal</button>
                             </form>
                         </div>
                     </div>
