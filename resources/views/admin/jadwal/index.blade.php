@@ -25,8 +25,8 @@
                     </div>
                 </form>
             </div>
-            <div class="d-none d-sm-inline-block btn bg-primary text-white shadow-sm">
-                {{ str_replace('-', ' ', now()->format('d-M-y')) }}
+            <div class="d-none d-sm-inline-block btn bg-primary disabled text-white shadow-sm">
+                {{ \Carbon\Carbon::parse(now())->locale('id')->isoFormat('DD MMM YY') }}
             </div>
         </div>
 
@@ -50,20 +50,36 @@
     {{-- FullCalendar --}}
     <script src='{{ asset('vendor/fullcalendar/dist/index.global.js') }}'></script>
     <script src='{{ asset('vendor/fullcalendar/package/core/locales/id.global.min.js') }}'></script>
+    <script src='{{ asset('vendor/fullcalendar/packages/bootstrap4/index.global.min.js') }}'></script>
+    <script src='{{ asset('vendor/fullcalendar/packages/moment/index.global.min.js') }}'></script>
     <script>
-
-      document.addEventListener('DOMContentLoaded', function() {
-        var calendarEl = document.getElementById('calendar');
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-            locale: 'id',
-            themeSystem: 'bootstrap5',
-            contentHeight: '100%',
-            contentWidth: '100%',
-            initialView: 'dayGridMonth'
+        document.addEventListener('DOMContentLoaded', function() {
+            var jadwal = @json($events);
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                timeZone: 'Asia/Jakarta',
+                locale: 'id',
+                themeSystem: 'bootstrap4',
+                contentHeight: '100%',
+                contentWidth: '100%',
+                initialView: 'multiMonthYear',
+                multiMonthMaxColumns: 2,
+                headerToolbar: false,
+                events: jadwal,
+                eventClick: function(info) {
+                    info.jsEvent.preventDefault(); // Prevent the default click action
+                    $(info.el).popover({
+                        content: info.event.title,
+                        trigger: 'hover',
+                        placement: 'top',
+                        container: 'body',
+                        html: true
+                    });
+                    $(info.el).popover('toggle'); // Show the popover
+                }
+            });
+            calendar.render();
         });
-        calendar.render();
-      });
-
     </script>
 
 @endsection      
