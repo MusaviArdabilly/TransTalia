@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('reservasi', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('kode');
             $table->unsignedBigInteger('user_id');
             $table->date('tanggal_mulai');
             $table->date('tanggal_selesai');
-            $table->string('tujuan');
+            $table->string('kota_jemput');
+            $table->string('kota_tujuan');
             $table->integer('total_harga');
             $table->integer('dibayar');
             $table->string('status');
