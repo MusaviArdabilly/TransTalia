@@ -86,6 +86,9 @@
                                     @endforelse
                             </tbody>
                         </table>
+                        <div class="d-flex justify-content-end">
+                            {{ $data_pegawai->links() }}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -93,5 +96,12 @@
 
     </div>
     <!-- End of Main Content -->
+
+    <script>
+        var data_array_pegawai = @json($array_pegawai);
+      </script> 
+      
+      
+      
 
 @endsection      
