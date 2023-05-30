@@ -22,7 +22,28 @@ class PerawatanArmadaController extends Controller
             $query->where('kode', 'LIKE', '%'.$request->search.'%')
                   ->orWhere('keterangan', 'LIKE', '%'.$request->search.'%');
         })->sortable()->paginate(10);
-        return view('admin.perawatanarmada.index', compact('data_perawatan_armada', 'search_key'));
+
+        $events = array();
+        $jadwal_perawatan_armada = PerawatanArmada::get();
+
+        foreach($jadwal_perawatan_armada as $jadwal_perawatan){
+            $events[] = [
+                'title' => $jadwal_perawatan->armada_bus->nama . ' - ' . $jadwal_perawatan->kode_perawatan->kode . ' - ' . $jadwal_perawatan->kode_perawatan->keterangan,
+                'start' => Carbon::parse($jadwal_perawatan->created_at),
+                'backgroundColor' => self::getKategoriColor($jadwal_perawatan->kode_perawatan->kategori),
+                'borderColor' => '#000',
+                'allDay' => true
+            ];
+        }
+        return view('admin.perawatanarmada.index', compact('data_perawatan_armada', 'search_key', 'events'));
+    }
+        
+    public static function getKategoriColor($kategori){
+        if ($kategori == 'Barang habis pakai'){
+            return '#e74a3b';
+        }else{
+            return '#1cc88a';
+        }
     }
 
     public function add(){
