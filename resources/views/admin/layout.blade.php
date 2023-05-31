@@ -71,6 +71,9 @@
     {{-- Select2 --}}
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
+    <!-- Custom scripts for all pages-->
+    <script src="{{ asset('vendor/sbadmin/js/sb-admin-2.min.js') }}"></script>
+
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -390,20 +393,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Custom scripts for all pages-->
-    <script src="{{ asset('vendor/sbadmin/js/sb-admin-2.min.js') }}"></script>
-
-    <!-- Page level plugins -->
-    <script src="{{ asset('vendor/chart.js/Chart.min.js') }}"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="{{ asset('vendor/sbadmin/js/demo/chart-area-demo.js') }}"></script>
-    <script src="{{ asset('vendor/sbadmin/js/demo/chart-pie-demo.js') }}"></script>
-    <script src="{{ asset('vendor/sbadmin/js/demo/chart-bar-demo.js') }}"></script>
-    
-    <!-- Alamat  -->
-    <script src="{{ asset('js/alamat.js') }}"></script>
 
     <script>
         // Select2
