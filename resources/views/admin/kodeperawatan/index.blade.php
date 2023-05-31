@@ -59,7 +59,7 @@
                                 <th scope="row">{{ $data_kode_perawatan->firstItem()+$key }}</th>
                                 <td>{{ $kode_perawatan->kode }}</td>
                                 <td>{{ $kode_perawatan->keterangan }}</td>
-                                <td><span class="badge rounded-pil text-capitalize {{ $kode_perawatan->kategori === 'Barang habis pakai' ? 'bg-danger' : 'bg-success' }} text-light ">
+                                <td><span class="badge rounded-pil text-capitalize {{ $kode_perawatan->kategori === 'Barang habis pakai' ? 'bg-danger' : 'bg-success' }} text-light">
                                         {{ $kode_perawatan->kategori }}
                                     </span>
                                 </td>
