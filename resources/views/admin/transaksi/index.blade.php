@@ -26,8 +26,8 @@
                     </div>
                 </form>
             </div>
-            <div class="d-none d-sm-inline-block btn bg-primary text-white shadow-sm">
-                {{ str_replace('-', ' ', now()->format('d-M-y')) }}
+            <div class="d-none d-sm-inline-block btn bg-primary disabled text-white shadow-sm">
+                {{ \Carbon\Carbon::parse(now())->locale('id')->isoFormat('DD MMM YY') }}
             </div>
         </div>
 
@@ -47,8 +47,9 @@
                                     <th scope="col">#</th>
                                     <th scope="col">Kode Reservasi</th>
                                     <th scope="col">Nama Pelanggan</th>
-                                    <th scope="col">Nominal</th>
+                                    <th scope="col">Nominal Transaksi</th>
                                     <th scope="col">Keterangan</th>
+                                    <th scope="col">Waktu</th>
                                     <th scope="col" class="text-center">Aksi</th>
                                 </tr>
                             </thead>
@@ -56,10 +57,13 @@
                                 @forelse($data_transaksi as $key => $transaksi)
                                 <tr>
                                     <th scope="row">{{ $data_transaksi->firstItem()+$key }}</th>
-                                    <td>{{ $transaksi->reservasi->kode }} - Rp. {{ number_format($transaksi->reservasi->total_harga, 0, ',', '.') }}  -> Rp. {{ number_format($transaksi->reservasi->dibayar, 0, ',', '.') }}</td>
+                                    <td>{{ $transaksi->reservasi->kode }}</td>
+                                    {{-- <td>Rp. {{ number_format($transaksi->reservasi->total_harga, 0, ',', '.') }}</td>
+                                    <td>Rp. {{ number_format($transaksi->reservasi->dibayar, 0, ',', '.') }}</td> --}}
                                     <td>{{ $transaksi->reservasi->user->nama_depan }} {{ $transaksi->reservasi->user->nama_belakang }}</td>
                                     <td>Rp. {{ number_format($transaksi->nominal, 0, ',', '.') }}</td>
                                     <td>{{ ucwords(str_replace('_', ' ', $transaksi->keterangan)) }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($transaksi->created_at)->locale('id')->isoFormat('DD MMMM YYYY - hh:mm')  }}</td>
                                     <td class="text-center">
                                         <a href="{{ url('admin/transaksi/ubah/'.$transaksi->id) }}" class="text-decoration-none">
                                             <i class="fas fa-edit text-warning"></i>&nbsp; 
