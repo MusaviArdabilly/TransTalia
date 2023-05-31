@@ -5,6 +5,9 @@
 <script type="text/javascript">
     document.getElementById('pegawai').classList.add('active');
 </script>
+    
+<!-- Alamat  -->
+<script src="{{ asset('js/alamat.js') }}"></script>
 
     <!-- Begin Page Content -->
     <div class="container-fluid py-2">
