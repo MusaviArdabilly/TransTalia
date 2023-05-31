@@ -39,7 +39,7 @@ class PegawaiController extends Controller
             })->orWhereHas('Village', function($query) use($request){
                 $query->where('name', 'LIKE', '%'.$request->search.'%');
             });
-        })->sortable('user.nama_depan')->paginate(20);
+        })->sortable('user.nama_depan')->orderBy('created_at', 'desc')->paginate(20);
 
 
         // $data_pegawai = Pegawai::whereHas('User', function($query) use($request){

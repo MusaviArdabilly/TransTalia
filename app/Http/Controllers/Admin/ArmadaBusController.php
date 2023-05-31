@@ -18,7 +18,7 @@ class ArmadaBusController extends Controller
             ->orWhere('jenis_bus', 'LIKE', '%'.$request->search.'%')
             ->orWhere('harga_sewa', 'LIKE', '%'.$request->search.'%')
             ->orWhere('plat_nomor', 'LIKE', '%'.$request->search.'%');
-        })->sortable('nama')->paginate(20);
+        })->sortable('nama')->orderBy('created_at', 'desc')->paginate(20);
         return view('admin.armadabus.index', compact('data_armada_bus', 'search_key'));
     }
 

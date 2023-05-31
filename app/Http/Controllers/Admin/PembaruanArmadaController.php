@@ -17,7 +17,7 @@ class PembaruanArmadaController extends Controller
                   ->orWhere('created_at', 'LIKE', '%'.$request->search.'%');
         })->orWhereHas('armada_bus', function($query) use($request){
             $query->where('nama', 'LIKE', '%'.$request->search.'%');
-        })->sortable()->paginate(10);
+        })->sortable()->orderBy('created_at', 'desc')->paginate(10);
 
         $events = array();
         $jadwal_pembaruan_armada = PembaruanArmada::get();

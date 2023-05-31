@@ -16,7 +16,7 @@ class PerformaPegawaiController extends Controller
         })->orWhereHas('user', function($query) use($request){
             $query->where('nama_depan', 'LIKE', '%'.$request->search.'%')
                   ->orWhere('nama_belakang', 'LIKE', '%'.$request->search.'%');
-        })->sortable('user.nama_depan')->paginate(10);
+        })->sortable('user.nama_depan')->orderBy('created_at', 'desc')->paginate(10);
 
         $pegawai_with_user = Pegawai::with('user')->get();
         $array_pegawai = array();
