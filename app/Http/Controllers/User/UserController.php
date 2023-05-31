@@ -20,10 +20,52 @@ class UserController extends Controller
         $disableInput = false;
         $data_armada_bus = ArmadaBus::find([]);
 
-        return view ('user.reservasi', compact('disableInput', 'data_armada_bus'));
+        $events = array();
+        $schedules = ReservasiArmadaBus::with('reservasi', 'armada_bus')->get();
+
+        foreach($schedules as $schedule){
+            $parts = explode(',', $schedule->reservasi->kota_tujuan);
+            $kota_tujuan = array_pop($parts);
+            $kota_tujuan = implode(', ', $parts);
+            $events[] = [
+                'title' => $schedule->armada_bus->nama . ' - ' . $kota_tujuan,
+                'start' => Carbon::parse($schedule->reservasi->tanggal_mulai)->setTime(8, 00, 00)->setTimezone('Asia/Jakarta')->toDateTimeString(),
+                'end' => Carbon::parse($schedule->reservasi->tanggal_selesai)->addDay()->setTime(23, 59, 59)->setTimezone('Asia/Jakarta')->toDateTimeString(),
+                'backgroundColor' => self::getStatusColor($schedule->reservasi->status),
+                'borderColor' => '#000',
+                'allDay' => true
+            ];
+        }
+
+        return view ('user.reservasi', compact('disableInput', 'data_armada_bus', 'events'));
+    }
+        
+    public static function getStatusColor($status){
+        if ($status == 'menunggu'){
+            return '#FFC107';
+        }else {
+            return '';
+        }
     }
 
     public function reservationCheckBus(Request $request){
+        $events = array();
+        $schedules = ReservasiArmadaBus::with('reservasi', 'armada_bus')->get();
+
+        foreach($schedules as $schedule){
+            $parts = explode(',', $schedule->reservasi->kota_tujuan);
+            $kota_tujuan = array_pop($parts);
+            $kota_tujuan = implode(', ', $parts);
+            $events[] = [
+                'title' => $schedule->armada_bus->nama . ' - ' . $kota_tujuan,
+                'start' => Carbon::parse($schedule->reservasi->tanggal_mulai)->setTime(8, 00, 00)->setTimezone('Asia/Jakarta')->toDateTimeString(),
+                'end' => Carbon::parse($schedule->reservasi->tanggal_selesai)->addDay()->setTime(23, 59, 59)->setTimezone('Asia/Jakarta')->toDateTimeString(),
+                'backgroundColor' => self::getStatusColor($schedule->reservasi->status),
+                'borderColor' => '#000',
+                'allDay' => true
+            ];
+        }
+
         $this->validate($request, [
             'tanggal_mulai' => 'required',
             'tanggal_selesai' => 'required',
@@ -69,7 +111,7 @@ class UserController extends Controller
             $query->select('armada_bus_id')->from('reservasi_armada_bus')->whereIn('reservasi_id', $id_bus_terpakai);
         })->get();
 
-        return view('user.reservasi', compact('disableInput', 'tanggal_mulai', 'tanggal_selesai', 'kota_jemput', 'kota_tujuan', 'jarak_rute', 'data_bus_tidak_terpakai'));
+        return view('user.reservasi', compact('disableInput', 'events', 'tanggal_mulai', 'tanggal_selesai', 'kota_jemput', 'kota_tujuan', 'jarak_rute', 'data_bus_tidak_terpakai'));
     }
 
     public function reservationCheckOut(Request $request){
@@ -82,7 +124,7 @@ class UserController extends Controller
         // kode reservasi
         $user = User::find($user_id);
         $username = $user->nama_depan;
-        $kode_reservasi = 'TRM-'.ucfirst($username).now()->format('ymdHis');
+        $kode_reservasi = 'TRM'.now()->format('ymdHis');
         //request - check out data
         $tanggal_mulai = $request->tanggal_mulai;
         $tanggal_selesai = $request->tanggal_selesai;
@@ -167,7 +209,7 @@ class UserController extends Controller
     }
 
     public function reservationHistory(){
-        $data_reservasi = Reservasi::where('user_id', Auth::user()->id)->paginate(5);
+        $data_reservasi = Reservasi::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(10);
         
 
         return view ('user.riwayatreservasi', compact('data_reservasi'));
