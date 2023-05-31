@@ -25,11 +25,13 @@
                         </div>
                         <div class="col-6 col-md-3">
                             <label for="inputTanggalMulai" class="form-label">Tanggal Mulai</label>
-                            <input readonly type="text" name="tanggal_mulai" class="form-control" value="{{ $tanggal_mulai }}">
+                            <input readonly type="text" class="form-control" value="{{ \Carbon\Carbon::parse($tanggal_mulai)->locale('id')->isoFormat('DD MMMM YYYY') }}">
+                            <input type="hidden" name="tanggal_mulai" value="{{ $tanggal_mulai }}">
                         </div>
                         <div class="col-6 col-md-3">
                             <label for="inputTanggalSelesai" class="form-label">Tanggal Selesai</label>
-                            <input readonly type="text" name="tanggal_selesai" class="form-control" value="{{ $tanggal_selesai }}">
+                            <input readonly type="text" name="tanggal_selesai" class="form-control" value="{{ \Carbon\Carbon::parse($tanggal_selesai)->locale('id')->isoFormat('DD MMMM YYYY') }}">
+                            <input type="hidden" name="tanggal_selesai" value="{{ $tanggal_selesai }}">
                         </div>
                     </div>
                 </div>
@@ -78,36 +80,12 @@
                 </div>
                 <hr class="mb-0">
                 <div class="d-flex justify-content-end">
-                    <a href="javascript:history.back()" class="btn btn-outline-secondary me-4">Kembali</a>
+                    <a href="javascript:history.back()" class="btn btn-outline-secondary me-2">Kembali</a>
                     <button type="submit" class="btn btn-primary">Proses</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
-    
-{{-- FullCalendar --}}
-<script src='{{ asset('vendor/fullcalendar/dist/index.global.js') }}'></script>
-<script src='{{ asset('vendor/fullcalendar/package/core/locales/id.global.min.js') }}'></script>
-<script>
-    var calendarOptions = {
-                locale: 'id',
-                themeSystem: 'bootstrap5',
-                contentHeight: '100%',
-                initialView: 'dayGridMonth'
-    };
-    var accordionToggle = document.querySelector('.accordion-button');
-    accordionToggle.addEventListener('click', function() {
-        var calendarEl = document.querySelector('#calendar');
-        if (calendarEl.classList.contains('fc')) {
-            // FullCalendar has been initialized, so remove it now
-            calendar.destroy();
-        } else {
-            // FullCalendar hasn't been initialized yet, so do it now
-            var calendar = new FullCalendar.Calendar(calendarEl, calendarOptions);
-            calendar.render();
-        }
-    });
-</script>
 
 @endsection
