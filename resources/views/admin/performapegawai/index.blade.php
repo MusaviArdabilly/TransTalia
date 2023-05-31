@@ -41,7 +41,7 @@
                 <!-- Card Body -->
                 <div class="card-body">
                     <div class="chart-bar">
-                        <canvas id="myBarChart"></canvas>
+                        <canvas id="barPerformaPegawai"></canvas>
                     </div>
                 </div>
             </div>
@@ -99,9 +99,12 @@
 
     <script>
         var data_array_pegawai = @json($array_pegawai);
-      </script> 
-      
-      
-      
+    </script> 
+
+    <!-- Page level plugins -->
+    <script src="{{ asset('vendor/chart.js/Chart.min.js') }}"></script>
+
+    <!-- Page level plugins -->
+    <script src="{{ asset('js/chart/performa_pegawai.js') }}"></script>
 
 @endsection      
