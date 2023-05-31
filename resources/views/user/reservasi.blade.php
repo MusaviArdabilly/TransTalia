@@ -142,16 +142,26 @@
 <script src='{{ asset('vendor/fullcalendar/packages/core/locales/id.global.min.js') }}'></script>
 <script src='{{ asset('vendor/fullcalendar/packages/bootstrap5/index.global.min.js') }}'></script>
 <script>
+    var jadwal = @json($events);
     var calendarOptions = {
+        timeZone: 'Asia/Jakarta',
         locale: 'id',
         themeSystem: 'bootstrap5',
-        contentHeight: '100%',
         initialView: 'multiMonthYear',
         multiMonthMaxColumns: 2,
         headerToolbar: false,
-        titleFormat: { 
-            month: 'short', // - Display the month in three-letter format dd    
-        } 
+        events: jadwal,
+        eventClick: function(info) {
+            info.jsEvent.preventDefault(); // Prevent the default click action
+            $(info.el).popover({
+                content: info.event.title,
+                trigger: 'hover',
+                placement: 'top',
+                container: 'body',
+                html: true
+            });
+            $(info.el).popover('toggle'); // Show the popover
+        }
     };
     var accordionToggle = document.querySelector('.accordion-button');
     accordionToggle.addEventListener('click', function() {

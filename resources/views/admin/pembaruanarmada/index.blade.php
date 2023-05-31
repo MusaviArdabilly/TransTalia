@@ -137,6 +137,18 @@
                             multiMonthMaxColumns: 2,
                             headerToolbar: false,
                             events: jadwal,
+                            eventClick: function(info) {
+                                info.jsEvent.preventDefault(); // Prevent the default click action
+                                $(info.el).popover({
+                                    title: info.event.startStr,
+                                    content: info.event.title,
+                                    trigger: 'hover',
+                                    placement: 'top',
+                                    container: 'body',
+                                    html: true
+                                });
+                                $(info.el).popover('toggle'); // Show the popover
+                            }
                         });
                         calendarEl.fc = myCalendar; // Store the FullCalendar instance in a property of the calendar element
                     }
