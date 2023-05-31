@@ -19,18 +19,34 @@
             @forelse($data_reservasi as $key => $reservasi)
             <div class="mb-3 p-3 border rounded shadow-sm">
                 <div class="col-12">
-                    <label for="">{{ $reservasi->created_at }}</label>
-                    <label for="">| {{ $reservasi->kode }}</label>
-                    <label for="">| {{ $reservasi->status }}</label>
-                    <hr>
-                    {{-- <label for="">{{ $reservasi->reservasi_armada_bus }}</label> --}}
-                    <label for="">{{ $reservasi->kota_jemput }}</label>
-                    <label for="">| {{ $reservasi->kota_tujuan }}</label> <br>
-                    @foreach($reservasi->reservasi_armada_bus as $armada)
-                    <label for="">{{ $armada->armada_bus->nama }} - {{ $armada->sub_total }} | </label>
-                    @endforeach <br>
-                    <label for="">{{ $reservasi->total_harga }}</label>
-                    <label for="">{{ $reservasi->dibayar }}</label>
+                    <div class="d-flex align-items-center justify-content-start">
+                        <label for="">{{ $reservasi->kode }}</label> &nbsp;
+                        <span class="badge rounded-pil text-capitalize text-light {{ $reservasi->status === 'lunas' ? 'bg-success' : '' }} {{ $reservasi->status === 'dibayar' ? 'bg-primary' : '' }} {{ $reservasi->status === 'menunggu' ? 'bg-warning' : '' }} {{ $reservasi->status === 'batal' ? 'bg-danger' : '' }}">{{ $reservasi->status }}</span>
+                    </div>
+                    <br>
+                    @php
+                    $value_jemput = $reservasi->kota_jemput;
+                    $value_tujuan = $reservasi->kota_tujuan;
+                    // Split the string by commas
+                    $parts_jemput = explode(',', $value_jemput);
+                    $parts_tujuan = explode(',', $value_tujuan);
+                    @endphp
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <label for=""><span class="fw-semibold">Penjemputan: </span>{{ $parts_jemput[0] }}, {{ $parts_jemput[1] }}, {{ $parts_jemput[2] }}</label> <br>
+                            <label for=""><span class="fw-semibold">Tujuan: </span>{{ $parts_tujuan[0] }}, {{ $parts_tujuan[1] }}, {{ $parts_tujuan[2] }}</label> <br>
+                            <label for=""><span class="fw-semibold">Harga: </span><span class="fw-bold">Rp. {{ number_format($reservasi->total_harga, 0, ',', '.') }}</span></label>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label for=""><span class="fw-semibold">Armada Bus: </span></label> <br>
+                            @foreach($reservasi->reservasi_armada_bus as $key => $armada)
+                                <label for="">{{ $key+=1 }}.&nbsp;{{ $armada->armada_bus->nama }} - Rp. {{  number_format($armada->sub_total, 0, ',', '.') }}</label><br>
+                            @endforeach <br>
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            <label for="" class="small text-secondary float-end">{{ \Carbon\Carbon::parse($reservasi->created_at)->locale('id')->isoFormat('DD MMMM YYYY - hh:mm') }}</label>
+                        </div>
+                    </div>
                 </div>
             </div>
             @empty
