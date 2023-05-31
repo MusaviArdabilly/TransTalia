@@ -37,7 +37,7 @@ class GuestController extends Controller
     }
         
     public static function getStatusColor($status){
-        if ($status == 'menunggu'){
+        if ($status == 'menunggu'){ //'', '', '', ''
             return '#FFC107';
         }else {
             return '';
