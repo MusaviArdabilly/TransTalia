@@ -104,101 +104,11 @@
 
             <!-- Area Chart -->
             <div class="col-12">
-                <div class="card shadow mb-4">
+                <div class="card shadow border-left-warning mb-4">
                     <!-- Card Header - Dropdown -->
                     <div
                         class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary">Ringkasan Pendapatan ({{ now()->year }})</h6>
-                        <div class="dropdown no-arrow">
-                            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                            </a>
-                            {{-- <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                aria-labelledby="dropdownMenuLink">
-                                <div class="dropdown-header">Dropdown Header:</div>
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                            </div> --}}
-                        </div>
-                    </div>
-                    <!-- Card Body -->
-                    <div class="card-body p-0 p-md-3">
-                        <div class="chart-area">
-                            <canvas id="areaRingkasanPendapatan"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Pie Chart -->
-            {{-- <div class="col-xl-4 col-lg-5">
-                <div class="card shadow mb-4">
-                    <!-- Card Header - Dropdown -->
-                    <div
-                        class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary">Sumber Pendapatan ({{ now()->year }})</h6>
-                    </div>
-                    <!-- Card Body -->
-                    <div class="card-body">
-                                    <div class="chart-pie pt-4 pb-2">
-                                        <canvas id="myPieChart"></canvas>
-                                    </div>
-                                    <div class="mt-4 text-center small">
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle" style="color:#b15928"></i> EMERALD
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle" style="color:#ffff99"></i> EMINENENCE
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle" style="color:#6a3d9a"></i> INTERCEPTOR
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle" style="color:#cab2d6"></i> BERYL
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle" style="color:#ff7f00"></i> CONVINCER
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle" style="color:#fdbf6f"></i> VENCENDOR
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle" style="color:#e31a1c"></i> RESOLUTE
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle" style="color:#fb9a99"></i> ALFAYIZ
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle" style="color:#33a02c"></i> INTERPID
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle" style="color:#b2df8a"></i> AURORA
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle" style="color:#1f78b4"></i> ORION
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle" style="color:#a6cee3"></i> ELF
-                                        </span>
-                                    </div>
-                    </div>
-                </div>
-            </div> --}}
-        </div>
-
-        <!-- Content Row -->
-        <div class="row">
-
-            <!-- Area Chart -->
-            <div class="col-12">
-                <div class="card shadow mb-4">
-                    <!-- Card Header - Dropdown -->
-                    <div
-                        class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary">Transaksi Masuk ({{ now()->year }})</h6>
+                        <h6 class="m-0 font-weight-bold text-warning">Transaksi Masuk ({{ now()->year }})</h6>
                         <div class="dropdown no-arrow">
                             <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -223,6 +133,36 @@
                 </div>
             </div>
 
+            <!-- Area Chart -->
+            <div class="col-12">
+                <div class="card shadow border-left-success mb-4">
+                    <!-- Card Header - Dropdown -->
+                    <div
+                        class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 font-weight-bold text-success">Ringkasan Pendapatan ({{ now()->year }})</h6>
+                        <div class="dropdown no-arrow">
+                            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                            </a>
+                            {{-- <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                aria-labelledby="dropdownMenuLink">
+                                <div class="dropdown-header">Dropdown Header:</div>
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </div> --}}
+                        </div>
+                    </div>
+                    <!-- Card Body -->
+                    <div class="card-body p-0 p-md-3">
+                        <div class="chart-area">
+                            <canvas id="areaRingkasanPendapatan"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- Content Column -->
             {{-- <div class="col-xl-4 col-lg-5">
 
