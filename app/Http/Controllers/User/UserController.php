@@ -9,7 +9,9 @@ use Spatie\GoogleCalendar\Event;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 use App\Models\User;
+use App\Models\Pegawai;
 use App\Models\Reservasi;
 use App\Models\ArmadaBus;
 use App\Models\ReservasiArmadaBus;
@@ -67,13 +69,16 @@ class UserController extends Controller
         }
 
         $this->validate($request, [
-            'tanggal_mulai' => 'required',
-            'tanggal_selesai' => 'required',
+            'tanggal_mulai' => 'required|date',
+            'tanggal_selesai' => 'required|date|after_or_equal:tanggal_mulai',
             'kota_jemput' => 'required',
             'kota_tujuan' => 'required',
         ],[
             'tanggal_mulai.required' => 'Tanggal Mulai tidak boleh kosong',
             'tanggal_selesai.required' => 'Tanggal Selesai tidak boleh kosong',
+            'tanggal_mulai.date' => 'Pilih tanggal yang sudah disediakan',
+            'tanggal_selesai.date' => 'Pilih tanggal yang sudah disediakan',
+            'tanggal_selesai.after_or_equal' => 'Tanggal Selesai harus lebih dari atau sama dengan Tanggal Mulai',
             'kota_jemput.required' => 'Lokasi penjemputan tidak boleh kosong',
             'kota_tujuan.required' => 'Lokasi Tujuan tidak boleh kosong',
         ]);
@@ -133,7 +138,7 @@ class UserController extends Controller
         $jarak_rute = $request->jarak_rute;
         //request - retrieve selected bus
         $selected_bus = $request->selected_armada_bus_id;
-        // get id each selected bus 
+            // get id each selected bus 
         $explode_selected_bus = explode('"', $selected_bus);
         $exploded_selected_bus = explode(', ', $explode_selected_bus[0]);
             // Create a new array with separate indexes
@@ -144,39 +149,109 @@ class UserController extends Controller
         //find bus which is selected
         $data_selected_armada_bus = ArmadaBus::find([$array_selected_bus]);
 
+        $startDate = Carbon::parse($tanggal_mulai);
+        $endDate = Carbon::parse($tanggal_selesai)->addDay();
+        $durasi = $endDate->diffInDays($startDate);
+
+        //count sub_total and total_harga 
+            //ambil data jarak, tujuan dan durasi 
+            //apabila jawa timur
+                //apabila durasinya 1 hari apabila jarak > 150km maka store sub_total dengan hitungan jarak, apabila jarak < 150km maka store data 3jt
+                //apabila durasinya lebih dari 1 hari 
+            //else
+                //sewa per hari (2*4jt)
+                //apabila jawa tengah && durasi > 2 hari 
+                    //durasi*4jt + durasi-2 * 2jt 
+                //apabila jawa barat && durasi > 4 hari 
+                    //durasi*4jt + durasi-4 * 2jt
         $sub_totals = [];
         $total_harga = 0;
-
-        foreach ($data_selected_armada_bus as $armadaBus) {
-            $harga_sewa_bus = $armadaBus->harga_sewa;
-            $sub_total = $harga_sewa_bus * (2 * $jarak_rute); //2x jarak = pulang + pergi
-            $sub_totals[] = $sub_total * 1.9; //subtotal x 1.9 karena biaya operasional = 90% dari biaya sewa bus 
-            $total_harga += $sub_total * 1.9;
+        
+        if(Str::contains(Str::lower($kota_tujuan), Str::lower('Jawa Timur'))){
+            if($durasi == 1){
+                if($jarak_rute < 150){
+                    //sub_total = 3jt
+                    foreach ($data_selected_armada_bus as $armadaBus) {
+                        $harga_sewa_bus = 3000000;
+                        $sub_total = $harga_sewa_bus;
+                        $sub_totals[] = $sub_total;
+                        $total_harga += $sub_total;
+                    }
+                }else{
+                    //pakai rumus jarak
+                    foreach ($data_selected_armada_bus as $armadaBus) {
+                        $harga_sewa_bus = $armadaBus->harga_sewa;
+                        $sub_total = $harga_sewa_bus * (2 * $jarak_rute);
+                        $sub_totals[] = $sub_total;
+                        $total_harga += $sub_total;
+                    }
+                }
+            }else{
+                //$durasi * 4jt
+                if($jarak_rute < 150){
+                    //sub_total = 3jt
+                    foreach ($data_selected_armada_bus as $armadaBus) {
+                        $harga_sewa_bus = 3000000;
+                        $sub_total = $harga_sewa_bus + ($durasi * ($harga_sewa_bus / 2));
+                        $sub_totals[] = $sub_total;
+                        $total_harga += $sub_total;
+                    }
+                }else{
+                    //pakai rumus jarak
+                    foreach ($data_selected_armada_bus as $armadaBus) {
+                        $harga_sewa_bus = $armadaBus->harga_sewa;
+                        $harga_sewa_bus_tambahan = ($durasi - 1) * (($harga_sewa_bus * (2 * $jarak_rute)) / 2);
+                        $sub_total = $harga_sewa_bus * (2 * $jarak_rute) + $harga_sewa_bus_tambahan;
+                        $sub_totals[] = $sub_total;
+                        $total_harga += $sub_total;
+                    }
+                }
+            }
+        }elseif(Str::contains(Str::lower($kota_tujuan), Str::lower('Jawa Tengah')) || Str::contains(Str::lower($kota_tujuan), Str::lower('Daerah Istimewa Yogyakarta'))){
+            if($durasi >= 1 && $durasi <= 2){
+                //subtotal = 2 * 4jt
+                foreach ($data_selected_armada_bus as $armadaBus) {
+                    $harga_sewa_bus = $armadaBus->harga_sewa;
+                    $sub_total = $harga_sewa_bus * (2 * $jarak_rute);
+                    $sub_totals[] = $sub_total;
+                    $total_harga += $sub_total;
+                }
+            }else{
+                //subtotal = ($durasi * 4jt) + ($durasi * 2jt)
+                foreach ($data_selected_armada_bus as $armadaBus) {
+                    // $harga_sewa_bus = 4000000; //BINGUNG BUS KECIL BESAR
+                    $harga_sewa_bus = $armadaBus->harga_sewa;
+                    $harga_sewa_bus_tambahan = 2000000;
+                    $sub_total = $harga_sewa_bus * (2 * $jarak_rute) + $harga_sewa_bus_tambahan;
+                    $sub_totals[] = $sub_total;
+                    $total_harga += $sub_total;
+                }
+            }
+        }elseif(Str::contains(Str::lower($kota_tujuan), Str::lower('Jawa Barat')) || Str::contains(Str::lower($kota_tujuan), Str::lower('Daerah Khusus Ibukota')) || Str::contains(Str::lower($kota_tujuan), Str::lower('Banten'))){
+            if($durasi >= 1 && $durasi <= 4){
+                //subtotal = 4 * 4jt
+                foreach ($data_selected_armada_bus as $armadaBus) {
+                    $harga_sewa_bus = $armadaBus->harga_sewa;
+                    $sub_total = $harga_sewa_bus * (2 * $jarak_rute);
+                    $sub_totals[] = $sub_total;
+                    $total_harga += $sub_total;
+                }
+            }else{
+                //subtotal = ($durasi * 4jt) + ($duration *2jt)
+                foreach ($data_selected_armada_bus as $armadaBus) {
+                    // $harga_sewa_bus = 4000000; //BINGUNG BUS KECIL BESAR
+                    // $harga_sewa_bus_tambahan = ($durasi - 4) * (($harga_sewa_bus * (2 * $jarak_rute)) / 2);
+                    $harga_sewa_bus = $armadaBus->harga_sewa;
+                    $harga_sewa_bus_tambahan = 2000000;
+                    $sub_total = $harga_sewa_bus * (2 * $jarak_rute) + $harga_sewa_bus_tambahan;
+                    $sub_totals[] = $sub_total;
+                    $total_harga += $sub_total;
+                }
+            }
         }
 
-        $startDate = Carbon::parse($tanggal_mulai);
-        $endDate = Carbon::parse($tanggal_selesai);
-        $duration = $endDate->diffInDays($startDate);
-
-
-        // dd($jarak_rute, $data_selected_armada_bus, $harga_sewa_bus, $sub_total, $harga_total, $sub_totals);
-            //logic untuk menentukan harga gmap apikey: AIzaSyD3NfQbLS6VzWjfJqKAa-2UiHYyzAlfMRI
-        //hitung jarak antara kota penjemputan dan kota tujuan
-
-        // $origin = urlencode($kota_jemput);
-        // $destination = urlencode($kota_tujuan);
-        // $api_key = "AIzaSyD3NfQbLS6VzWjfJqKAa-2UiHYyzAlfMRI";
-        // $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins=$origin&destinations=$destination&key=$api_key";
-
-        // $client = new Client();
-        // $response = $client->get($url);
-        // $data = json_decode($response->getBody(), false); //param ke2 true=array false=obj
-        
-        // $distance_meter = $data->rows[0]->elements[0]->distance->value;
-        // $distance_km = round($distance_meter / 1000); //pembulatan angka dibelakang koma
-        
-
-        return view ('user.reservasi-checkOut', compact('kode_reservasi', 'tanggal_mulai', 'tanggal_selesai', 'kota_jemput', 'kota_tujuan', 'jarak_rute', 'sub_totals', 'total_harga',  'data_selected_armada_bus'));
+        // return $sub_totals;
+        return view ('user.reservasi-checkOut', compact('kode_reservasi', 'tanggal_mulai', 'tanggal_selesai', 'kota_jemput', 'kota_tujuan', 'jarak_rute', 'sub_totals', 'total_harga',  'data_selected_armada_bus', 'durasi'));
     }
 
     public function reservationStore(Request $request){
@@ -192,18 +267,16 @@ class UserController extends Controller
         $reservasi->status = 'menunggu'; //status: 'menunggu', 'dibayar', 'lunas', 'batal'
         $reservasi->save();
         foreach($request->selected_armada_bus_id as $key => $id_armada_bus){
-            // //store to event google calendar //store only if already paid
-            // $armada_bus = ArmadaBus::find($id_armada_bus);
-            // $event = new Event; //event from vendor gcal
-            // $event->name = $armada_bus->nama .' - '. $request->kota_tujuan;
-            // $event->startDateTime = Carbon::parse($request->tanggal_mulai)->setTime(8, 00, 01)->setTimezone('Asia/Jakarta');
-            // $event->endDateTime = Carbon::parse($request->tanggal_selesai)->setTime(23, 59, 59)->setTimezone('Asia/Jakarta');
-            // $event->save();
             $reservasi_armada_bus = new ReservasiArmadaBus;
             $reservasi_armada_bus->reservasi_id = $reservasi->id; 
             $reservasi_armada_bus->armada_bus_id = $id_armada_bus;
             $reservasi_armada_bus->sub_total = $request->sub_total[$key];
             $reservasi_armada_bus->save();
+        }
+        $user_pegawai = Pegawai::where('user_id', Auth::user()->id)->first();
+        if($user_pegawai){
+            $user_pegawai->jumlah_order += 1;
+            $user_pegawai->save();
         }
         return redirect('/reservasi/riwayat')->with('success', 'Reservasi berhasil, data anda akan segera diproses');
     }
