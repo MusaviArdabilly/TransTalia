@@ -1,5 +1,5 @@
 @extends('admin.layout')
-@section('title', 'Ubah Reservasi')
+@section('title', 'Reservasi')
 @section('content')
 
 <script type="text/javascript">
