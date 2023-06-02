@@ -200,7 +200,7 @@ class UserController extends Controller
                     //pakai rumus jarak
                     foreach ($data_selected_armada_bus as $armadaBus) {
                         $harga_sewa_bus = $armadaBus->harga_sewa;
-                        $harga_sewa_bus_tambahan = ($durasi - 1) * (($harga_sewa_bus * (2 * $jarak_rute)) / 2);
+                        $harga_sewa_bus_tambahan = 1500000;
                         $sub_total = $harga_sewa_bus * (2 * $jarak_rute) + $harga_sewa_bus_tambahan;
                         $sub_totals[] = $sub_total;
                         $total_harga += $sub_total;
@@ -285,7 +285,7 @@ class UserController extends Controller
         $data_reservasi = Reservasi::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(10);
         
 
-        return view ('user.riwayatreservasi', compact('data_reservasi'));
+        return view ('user.riwayatReservasi', compact('data_reservasi'));
     }
 
     public function editAkun(){
