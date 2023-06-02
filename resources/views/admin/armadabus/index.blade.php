@@ -60,7 +60,7 @@
                             @forelse ($data_armada_bus as $key => $armada_bus)
                                 <tr>
                                     <th scope="row">{{ $data_armada_bus->firstItem()+$key }}</th>
-                                    <td class="align-middle"><img src="/assets/images/armada_bus/{{ $armada_bus->gambar }}" class="tumbnail_armada_bus"> {{ $armada_bus->nama }}</td>
+                                    <td class="align-middle"><img src="/assets/images/armada_bus/{{ $armada_bus->gambar }}" class="tumbnail_armada_bus rounded"> {{ $armada_bus->nama }}</td>
                                     <td class="align-middle">{{ $armada_bus->kursi }}</td>
                                     <td class="align-middle">{{ $armada_bus->sassis }}</td>
                                     <td class="align-middle">{{ $armada_bus->jenis_bus }}</td>
