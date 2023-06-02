@@ -31,7 +31,7 @@ class ArmadaBusSeeder extends Seeder
             'kursi' => '59',
             'sassis' => 'Hino RM280 STD',
             'jenis_bus' => 'Ultra High Decker',
-            'harga_sewa' => '9000',
+            'harga_sewa' => '12000',
             'plat_nomor' => 'S 2341 WS',
             'gps' => null,
         ]);
@@ -64,7 +64,7 @@ class ArmadaBusSeeder extends Seeder
             'kursi' => '59',
             'sassis' => 'Hino 115SDB STD',
             'jenis_bus' => ' Super High Decker',
-            'harga_sewa' => '9000',
+            'harga_sewa' => '12000',
             'plat_nomor' => 'S 1098 WS',
             'gps' => null,
         ]);
@@ -75,7 +75,7 @@ class ArmadaBusSeeder extends Seeder
             'kursi' => '59',
             'sassis' => 'Mercedes Benz OH 1626',
             'jenis_bus' => ' Super High Decker',
-            'harga_sewa' => '9000',
+            'harga_sewa' => '12000',
             'plat_nomor' => 'S 9543 WS',
             'gps' => null,
         ]);
@@ -86,7 +86,7 @@ class ArmadaBusSeeder extends Seeder
             'kursi' => '59',
             'sassis' => 'Hino 115SDB STD',
             'jenis_bus' => ' Super High Decker',
-            'harga_sewa' => '9000',
+            'harga_sewa' => '12000',
             'plat_nomor' => 'S 7178 WS',
             'gps' => null,
         ]);
@@ -97,7 +97,7 @@ class ArmadaBusSeeder extends Seeder
             'kursi' => '59',
             'sassis' => 'Hino R260',
             'jenis_bus' => ' Super High Decker',
-            'harga_sewa' => '9000',
+            'harga_sewa' => '12000',
             'plat_nomor' => 'S 8201 WS',
             'gps' => null,
         ]);
@@ -108,7 +108,7 @@ class ArmadaBusSeeder extends Seeder
             'kursi' => '59',
             'sassis' => 'Hino R260',
             'jenis_bus' => ' Super High Decker',
-            'harga_sewa' => '9000',
+            'harga_sewa' => '12000',
             'plat_nomor' => 'S 8521 WS',
             'gps' => null,
         ]);
@@ -119,7 +119,7 @@ class ArmadaBusSeeder extends Seeder
             'kursi' => '39',
             'sassis' => 'Hino R260',
             'jenis_bus' => ' Super High Decker',
-            'harga_sewa' => '9000',
+            'harga_sewa' => '10000',
             'plat_nomor' => 'S 3091 WS',
             'gps' => null,
         ]);
@@ -130,7 +130,7 @@ class ArmadaBusSeeder extends Seeder
             'kursi' => '39',
             'sassis' => 'Hino R260',
             'jenis_bus' => 'High Decker Double Glass',
-            'harga_sewa' => '9000 ',
+            'harga_sewa' => '10000',
             'plat_nomor' => 'S 9132 WS',
             'gps' => null,
         ]);
@@ -141,7 +141,7 @@ class ArmadaBusSeeder extends Seeder
             'kursi' => '39',
             'sassis' => 'Hino R260',
             'jenis_bus' => 'High Decker Double Glass',
-            'harga_sewa' => '9000',
+            'harga_sewa' => '10000',
             'plat_nomor' => 'S 2208 WS',
             'gps' => null,
         ]);
