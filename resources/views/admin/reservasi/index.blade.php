@@ -86,7 +86,7 @@
                                     // Split the string by commas
                                     $parts = explode(',', $value);
                                 @endphp
-                                <td class="text-capitalize">{{ $parts[0] }} <br> {{ $parts[1] }} <br> {{ $parts[2] }}</td>
+                                <td class="text-capitalize">{{ $parts[0] }} <br> {{ $parts[1] }} <br> @isset($parts[2]){{ $parts[2] }}@endisset</td>
                                 <td class="text-capitalize">
                                     @foreach($reservasi->reservasi_armada_bus as $data_armada_bus)
                                     {{ $data_armada_bus->armada_bus->nama }} - Rp. {{ number_format($data_armada_bus->sub_total, 0, ',', '.') }} <br>
