@@ -19,10 +19,10 @@ class TransaksiController extends Controller
                   ->orWhere('keterangan', 'LIKE', '%'.$request->search.'%')
                   ->orWhereHas('reservasi', function($query) use($request){
                         $query->where('kode', 'LIKE', '%'.$request->search.'%')
-                        ->orWhereHas('user', function($query) use($request){
-                            $query->where('nama_depan', 'LIKE', '%'.$request->search.'%')
-                                ->orwhere('nama_belakang', 'LIKE', '%'.$request->search.'%');
-                        });
+                              ->orWhereHas('user', function($query) use($request){
+                                  $query->where('nama_depan', 'LIKE', '%'.$request->search.'%')
+                                        ->orWhere('nama_belakang', 'LIKE', '%'.$request->search.'%');
+                              });
                     });
         })->orderBy('created_at', 'desc')->paginate(25);
 
