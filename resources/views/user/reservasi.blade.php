@@ -175,6 +175,15 @@
             calendar.render();
         }
     });
+
+    const startDateInput = document.getElementById('inputTanggalMulai');
+    const endDateInput = document.getElementById('inputTanggalSelesai');
+    startDateInput.addEventListener('change', function() {
+        endDateInput.min = startDateInput.value;
+        if (endDateInput.value < startDateInput.value) {
+            endDateInput.value = startDateInput.value;
+        }
+    });
 </script>
 
 @endsection
