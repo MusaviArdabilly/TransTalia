@@ -1,5 +1,5 @@
 @extends('public-layout')
-@section('title', 'Reservasi - Trans Talia')
+@section('title', 'Check Out - Trans Talia')
 @section('content')
 
 <script type="text/javascript">
@@ -18,11 +18,11 @@
                 @csrf
                 <div class="col-12">
                     <div class="row">
-
-                        <div class="col-6 col-md-6">
+                        <div class="col-6 mb-3">
                             <label for="kodeReservasi" class="form-label">Kode Reservasi</label>
                             <input readonly type="text" name="kode_reservasi" class="form-control" id="kodeReservasi" value="{{ $kode_reservasi }}">
                         </div>
+                        <div class="col-6 d-flex d-md-none"></div>
                         <div class="col-6 col-md-3">
                             <label for="inputTanggalMulai" class="form-label">Tanggal Mulai</label>
                             <input readonly type="text" class="form-control" value="{{ \Carbon\Carbon::parse($tanggal_mulai)->locale('id')->isoFormat('DD MMMM YYYY') }}">
@@ -40,11 +40,11 @@
                     <div class="row px-3">
                         <div class="col-md-6">
                             <label for="inputState" class="form-text">Kota Penjemputan</label>
-                            <input readonly type="text" name="kota_jemput" class="form-control" value="{{ $kota_jemput }}">
+                            <input readonly type="text" name="kota_jemput" class="form-control" value="{{ str_replace(', Indonesia', '', $kota_jemput) }}">
                         </div>
                         <div class="col-md-6">
                             <label for="inputState" class="form-text">Kota Tujuan</label>
-                            <input readonly type="text" name="kota_tujuan" class="form-control" value="{{ $kota_tujuan }}">
+                            <input readonly type="text" name="kota_tujuan" class="form-control" value="{{ str_replace(', Indonesia', '', $kota_tujuan) }}">
                         </div>
                     </div>
                 </div>
@@ -52,7 +52,7 @@
                     <label for="selectedBus" class="form-label d-block">Bus yang dipilih:</label>
                     <div class="row">
                         @forelse($data_selected_armada_bus as $key => $selected_armada_bus)
-                        <div class="col-3" id="selectedBus">
+                        <div class="col-6 col-md-3" id="selectedBus">
                             <div class="card">
                                 <div class="card-body">
                                     <input type="hidden" name="sub_total[]" value="{{ $sub_totals[$key] }}">
@@ -69,14 +69,19 @@
                         @endforelse
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-6 d-none d-md-flex"></div>
+                <div class="col-6 col-md-1">
+                    <label for="harga" class="form-label">Durasi:</label>
+                    <input type="text" readonly class="form-control text-end" id="harga" value="{{$durasi}} Hari">
+                </div>
+                <div class="col-6 col-md-2">
+                    <label for="harga" class="form-label">Jarak:</label>
+                    <input type="text" readonly class="form-control text-end" id="harga" value="{{$jarak_rute}} KM">
+                </div>
+                <div class="col-12 col-md-3">
                     <label for="harga" class="form-label">Total Harga:</label>
                     <input type="hidden" name="total_harga" value="{{ $total_harga }}">
                     <input type="text" readonly class="form-control text-end" id="harga" value="Rp. {{ number_format($total_harga, 0, ',', '.') }}">
-                </div>
-                <div class="col-md-3">
-                    <label for="harga" class="form-label">Jarak:</label>
-                    <input type="text" readonly class="form-control text-end" id="harga" value="Rp. {{$jarak_rute}}">
                 </div>
                 <hr class="mb-0">
                 <div class="d-flex justify-content-end">
