@@ -25,7 +25,7 @@ class PegawaiSeeder extends Seeder
             'user_id' => intval('2'),
             'alamat_id' => intval('1'),
             'jabatan' => 'mekanik',
-            'jumlah_order' => intval('1'),
+            'jumlah_order' => intval('0'),
         ]);
         // Record 2
         Alamat::create([
@@ -51,7 +51,7 @@ class PegawaiSeeder extends Seeder
             'user_id' => intval('6'),
             'alamat_id' => intval('3'),
             'jabatan' => 'teknisi_audio_visual',
-            'jumlah_order' => intval('2'),
+            'jumlah_order' => intval('0'),
         ]);
         // Record 4
         Alamat::create([
@@ -64,7 +64,7 @@ class PegawaiSeeder extends Seeder
             'user_id' => intval('8'),
             'alamat_id' => intval('4'),
             'jabatan' => 'kenek',
-            'jumlah_order' => intval('1'),
+            'jumlah_order' => intval('0'),
         ]);
     }
 }
