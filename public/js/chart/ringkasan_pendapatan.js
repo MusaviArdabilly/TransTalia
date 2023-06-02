@@ -122,7 +122,7 @@ var ack = document.getElementById("areaKasMasuk");
 var myLineChart = new Chart(ack, {
   type: 'line',
   data: {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    labels: ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"],
     datasets: [{
       label: "Earnings",
       lineTension: 0.3,
