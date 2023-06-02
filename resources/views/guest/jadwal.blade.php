@@ -10,7 +10,7 @@
 
 <div class="fake-navbar"></div>
 <div class="minvh100-114 d-flex align-items-center px-0 py-3 p-md-3">
-    <div class="container-md">
+    <div class="container-fluid">
         <div class="col-12 mb-3">
             <div id="calendar"></div>
         </div>
