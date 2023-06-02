@@ -1,5 +1,5 @@
 @extends('public-layout')
-@section('title', 'Reservasi - Trans Talia')
+@section('title', 'Riwayat Reservasi - Trans Talia')
 @section('content')
 
 <script type="text/javascript">
