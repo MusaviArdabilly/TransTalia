@@ -17,6 +17,7 @@ use App\Models\ArmadaBus;
 use App\Models\ReservasiArmadaBus;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\PostReservation;
+use App\Mail\PostReservationToAdmin;
 
 class UserController extends Controller
 {
@@ -267,18 +268,18 @@ class UserController extends Controller
         $reservasi->total_harga = $request->total_harga;
         $reservasi->dibayar = 0;
         $reservasi->status = 'menunggu'; //status: 'menunggu', 'dibayar', 'lunas', 'batal'
-        // $reservasi->save();
+        $reservasi->save();
         foreach($request->selected_armada_bus_id as $key => $id_armada_bus){
             $reservasi_armada_bus = new ReservasiArmadaBus;
             $reservasi_armada_bus->reservasi_id = $reservasi->id; 
             $reservasi_armada_bus->armada_bus_id = $id_armada_bus;
             $reservasi_armada_bus->sub_total = $request->sub_total[$key];
-            // $reservasi_armada_bus->save();
+            $reservasi_armada_bus->save();
         }
         $user_pegawai = Pegawai::where('user_id', Auth::user()->id)->first();
         if($user_pegawai){
             $user_pegawai->jumlah_order += 1;
-            // $user_pegawai->save();
+            $user_pegawai->save();
         }
 
         //for send email
@@ -300,7 +301,8 @@ class UserController extends Controller
 
         // dd($email_user, $nama_user,$kode_reservasi, $tanggal_mulai, $tanggal_selesai, $kota_jemput, $kota_tujuan, $armada_bus, $total_harga);
 
-        Mail::to($email_user)->send(new PostReservation($nama_user,$kode_reservasi, $tanggal_mulai, $tanggal_selesai, $kota_jemput, $kota_tujuan, $armada_bus, $total_harga));
+        Mail::to($email_user)->send(new PostReservation($nama_user, $kode_reservasi, $tanggal_mulai, $tanggal_selesai, $kota_jemput, $kota_tujuan, $armada_bus, $total_harga));
+        Mail::to('admin@transtalia.com')->send(new PostReservationToAdmin($nama_user, $kode_reservasi, $tanggal_mulai, $tanggal_selesai, $kota_jemput, $kota_tujuan, $armada_bus, $total_harga));
 
         return redirect('/reservasi/riwayat')->with('success', 'Reservasi berhasil, data anda akan segera diproses');
     }

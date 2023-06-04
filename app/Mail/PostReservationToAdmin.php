@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class PostReservation extends Mailable
+class PostReservationToAdmin extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -35,7 +35,7 @@ class PostReservation extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Reservasi Bus Pariwisata PO. Trans Talia',
+            subject: 'New Reservation',
         );
     }
 
@@ -45,7 +45,7 @@ class PostReservation extends Mailable
     public function content(): Content
     {
         return new Content(
-            markdown: 'postReservationView',
+            markdown: 'postReservationAdminView',
             with: [
                 'namaUser' => $this->nama_user,
                 'kodeReservasi' => $this->kode_reservasi,
