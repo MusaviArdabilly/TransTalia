@@ -267,18 +267,18 @@ class UserController extends Controller
         $reservasi->total_harga = $request->total_harga;
         $reservasi->dibayar = 0;
         $reservasi->status = 'menunggu'; //status: 'menunggu', 'dibayar', 'lunas', 'batal'
-        $reservasi->save();
+        // $reservasi->save();
         foreach($request->selected_armada_bus_id as $key => $id_armada_bus){
             $reservasi_armada_bus = new ReservasiArmadaBus;
             $reservasi_armada_bus->reservasi_id = $reservasi->id; 
             $reservasi_armada_bus->armada_bus_id = $id_armada_bus;
             $reservasi_armada_bus->sub_total = $request->sub_total[$key];
-            $reservasi_armada_bus->save();
+            // $reservasi_armada_bus->save();
         }
         $user_pegawai = Pegawai::where('user_id', Auth::user()->id)->first();
         if($user_pegawai){
             $user_pegawai->jumlah_order += 1;
-            $user_pegawai->save();
+            // $user_pegawai->save();
         }
 
         //for send email
@@ -369,21 +369,5 @@ class UserController extends Controller
         $user->save();
 
         return redirect()->back()->with('success', 'Password Berhasil Diubah');
-    }
-
-    public function sendEmail(){
-        $email_user = Auth::user()->email;
-        $nama_user = Auth::user()->nama_depan.' '.Auth::user()->nama_belakang;
-        $kode_reservasi = 'TRMxxxxxxx';
-        $tanggal_mulai = '21 Mei 2023';
-        $tanggal_selesai = '22 Mei 2023';
-        $kota_jemput = 'Mojoagung, Kabupaten Jombang, Jawa Timur';
-        $kota_tujuan = 'Batu, Kota Batu, Jawa Timur';
-        $armada_bus = 'Beryl, Eminence';
-        $total_harga = 'Rp. 6.000.000';
-
-        Mail::to($email_user)->send(new PostReservation($nama_user,$kode_reservasi, $tanggal_mulai, $tanggal_selesai, $kota_jemput, $kota_tujuan, $armada_bus, $total_harga));
-
-        return view('guest.index');
     }
 }
