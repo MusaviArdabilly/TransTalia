@@ -15,6 +15,8 @@ use App\Models\Pegawai;
 use App\Models\Reservasi;
 use App\Models\ArmadaBus;
 use App\Models\ReservasiArmadaBus;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\PostReservation;
 
 class UserController extends Controller
 {
@@ -278,6 +280,28 @@ class UserController extends Controller
             $user_pegawai->jumlah_order += 1;
             $user_pegawai->save();
         }
+
+        //for send email
+        foreach($request->selected_armada_bus_id as $key => $id_armada_bus){
+            $armada_bus = ArmadaBus::find($id_armada_bus);
+            $array_nama_armada_bus[] = $armada_bus->nama;
+        }
+        $nama_armada_bus = implode(', ', $array_nama_armada_bus);
+
+        $email_user = Auth::user()->email;
+        $nama_user = Auth::user()->nama_depan.' '.Auth::user()->nama_belakang;
+        $kode_reservasi = $request->kode_reservasi;
+        $tanggal_mulai = Carbon::parse($request->tanggal_mulai)->locale('id')->isoFormat('DD MMMM YYYY');
+        $tanggal_selesai = Carbon::parse($request->tanggal_selesai)->locale('id')->isoFormat('DD MMMM YYYY');
+        $kota_jemput = $request->kota_jemput;
+        $kota_tujuan = $request->kota_tujuan;
+        $armada_bus = $nama_armada_bus;
+        $total_harga = 'Rp. '. number_format($request->total_harga, 0, ',', '.').',00';
+
+        // dd($email_user, $nama_user,$kode_reservasi, $tanggal_mulai, $tanggal_selesai, $kota_jemput, $kota_tujuan, $armada_bus, $total_harga);
+
+        Mail::to($email_user)->send(new PostReservation($nama_user,$kode_reservasi, $tanggal_mulai, $tanggal_selesai, $kota_jemput, $kota_tujuan, $armada_bus, $total_harga));
+
         return redirect('/reservasi/riwayat')->with('success', 'Reservasi berhasil, data anda akan segera diproses');
     }
 
@@ -345,5 +369,21 @@ class UserController extends Controller
         $user->save();
 
         return redirect()->back()->with('success', 'Password Berhasil Diubah');
+    }
+
+    public function sendEmail(){
+        $email_user = Auth::user()->email;
+        $nama_user = Auth::user()->nama_depan.' '.Auth::user()->nama_belakang;
+        $kode_reservasi = 'TRMxxxxxxx';
+        $tanggal_mulai = '21 Mei 2023';
+        $tanggal_selesai = '22 Mei 2023';
+        $kota_jemput = 'Mojoagung, Kabupaten Jombang, Jawa Timur';
+        $kota_tujuan = 'Batu, Kota Batu, Jawa Timur';
+        $armada_bus = 'Beryl, Eminence';
+        $total_harga = 'Rp. 6.000.000';
+
+        Mail::to($email_user)->send(new PostReservation($nama_user,$kode_reservasi, $tanggal_mulai, $tanggal_selesai, $kota_jemput, $kota_tujuan, $armada_bus, $total_harga));
+
+        return view('guest.index');
     }
 }
