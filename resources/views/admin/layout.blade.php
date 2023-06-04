@@ -107,6 +107,7 @@
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
+            @if(Auth::user()->role == 'admin')
             <!-- Nav Item - Dashboard -->
             <li class="nav-item" id="dashboard">
                 <a class="nav-link" href="/admin/dashboard">
@@ -116,6 +117,8 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
+            @else
+            @endif
 
             <!-- Nav Item - Jadwal -->
             <li class="nav-item" id="jadwal">
@@ -133,6 +136,7 @@
                 Data
             </div>
 
+            @if(Auth::user()->role == 'admin')
             <!-- Nav Item - Reservasi -->
             <li class="nav-item" id="reservasi">
                 <a class="nav-link" href="/admin/reservasi">
@@ -148,6 +152,8 @@
                     <span>Transaksi</span>
                 </a>
             </li>
+            @else
+            @endif
 
             <!-- Nav Item - Perawatan Armada -->
             <li class="nav-item" id="perawatanarmada">
@@ -165,6 +171,7 @@
                 </a>
             </li>
 
+            @if(Auth::user()->role == 'admin')
             <!-- Nav Item - Performa Pegawai -->
             <li class="nav-item" id="performapegawai">
                 <a class="nav-link" href="/admin/performa-pegawai">
@@ -204,6 +211,8 @@
                     <span>Pegawai</span>
                 </a>
             </li>
+            @else
+            @endif
 
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="d-none d-md-flex justify-content-center">
