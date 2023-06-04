@@ -31,6 +31,10 @@ Route::get('/', function () {
     return view('guest.index');
 });
 
+Route::get('/error-403', function(){
+    return view('not-authorized');
+});
+
 // ========================== Guest ==========================
 
 Route::get('/', [GuestController::class, 'index']);
@@ -64,12 +68,12 @@ Route::get('/reservasi/riwayat', [UserController::class, 'reservationHistory']);
 
 // ========================== Admin ========================== 
 
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->middleware('admin_employee')->group(function () {
 
-    Route::get('/dashboard', [DashboardController::class, 'index']);
+    Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('admin_employee');
     
     // ---------------------- Armada Bus ----------------------
-    Route::prefix('armada-bus')->group(function () {
+    Route::prefix('armada-bus')->middleware('employee_restriction')->group(function () {
         Route::get('/', [ArmadaBusController::class, 'index']);
         Route::get('/tambah', [ArmadaBusController::class, 'add']);
         Route::post('/tambah/post', [ArmadaBusController::class, 'store']);
@@ -79,7 +83,7 @@ Route::prefix('admin')->group(function () {
     });
 
     // -------------------- Kode Perawatan --------------------
-    Route::prefix('kode-perawatan')->group(function () {
+    Route::prefix('kode-perawatan')->middleware('employee_restriction')->group(function () {
         Route::get('/', [KodePerawatanController::class, 'index']);
         Route::get('/tambah', [KodePerawatanController::class, 'add']);
         Route::post('/tambah/post', [KodePerawatanController::class, 'store']);
@@ -89,7 +93,7 @@ Route::prefix('admin')->group(function () {
     });
     
     // ------------------------ Pegawai ------------------------
-    Route::prefix('pegawai')->group(function () {
+    Route::prefix('pegawai')->middleware('employee_restriction')->group(function () {
         Route::get('/', [PegawaiController::class, 'index']);
         Route::get('/tambah', [PegawaiController::class, 'add']);
         Route::post('/tambah/post', [PegawaiController::class, 'store']);
@@ -104,7 +108,7 @@ Route::prefix('admin')->group(function () {
     });
     
     // ------------------------ Reservasi ------------------------
-    Route::prefix('reservasi')->group(function () {
+    Route::prefix('reservasi')->middleware('employee_restriction')->group(function () {
         Route::get('/', [ReservasiController::class, 'index']);
         Route::get('/ubah/{id}', [ReservasiController::class, 'edit']);
         Route::post('/ubah/{id}/post', [ReservasiController::class, 'update']);
@@ -117,7 +121,7 @@ Route::prefix('admin')->group(function () {
     });
     
     // ---------------------- Transaksi ----------------------
-    Route::prefix('transaksi')->group(function () {
+    Route::prefix('transaksi')->middleware('employee_restriction')->group(function () {
         Route::get('/', [TransaksiController::class, 'index']);
         Route::get('/tambah', [TransaksiController::class, 'add']);
         Route::post('/tambah/post', [TransaksiController::class, 'store']);
@@ -147,7 +151,7 @@ Route::prefix('admin')->group(function () {
     });
     
     // ------------------- Performa Pegawai -------------------
-    Route::prefix('performa-pegawai')->group(function () {
+    Route::prefix('performa-pegawai')->middleware('employee_restriction')->group(function () {
         Route::get('/', [PerformaPegawaiController::class, 'index']);
         Route::get('/ubah/{id}', [PerformaPegawaiController::class, 'edit']);
         Route::post('/ubah/{id}/post', [PerformaPegawaiController::class, 'update']);
