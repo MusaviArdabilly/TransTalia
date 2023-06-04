@@ -14,7 +14,13 @@
         <div class="mb-3 p-3 border rounded">
             <h4 class="text-center mb-3">Check Out Reservasi</h4>
             <hr class="mt-3">
-            <form method="POST" action="/reservasi/check-out/post" class="row g-3 mt-2">
+            <div id="spinner-container" class="d-none">
+                <div id="spinner-overlay"></div>
+                <div id="spinner" class="spinner-border text-light" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+            <form method="POST" action="/reservasi/check-out/post" class="row g-3 mt-2" id="form-checkOut">
                 @csrf
                 <div class="col-12">
                     <div class="row">
@@ -92,5 +98,13 @@
         </div>
     </div>
 </div>
+
+<script>
+    $('#form-checkOut').on('submit', function () {
+        $('#spinner-container').removeClass('d-none'); // Show the spinner
+    });
+    // After the email is sent successfully
+    $('#spinner-container').addClass('d-none'); // Hide the spinner
+</script>
 
 @endsection
