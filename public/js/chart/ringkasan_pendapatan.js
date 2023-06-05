@@ -124,7 +124,7 @@ var myLineChart = new Chart(ack, {
   data: {
     labels: ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"],
     datasets: [{
-      label: "Earnings",
+      label: "Pendapatan",
       lineTension: 0.3,
       backgroundColor: "rgba(255, 193, 7, 0.05)",
       borderColor: "rgba(255, 193, 7, 1)",
