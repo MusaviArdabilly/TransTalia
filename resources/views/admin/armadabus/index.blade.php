@@ -9,29 +9,7 @@
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
-        <!-- Page Heading -->
-        <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <div class="d-none d-sm-inline-block">
-                <!-- Topbar Search -->
-                <form method="GET" action="/admin/armada-bus/" 
-                    class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search dropshadowlight">
-                    <div class="input-group">
-                        <input type="text" name="search" value="{{ $search_key }}" class="form-control bg-light border-0 small" placeholder="Pencarian"
-                            aria-label="Search" aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" type="submit">
-                                <i class="fas fa-search fa-sm"></i>
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="d-none d-sm-inline-block btn bg-primary disabled text-white shadow-sm">
-                {{ \Carbon\Carbon::parse(now())->locale('id')->isoFormat('DD MMM YY') }}
-            </div>
-        </div>
-
-        <div class="col-12 minvh100-233">
+        <div class="col-12 minvh100-171">
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">

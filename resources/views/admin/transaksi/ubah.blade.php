@@ -9,7 +9,7 @@
     <!-- Begin Page Content -->
     <div class="container-fluid py-2">
 
-        <div class="col-12 minvh100-233">
+        <div class="col-12 minvh100-171">
             <div class="d-flex justify-content-center">
                 <div class="col-12 col-md-7">
                     <div class="card shadow mb-4">

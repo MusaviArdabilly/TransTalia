@@ -4,18 +4,13 @@
 
 <script type="text/javascript">
     document.getElementById('dashboard').classList.add('active');
+    document.getElementById('search-bar').classList.remove('d-sm-inline-block');
 </script>
 
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-            <div class="d-none d-sm-inline-block btn bg-primary disabled text-white shadow-sm">
-                {{ \Carbon\Carbon::parse(now())->locale('id')->isoFormat('DD MMM YY') }}
-            </div>
-        </div>
 
         <!-- Content Row Card -->
         <div class="row">
@@ -26,7 +21,7 @@
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="small font-weight-bold text-info text-uppercase mb-1">
+                                <div class="small font-weight-bold text-info text-capitalize mb-1">
                                     Reservasi ({{ \Carbon\Carbon::parse(now())->locale('id')->isoFormat('MMMM') }})</div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">
                                     {{ $reservasi_bulanan }} <br>
@@ -34,7 +29,7 @@
                                 </div>
                             </div>
                             <div class="col-auto">
-                                <i class="fas fa-share fa-2x text-gray-300"></i>
+                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
                             </div>
                         </div>
                     </div>
@@ -47,7 +42,7 @@
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="small font-weight-bold text-warning text-uppercase mb-1">
+                                <div class="small font-weight-bold text-warning text-capitalize mb-1">
                                     Transaksi ({{ \Carbon\Carbon::parse(now())->locale('id')->isoFormat('MMMM') }})</div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">
                                     {{ $transaksi_bulanan }} <br>
@@ -55,7 +50,7 @@
                                 </div>
                             </div>
                             <div class="col-auto">
-                                <i class="fas fa-share fa-2x text-gray-300"></i>
+                                <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
                             </div>
                         </div>
                     </div>
@@ -68,9 +63,10 @@
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="small font-weight-bold text-primary text-uppercase mb-1">
+                                <div class="small font-weight-bold text-primary text-capitalize mb-1">
                                     Transaksi Masuk ({{ \Carbon\Carbon::parse(now())->locale('id')->isoFormat('MMMM') }})</div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">Rp. {{ number_format($pemasukan_bulanan, 0, ',', '.') }}</div>
+                                <span class="text-xs text-secondary">&nbsp;</span>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -86,12 +82,13 @@
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="small font-weight-bold text-success text-uppercase mb-1">
+                                <div class="small font-weight-bold text-success text-capitalize mb-1">
                                     Transaksi Masuk ({{ \Carbon\Carbon::parse(now())->locale('id')->isoFormat('YYYY') }})</div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">Rp. {{ number_format($pemasukan_tahunan, 0, ',', '.') }}</div>
+                                <span class="text-xs text-secondary">&nbsp;</span>
                             </div>
                             <div class="col-auto">
-                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
                             </div>
                         </div>
                     </div>

@@ -10,7 +10,7 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        {{-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <div class="d-none d-sm-inline-block">
                 <!-- Topbar Search -->
                 <form method="GET" action="/admin/transaksi" 
@@ -29,9 +29,9 @@
             <div class="d-none d-sm-inline-block btn bg-primary disabled text-white shadow-sm">
                 {{ \Carbon\Carbon::parse(now())->locale('id')->isoFormat('DD MMM YY') }}
             </div>
-        </div>
+        </div> --}}
 
-        <div class="col-12 minvh100-233">
+        <div class="col-12 minvh100-171">
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">

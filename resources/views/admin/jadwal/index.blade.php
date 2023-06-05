@@ -4,13 +4,14 @@
 
 <script type="text/javascript">
     document.getElementById('jadwal').classList.add('active');
+    document.getElementById('search-bar').classList.remove('d-sm-inline-block');
 </script>
 
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        {{-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <div class="d-none d-sm-inline-block">
                 <!-- Topbar Search -->
                 <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search dropshadowlight">
@@ -28,9 +29,9 @@
             <div class="d-none d-sm-inline-block btn bg-primary disabled text-white shadow-sm">
                 {{ \Carbon\Carbon::parse(now())->locale('id')->isoFormat('DD MMM YY') }}
             </div>
-        </div>
+        </div> --}}
 
-        <div class="col-12 minvh100-233">
+        <div class="col-12 minvh100-171">
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div

@@ -10,7 +10,7 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        {{-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <div class="d-none d-sm-inline-block">
                 <!-- Topbar Search -->
                 <form action="/admin/perawatan-armada"
@@ -29,9 +29,9 @@
             <div class="d-none d-sm-inline-block btn bg-primary disabled text-white shadow-sm">
                 {{ \Carbon\Carbon::parse(now())->locale('id')->isoFormat('DD MMM YY') }}
             </div>
-        </div>
+        </div> --}}
 
-        <div class="col-12 minvh100-233">
+        <div class="col-12 minvh100-171">
             <div id="accordion" class="mb-4 shadow">
                 <div class="card">
                     <div class="card-header d-flex flex-row align-items-center justify-content-between" id="headingOne">
@@ -61,8 +61,8 @@
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">@sortablelink('armada_bus.nama', 'Nama Bus', [], ['class' => 'text-decoration-none text-secondary'])</th>
+                                    <th scope="col">@sortablelink('kode_perawatan.kode', 'Perawatan', [], ['class' => 'text-decoration-none text-secondary'])</th>
                                     <th scope="col">@sortablelink('acreated_at', 'Waktu', [], ['class' => 'text-decoration-none text-secondary'])</th>
-                                    <th scope="col">@sortablelink('kode_perawatan.kode', 'Kode Perawatan', [], ['class' => 'text-decoration-none text-secondary'])</th>
                                     <th scope="col" class="text-center">Aksi</th>
                                 </tr>
                                 </thead>
@@ -71,8 +71,8 @@
                                     <tr>
                                         <th scope="row">{{ $data_perawatan_armada->firstItem()+$key }}</th>
                                         <td>{{ $perawatan_armada->armada_bus->nama }}</td>
-                                        <td>{{ \Carbon\Carbon::parse($perawatan_armada->created_at)->locale('id')->isoFormat('DD MMMM YYYY, HH:mm') }}</td>
                                         <td>{{ $perawatan_armada->kode_perawatan->kode }} - {{ $perawatan_armada->kode_perawatan->keterangan }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($perawatan_armada->created_at)->locale('id')->isoFormat('DD MMMM YYYY, HH:mm') }}</td>
                                         <td class="text-center">
                                             <a href="{{ url('admin/perawatan-armada/ubah/'.$perawatan_armada->id) }}" class="text-decoration-none">
                                                 <i class="fas fa-edit text-warning"></i> &emsp;

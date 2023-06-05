@@ -10,7 +10,7 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        {{-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <div class="d-none d-sm-inline-block">
                 <!-- Topbar Search -->
                 <form action="/admin/performa-pegawai" 
@@ -29,7 +29,7 @@
             <div class="d-none d-sm-inline-block btn bg-primary disabled text-white shadow-sm">
                 {{ \Carbon\Carbon::parse(now())->locale('id')->isoFormat('DD MMM YY') }}
             </div>
-        </div>
+        </div> --}}
 
         <div class="col-12 minvh100-233">
             
