@@ -21,7 +21,7 @@ class PerawatanArmadaController extends Controller
         })->orWhereHas('kode_perawatan', function($query) use($request){
             $query->where('kode', 'LIKE', '%'.$request->search.'%')
                   ->orWhere('keterangan', 'LIKE', '%'.$request->search.'%');
-        })->sortable()->orderBy('created_at', 'desc')->paginate(10);
+        })->sortable()->orderBy('created_at', 'desc')->paginate(20);
 
         $events = array();
         $jadwal_perawatan_armada = PerawatanArmada::get();
