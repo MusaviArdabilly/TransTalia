@@ -30,8 +30,8 @@
         .dropshadowlight {
             filter: drop-shadow(1px 1px 1px rgb(0 0 0 / 0.4));
         }
-        .minvh100-233 {
-            min-height: calc(100vh - 233px);
+        .minvh100-171 {
+            min-height: calc(100vh - 171px);
         }
         #calendar-container {
             width: 100%;
@@ -229,15 +229,38 @@
             <div id="content">
 
                 <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow d-flex justify-content-between">
 
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
+                        
+                    <!-- Page Heading -->
+                    
+                    <div class="d-none d-sm-inline-block border-dark border-left rounded-left px-4 py-2 ml-2">
+                        <i class="far fa-calendar-alt"></i> &nbsp;
+                        <code>{{ \Carbon\Carbon::parse(now())->locale('id')->isoFormat('DD MMMM YYYY') }}</code> 
+                    </div>  
+
+                    <div class="d-none d-sm-inline-block" id="search-bar">
+                        <!-- Topbar Search -->
+                        <form method="GET" action="{{ url()->current() }}" 
+                            class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search dropshadowlight">
+                            <div class="input-group">
+                                <input type="text" name="search" value="@isset($search_key){{ $search_key }}@endisset" class="form-control bg-light border-0 small" placeholder="Pencarian"
+                                    aria-label="Search" aria-describedby="basic-addon2">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="submit">
+                                        <i class="fas fa-search fa-sm"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
 
                     <!-- Topbar Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav">
 
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                         <li class="nav-item dropdown no-arrow d-sm-none">
@@ -281,7 +304,7 @@
                             @endif --}}
                             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="far fa-fw fa-calendar"></i>
+                                <i class="fas fa-clipboard-list"></i>
                                 <!-- Counter - Alerts -->
                                 <span class="badge badge-danger badge-counter">{{ count($notifikasi) }}</span>
                             </a>
