@@ -31,8 +31,39 @@
             <div class="container py-2 py-md-5">
                 <div class="f-poppins">
                     <h3 class="text-center fw-bold text-body">LOKASI</h3>
-                    <p class="text-center">PO Trans Talia beroperasi di Kabupaten Jombang, Jawa Timur</p>
+                    <p class="text-center">PO Trans Talia Beroperasi di Kabupaten Jombang, Jawa Timur</p>
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d506247.028906027!2d112.26581816869665!3d-7.568992532492812!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e786c590eec46d3%3A0xd3b75dc4dc30a5d7!2sTRANSTALIA%20BUS%20GARAGE!5e0!3m2!1sid!2sid!4v1678680509527!5m2!1sid!2sid" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>    
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="bg-light4">
+        <div class="container py-5">
+            <div class="container py-2 py-md-5">
+                <div class="f-poppins">
+                    <h3 class="text-center fw-bold text-body">KONTAK</h3>
+                    <p class="text-center">Temukan cara terbaik untuk menghubungi kami dan jangan ragu untuk mengajukan pertanyaan atau memberikan umpan balik</p>
+                    <div class="row d-flex justify-content-between">
+                        <div class="col-4 pt-5 text-center">
+                            <a href="mailto:admin@transtalia.com" class="text-decoration-none text-secondary">
+                                <i class="fas fa-envelope fa-lg fa-2x mb-3"></i>
+                                <h4 class="fw-semibold">Email</h4>
+                            </a>
+                        </div>
+                        <div class="col-4 pt-5 text-center">
+                            <a href="https://wa.me/6282233994239" class="text-decoration-none text-success">
+                                <i class="fab fa-whatsapp fa-lg fa-2x mb-3"></i>
+                                <h4 class="fw-semibold">Whatsapp</h4>
+                            </a>
+                        </div>
+                        <div class="col-4 pt-5 text-center">
+                            <a href="https://www.facebook.com/groups/1927045797604887/?locale=id_ID" class="text-decoration-none text-primary">
+                                <i class="fab fa-facebook fa-lg fa-2x mb-3"></i>
+                                <h4 class="fw-semibold">Facebook</h4>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
