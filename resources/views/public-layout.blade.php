@@ -100,7 +100,7 @@
                         </button>
                         <ul class="dropdown-menu dropdown-menu-dark">
                             <li><a class="dropdown-item icon-container" href="/edit-akun"><i class="fas fa-user"></i>Akun</a></li>
-                            @if(Auth::check())
+                            @if(Auth::user()->role == 'admin' || Auth::user()->role == 'employee')
                             <li><a class="dropdown-item icon-container" href="/admin/dashboard"><i class="fas fa-user-shield"></i>Admin</a></li>
                             @endif
                             <li><a class="dropdown-item icon-container" href="/logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
