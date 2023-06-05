@@ -26,6 +26,8 @@ class ReservasiSeeder extends Seeder
             'total_harga' => intval('17544000'), 
             'dibayar' => intval('17544000'), 
             'status' => 'lunas', 
+            'created_at' => '2023-05-27 16:23:07',
+            'updated_at' => '2023-05-27 16:23:07',
         ]);
         ReservasiArmadaBus::create([
             'reservasi_id' => $reservasi->id, 
@@ -48,6 +50,8 @@ class ReservasiSeeder extends Seeder
             'total_harga' => intval('9984000'), 
             'dibayar' => intval('9984000'), 
             'status' => 'lunas', 
+            'created_at' => '2023-05-27 16:23:07',
+            'updated_at' => '2023-05-27 16:23:07',
         ]);
         ReservasiArmadaBus::create([
             'reservasi_id' => $reservasi->id, 
@@ -70,6 +74,8 @@ class ReservasiSeeder extends Seeder
             'total_harga' => intval('12576000'), 
             'dibayar' => intval('12576000'), 
             'status' => 'lunas', 
+            'created_at' => '2023-05-27 16:23:07',
+            'updated_at' => '2023-05-27 16:23:07',
         ]);
         ReservasiArmadaBus::create([
             'reservasi_id' => $reservasi->id, 
@@ -92,6 +98,8 @@ class ReservasiSeeder extends Seeder
             'total_harga' => intval('29304000'), 
             'dibayar' => intval('29304000'), 
             'status' => 'lunas', 
+            'created_at' => '2023-05-27 16:23:07',
+            'updated_at' => '2023-05-27 16:23:07',
         ]);
         ReservasiArmadaBus::create([
             'reservasi_id' => $reservasi->id, 
@@ -114,6 +122,8 @@ class ReservasiSeeder extends Seeder
             'total_harga' => intval('3000000'), 
             'dibayar' => intval('3000000'), 
             'status' => 'lunas', 
+            'created_at' => '2023-05-27 16:23:07',
+            'updated_at' => '2023-05-27 16:23:07',
         ]);
         ReservasiArmadaBus::create([
             'reservasi_id' => $reservasi->id, 
@@ -131,6 +141,8 @@ class ReservasiSeeder extends Seeder
             'total_harga' => intval('3000000'), 
             'dibayar' => intval('3000000'), 
             'status' => 'lunas', 
+            'created_at' => '2023-05-27 16:23:07',
+            'updated_at' => '2023-05-27 16:23:07',
         ]);
         ReservasiArmadaBus::create([
             'reservasi_id' => $reservasi->id, 
@@ -148,6 +160,8 @@ class ReservasiSeeder extends Seeder
             'total_harga' => intval('3000000'), 
             'dibayar' => intval('3000000'), 
             'status' => 'lunas', 
+            'created_at' => '2023-05-27 16:23:07',
+            'updated_at' => '2023-05-27 16:23:07',
         ]);
         ReservasiArmadaBus::create([
             'reservasi_id' => $reservasi->id, 
@@ -168,6 +182,8 @@ class ReservasiSeeder extends Seeder
             'total_harga' => intval('6000000'), 
             'dibayar' => intval('6000000'), 
             'status' => 'lunas', 
+            'created_at' => '2023-05-27 16:23:07',
+            'updated_at' => '2023-05-27 16:23:07',
         ]);
         ReservasiArmadaBus::create([
             'reservasi_id' => $reservasi->id, 
@@ -188,6 +204,8 @@ class ReservasiSeeder extends Seeder
             'total_harga' => intval('24936000'), 
             'dibayar' => intval('24936000'), 
             'status' => 'lunas', 
+            'created_at' => '2023-05-27 16:23:07',
+            'updated_at' => '2023-05-27 16:23:07',
         ]);
         ReservasiArmadaBus::create([
             'reservasi_id' => $reservasi->id, 
@@ -215,6 +233,8 @@ class ReservasiSeeder extends Seeder
             'total_harga' => intval('31968000'), 
             'dibayar' => intval('31968000'), 
             'status' => 'lunas', 
+            'created_at' => '2023-05-27 16:23:07',
+            'updated_at' => '2023-05-27 16:23:07',
         ]);
         ReservasiArmadaBus::create([
             'reservasi_id' => $reservasi->id, 
@@ -240,6 +260,8 @@ class ReservasiSeeder extends Seeder
             'total_harga' => intval('3000000'), 
             'dibayar' => intval('300000'), 
             'status' => 'lunas', 
+            'created_at' => '2023-05-27 16:23:07',
+            'updated_at' => '2023-05-27 16:23:07',
         ]);
         ReservasiArmadaBus::create([
             'reservasi_id' => $reservasi->id, 
