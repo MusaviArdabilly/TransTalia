@@ -18,7 +18,9 @@ return new class extends Migration
             $table->string('keterangan');
             $table->timestamps();
 
-            $table->foreign('reservasi_id')->references('id')->on('reservasi')->onDelete('no action')->onUpdate('cascade');
+            $table->foreign('reservasi_id')
+                  ->references('id')->on('reservasi')
+                  ->onDelete('no action')->onUpdate('cascade');
         });
     }
 

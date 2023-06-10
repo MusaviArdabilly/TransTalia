@@ -17,8 +17,12 @@ return new class extends Migration
             $table->unsignedBigInteger('kode_perawatan_id');
             $table->timestamps();
 
-            $table->foreign('armada_bus_id')->references('id')->on('armada_bus')->onDelete('no action')->onUpdate('cascade');
-            $table->foreign('kode_perawatan_id')->references('id')->on('kode_perawatan')->onDelete('no action')->onUpdate('cascade');
+            $table->foreign('armada_bus_id')
+                  ->references('id')->on('armada_bus')
+                  ->onDelete('no action')->onUpdate('cascade');
+            $table->foreign('kode_perawatan_id')
+                  ->references('id')->on('kode_perawatan')
+                  ->onDelete('no action')->onUpdate('cascade');
         });
     }
 

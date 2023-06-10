@@ -17,7 +17,9 @@ return new class extends Migration
             $table->string('pembaruan');
             $table->timestamps();
 
-            $table->foreign('armada_bus_id')->references('id')->on('armada_bus')->onDelete('no action')->onUpdate('cascade');
+            $table->foreign('armada_bus_id')
+                  ->references('id')->on('armada_bus')
+                  ->onDelete('no action')->onUpdate('cascade');
         });
     }
 
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('pembaruan_armada');
     }
 };

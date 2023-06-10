@@ -19,8 +19,12 @@ return new class extends Migration
             $table->integer('jumlah_order');
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('no action')->onUpdate('no action');
-            $table->foreign('alamat_id')->references('id')->on('alamat')->onDelete('no action')->onUpdate('no action');
+            $table->foreign('user_id')
+                  ->references('id')->on('users')
+                  ->onDelete('no action')->onUpdate('no action');
+            $table->foreign('alamat_id')
+                  ->references('id')->on('alamat')
+                  ->onDelete('no action')->onUpdate('no action');
         });
     }
 

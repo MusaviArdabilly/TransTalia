@@ -20,19 +20,19 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('kota_id')
-            ->references('id')
-            ->on(config('laravolt.indonesia.table_prefix').'cities')
-            ->onUpdate('no action')->onDelete('no action');
+                  ->references('id')
+                  ->on(config('laravolt.indonesia.table_prefix').'cities')
+                  ->onUpdate('no action')->onDelete('no action');
 
             $table->foreign('distrik_id')
-            ->references('id')
-            ->on(config('laravolt.indonesia.table_prefix').'districts')
-            ->onUpdate('no action')->onDelete('no action');
+                  ->references('id')
+                  ->on(config('laravolt.indonesia.table_prefix').'districts')
+                  ->onUpdate('no action')->onDelete('no action');
 
             $table->foreign('desa_id')
-            ->references('id')
-            ->on(config('laravolt.indonesia.table_prefix').'villages')
-            ->onUpdate('no action')->onDelete('no action');
+                  ->references('id')
+                  ->on(config('laravolt.indonesia.table_prefix').'villages')
+                  ->onUpdate('no action')->onDelete('no action');
         });
     }
 

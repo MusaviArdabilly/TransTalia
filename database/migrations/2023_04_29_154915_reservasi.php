@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('reservasi', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('kode');
             $table->unsignedBigInteger('user_id');
+            $table->string('kode');
             $table->date('tanggal_mulai');
             $table->date('tanggal_selesai');
             $table->string('kota_jemput');
@@ -24,7 +24,9 @@ return new class extends Migration
             $table->string('status');
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('no action')->onUpdate('cascade');
+            $table->foreign('user_id')
+                  ->references('id')->on('users')
+                  ->onDelete('no action')->onUpdate('cascade');
         });
     }
 

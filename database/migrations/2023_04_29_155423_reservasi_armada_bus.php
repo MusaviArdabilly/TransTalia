@@ -18,8 +18,12 @@ return new class extends Migration
             $table->integer('sub_total');
             $table->timestamps();
 
-            $table->foreign('reservasi_id')->references('id')->on('reservasi')->onDelete('cascade')->onUpdate('cascade'); //related records to be automatically deleted when the referenced record is deleted.
-            $table->foreign('armada_bus_id')->references('id')->on('armada_bus')->onDelete('no action')->onUpdate('cascade');
+            $table->foreign('reservasi_id')
+                  ->references('id')->on('reservasi')
+                  ->onDelete('cascade')->onUpdate('cascade'); //related records to be automatically deleted when the referenced record is deleted.
+            $table->foreign('armada_bus_id')
+                  ->references('id')->on('armada_bus')
+                  ->onDelete('no action')->onUpdate('cascade');
         });
     }
 
@@ -28,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('reservasi_armada_bus');
     }
 };
