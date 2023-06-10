@@ -28,6 +28,7 @@ class GuestController extends Controller
                 'start' => Carbon::parse($schedule->reservasi->tanggal_mulai)->setTime(8, 00, 00)->setTimezone('Asia/Jakarta')->toDateTimeString(),
                 'end' => Carbon::parse($schedule->reservasi->tanggal_selesai)->addDay()->setTime(23, 59, 59)->setTimezone('Asia/Jakarta')->toDateTimeString(),
                 'backgroundColor' => self::getStatusColor($schedule->reservasi->status),
+                'textColor' => self::getTextColor($schedule->reservasi->status),
                 'borderColor' => '#000',
                 'allDay' => true
             ];
@@ -39,6 +40,14 @@ class GuestController extends Controller
     public static function getStatusColor($status){
         if ($status == 'menunggu'){ //'', '', '', ''
             return '#FFC107';
+        }else {
+            return '';
+        }
+    }
+        
+    public static function getTextColor($status){
+        if ($status == 'menunggu'){ //'', '', '', ''
+            return '#000000';
         }else {
             return '';
         }
