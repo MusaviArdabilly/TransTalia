@@ -22,6 +22,7 @@ class JadwalController extends Controller
                 'start' => Carbon::parse($schedule->reservasi->tanggal_mulai)->setTime(8, 00, 00)->setTimezone('Asia/Jakarta')->toDateTimeString(),
                 'end' => Carbon::parse($schedule->reservasi->tanggal_selesai)->addDay()->setTime(23, 59, 59)->setTimezone('Asia/Jakarta')->toDateTimeString(),
                 'backgroundColor' => self::getStatusColor($schedule->reservasi->status),
+                'textColor' => self::getTextColor($schedule->reservasi->status),
                 'borderColor' => '#000',
                 'allDay' => true
             ];
@@ -39,6 +40,16 @@ class JadwalController extends Controller
             return '';
         }elseif($status == 'lunas'){
             return '#28A745';
+        }
+    }
+        
+    public static function getTextColor($status){
+        if ($status == 'menunggu'){
+            return '#000';
+        }elseif($status == 'dibayar') {
+            return '';
+        }elseif($status == 'lunas'){
+            return '';
         }
     }
     
