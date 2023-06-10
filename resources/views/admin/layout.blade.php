@@ -33,6 +33,15 @@
         .minvh100-171 {
             min-height: calc(100vh - 171px);
         }
+        .minvh100-187 {
+            min-height: calc(100vh - 187px);
+        }
+        .minvh100-219 {
+            min-height: calc(100vh - 219px);
+        }
+        .minvh100-187 {
+            min-height: calc(100vh - 187px);
+        }
         #calendar-container {
             width: 100%;
             min-height: 550px;

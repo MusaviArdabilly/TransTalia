@@ -14,6 +14,16 @@
         <div class="col-12 mb-3">
             <div id="calendar"></div>
         </div>
+        <div class="row col-12 col-md-6 mx-auto mb-3">
+            <div class="col-12 col-md-6">
+                <span class="badge text-bg-warning mx-auto">Kuning</span>
+                <label for="" class="small">Merupakan jadwal yang masih bisa batal</label>
+            </div>
+            <div class="col-12 col-md-6">
+                <span class="badge" style="background-color: #3788d8">Biru</span>
+                <label for="" class="small">Merupakan jadwal yang sudah pasti</label>
+            </div>
+        </div>
         <div class="col-12 col-md-6 mx-auto">
             <div class="alert alert-primary text-center p-1 my-0" role="alert">
                 Sudah menentukan jadwal? <br> 

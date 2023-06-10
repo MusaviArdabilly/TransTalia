@@ -4,12 +4,13 @@
 
 <script type="text/javascript">
     document.getElementById('pegawai').classList.add('active');
+    document.getElementById('search-bar').classList.remove('d-sm-inline-block');
 </script>
 
     <!-- Begin Page Content -->
     <div class="container-fluid py-2">
 
-        <div class="col-12 minvh100-171">
+        <div class="col-12 minvh100-187">
             <div class="d-flex justify-content-center">
                 <div class="col-12 col-md-7">
                     <div class="card shadow mb-4">

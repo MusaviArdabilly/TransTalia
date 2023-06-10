@@ -21,27 +21,27 @@
                 <div class="col-lg-4 col-12 text-center">
                     <i class="fas fa-bus-alt fs-1 my-4 text-primary"></i>
                     <h4 class="text-dark">Trip Wisata</h4>
-                    <p>kegiatan perjalanan yang dilakukan dengan tujuan untuk berlibur, mengunjungi tempat-tempat menarik, dan menikmati pengalaman-pengalaman baru.</p>
+                    <p>kegiatan yang dilakukan dengan tujuan untuk berlibur, mengunjungi tempat-tempat menarik, dan menikmati pengalaman-pengalaman baru.</p>
                 </div>
                 <div class="col-lg-4 col-12 text-center">
                     <i class="fas fa-bus fs-1 my-4 text-primary"></i>
                     <h4 class="text-dark">Pariwisata</h4>
-                    <p>Kegiatan rekreasi yang dilakukan oleh wisatawan di luar lingkungan tempat tinggal mereka. Mulai dari pariwisata alam, sejarah, budaya, hingga pariwisata olahraga.</p>
+                    <p>Kegiatan yang dilakukan oleh wisatawan di luar lingkungan tempat tinggal mereka. Mulai dari pariwisata alam, sejarah, budaya, hingga pariwisata olahraga.</p>
                 </div>
                 <div class="col-lg-4 col-12 text-center">
                     <i class="fa fa-bus-alt fs-1 my-4 text-primary"></i>
                     <h4 class="text-dark">Trip Ziarah</h4>
-                    <p>Kegiatan perjalanan yang dilakukan oleh umat agama ke tempat-tempat yang dianggap suci atau memiliki nilai religius yang penting dalam kepercayaan mereka.</p>
+                    <p>Kegiatan yang dilakukan oleh umat agama ke tempat-tempat yang dianggap suci atau memiliki nilai religius yang penting dalam kepercayaan mereka.</p>
                 </div>
                 <div class="col-lg-4 col-12 text-center">
                     <i class="fas fa-book-open fs-1 my-4 text-primary"></i>
                     <h4 class="text-dark">Study Tour</h4>
-                    <p>Kegiatan perjalanan yang diorganisir oleh institusi pendidikan, seperti sekolah atau universitas, dengan tujuan memberikan pengalaman belajar di luar kelas.</p>
+                    <p>Kegiatan yang diorganisir oleh institusi pendidikan, seperti sekolah atau universitas, dengan tujuan memberikan pengalaman belajar di luar kelas.</p>
                 </div>
                 <div class="col-lg-4 col-12 text-center">
                     <i class="fas fa-industry fs-1 my-4 text-primary"></i>
                     <h4 class="text-dark">Kunjungan Industri</h4>
-                    <p>Kegiatan perjalanan yang diorganisir untuk peserta untuk mengunjungi perusahaan atau lokasi lain yang berkaitan dengan produksi atau industri tertentu.</p>
+                    <p>Kegiatan yang diorganisir untuk peserta untuk mengunjungi perusahaan atau lokasi lain yang berkaitan dengan produksi atau industri tertentu.</p>
                 </div>
                 <div class="col-lg-4 col-12 text-center">
                     <i class="fas fa-plus-circle fs-1 my-4 text-primary"></i>
@@ -58,15 +58,15 @@
             <div class="row counters mt-5">
                 <div class="col-lg-4 col-12 text-center">
                     <span data-toggle="counter-up" class="text-primary fs-1">11<sup>+</sup></span>
-                    <p>Armada Bus</p>
+                    <p class="fs-6">Armada Bus</p>
                 </div>
                 <div class="col-lg-4 col-6 text-center">
                     <span data-toggle="counter-up" class="text-primary fs-1">590<sup>+</sup></span>
-                    <p>Perjalanan</p>
+                    <p class="fs-6">Perjalanan</p>
                 </div>
                 <div class="col-lg-4 col-6 text-center">
                     <span data-toggle="counter-up" class="text-primary fs-1">25<sup>+</sup></span>
-                    <p>Karyawan</p>
+                    <p class="fs-6">Karyawan</p>
                 </div>
             </div>
         </div>

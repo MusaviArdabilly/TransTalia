@@ -4,6 +4,7 @@
 
 <script type="text/javascript">
     document.getElementById('pembaruanarmada').classList.add('active');
+    document.getElementById('search-bar').classList.remove('d-sm-inline-block');
 </script>
 
     <!-- Begin Page Content -->

@@ -33,9 +33,10 @@
                     @endphp
                     <div class="row">
                         <div class="col-12 col-md-6">
+                            <label for=""><span class="fw-semibold">Tanggal: </span>{{ \Carbon\Carbon::parse($reservasi->tanggal_mulai)->locale('id')->isoFormat('DD MMMM YYYY') }} - {{ \Carbon\Carbon::parse($reservasi->tanggal_selesai)->locale('id')->isoFormat('DD MMMM YYYY') }}</label> <br>
                             <label for=""><span class="fw-semibold">Penjemputan: </span>{{ $parts_jemput[0] }}, {{ $parts_jemput[1] }} @isset($parts_jemput[2]), {{ $parts_jemput[2] }}@endisset</label> <br>
                             <label for=""><span class="fw-semibold">Tujuan: </span>{{ $parts_tujuan[0] }}, {{ $parts_tujuan[1] }} @isset($parts_tujuan[2]), {{ $parts_tujuan[2] }}@endisset</label> <br>
-                            <label for=""><span class="fw-semibold">Harga: </span><span class="fw-bold">Rp. {{ number_format($reservasi->total_harga, 0, ',', '.') }}</span></label>
+                            <label for=""><span class="fw-semibold">Total: </span><span class="fw-bold">Rp. {{ number_format($reservasi->total_harga, 0, ',', '.') }}</span></label>
                         </div>
                         <div class="col-12 col-md-6">
                             <label for=""><span class="fw-semibold">Armada Bus: </span></label> <br>

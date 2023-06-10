@@ -30,7 +30,11 @@
                 {{ \Carbon\Carbon::parse(now())->locale('id')->isoFormat('DD MMM YY') }}
             </div>
         </div> --}}
-
+        @php
+            $currentYear = date('Y');
+            $startYear = 2023;
+            $yearRange = range($startYear, $currentYear);
+        @endphp
         <div class="col-12 minvh100-233">
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
@@ -40,12 +44,28 @@
                         <form method="GET" action="/admin/reservasi"
                             class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search dropshadowlight">
                             <div class="input-group">
-                                <select class="form-control bg-light border-0 small" name="filter">
-                                    <option {{ $filter === '' ? 'selected' : '' }} value="">Semua</option>
-                                    <option {{ $filter === 'menunggu' ? 'selected' : '' }} value="menunggu">Menunggu</option>
-                                    <option {{ $filter === 'dibayar' ? 'selected' : '' }} value="dibayar">Dibayar</option>
-                                    <option {{ $filter === 'lunas' ? 'selected' : '' }} value="lunas">Lunas</option>
-                                    <option {{ $filter === 'batal' ? 'selected' : '' }} value="batal">Batal</option>
+                                <select class="form-control bg-light border-0 small" name="filter_year">
+                                    <option {{ $filter_year === '' ? 'selected' : '' }} value="">Semua</option>
+                                    @foreach ($yearRange as $year)
+                                    <option {{ $year === $filter_year ? 'selected' : '' }} value="{{ $year }}">{{ $year }}</option>
+                                    @endforeach
+                                </select>
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="submit">
+                                        <i class="fas fa-filter"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                        <form method="GET" action="/admin/reservasi"
+                            class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search dropshadowlight">
+                            <div class="input-group">
+                                <select class="form-control bg-light border-0 small" name="filter_status">
+                                    <option {{ $filter_status === '' ? 'selected' : '' }} value="">Semua</option>
+                                    <option {{ $filter_status === 'menunggu' ? 'selected' : '' }} value="menunggu">Menunggu</option>
+                                    <option {{ $filter_status === 'dibayar' ? 'selected' : '' }} value="dibayar">Dibayar</option>
+                                    <option {{ $filter_status === 'lunas' ? 'selected' : '' }} value="lunas">Lunas</option>
+                                    <option {{ $filter_status === 'batal' ? 'selected' : '' }} value="batal">Batal</option>
                                 </select>
                                 <div class="input-group-append">
                                     <button class="btn btn-primary" type="submit">

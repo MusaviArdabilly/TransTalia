@@ -75,15 +75,16 @@
                         @endforelse
                     </div>
                 </div>
-                <div class="col-6 d-none d-md-flex"></div>
-                <div class="col-6 col-md-1">
+                <div class="col-9 d-none d-md-flex"></div>
+                {{-- <div class="col-6 d-none d-md-flex"></div> gunakan salah satu --}} 
+                {{-- <div class="col-6 col-md-1">
                     <label for="harga" class="form-label">Durasi:</label>
                     <input type="text" readonly class="form-control text-end" id="harga" value="{{$durasi}} Hari">
                 </div>
                 <div class="col-6 col-md-2">
                     <label for="harga" class="form-label">Jarak:</label>
                     <input type="text" readonly class="form-control text-end" id="harga" value="{{$jarak_rute}} KM">
-                </div>
+                </div> --}}
                 <div class="col-12 col-md-3">
                     <label for="harga" class="form-label">Total Harga:</label>
                     <input type="hidden" name="total_harga" value="{{ $total_harga }}">

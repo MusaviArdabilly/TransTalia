@@ -136,7 +136,7 @@
     }
 </script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3NfQbLS6VzWjfJqKAa-2UiHYyzAlfMRI&libraries=places&language=id&callback=cities"></script>
-    
+
 {{-- FullCalendar --}}
 <script src='{{ asset('vendor/fullcalendar/dist/index.global.js') }}'></script>
 <script src='{{ asset('vendor/fullcalendar/packages/core/locales/id.global.min.js') }}'></script>

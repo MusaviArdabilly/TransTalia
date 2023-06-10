@@ -91,7 +91,7 @@
                     <div class="vr text-body mx-4 d-none d-lg-flex"></div>
                     @if(Auth::guest())
                     <li class="nav-item">
-                        <a class="nav-link text-body text-center text-uppercase fw-semibold" id="jadwal" href="/login">Login</a>
+                        <a class="nav-link text-body text-center text-uppercase fw-semibold" id="login" href="/login">Login</a>
                     </li>
                     @else
                     <div class="dropdown text-light">

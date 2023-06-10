@@ -43,6 +43,20 @@
                     <div id='calendar'></div>
                 </div>
             </div>
+            <div class="row col-12 mx-auto mb-3">
+                <div class="col-12 col-md-4">
+                    <span class="badge text-white mx-auto" style="background-color: #28A745">Hijau</span>
+                    <label for="" class="small">Merupakan jadwal yang sudah lunas</label>
+                </div>
+                <div class="col-12 col-md-4">
+                    <span class="badge text-white" style="background-color: #3788d8">Biru</span>
+                    <label for="" class="small">Merupakan jadwal yang sudah dilakukan pembayaran</label>
+                </div>
+                <div class="col-12 col-md-4">
+                    <span class="badge text-dark bg-warning">Kuning</span>
+                    <label for="" class="small">Merupakan jadwal yang belum dilakukan pembayaran</label>
+                </div>
+            </div>
         </div>
 
     </div>

@@ -4,12 +4,13 @@
 
 <script type="text/javascript">
     document.getElementById('transaksi').classList.add('active');
+    document.getElementById('search-bar').classList.remove('d-sm-inline-block');
 </script>
 
     <!-- Begin Page Content -->
     <div class="container-fluid py-2">
 
-        <div class="col-12 minvh100-171">
+        <div class="col-12 minvh100-187">
             <div class="d-flex justify-content-center">
                 <div class="col-12 col-md-7">
                     <div class="card shadow mb-4">
@@ -25,7 +26,8 @@
                                     <label for="inputReservasi">Cari Reservasi</label>
                                     <select name="reservasi_id" class="form-control select2" aria-label="Default select" id="inputReservasi">
                                         @forelse ($data_reservasi as $reservasi)
-                                            <option value="{{ $reservasi->id }}">{{ $reservasi->kode }} - {{ $reservasi->user->nama_depan }} {{ $reservasi->user->nama_belakang }} - {{ $reservasi->total_harga }} -> {{ $reservasi->dibayar }}</option>
+                                            {{-- <option value="{{ $reservasi->id }}">{{ $reservasi->kode }} - {{ $reservasi->user->nama_depan }} {{ $reservasi->user->nama_belakang }} - {{ $reservasi->total_harga }} -> {{ $reservasi->dibayar }}</option> --}}
+                                            <option value="{{ $reservasi->id }}">{{ $reservasi->kode }} - {{ $reservasi->user->nama_depan }} {{ $reservasi->user->nama_belakang }}</option>
                                         @empty
                                             <option>Tidak ada data reservasi yang perlu dibayar</option>
                                         @endforelse

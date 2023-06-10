@@ -77,6 +77,9 @@
                                 @endforelse
                             </tbody>
                         </table>
+                        <div class="d-flex justify-content-end">
+                            {{ $data_transaksi->links() }}
+                        </div>
                     </div>
                 </div>
             </div>
