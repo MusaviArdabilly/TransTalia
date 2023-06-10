@@ -109,15 +109,27 @@ class UserController extends Controller
         $distance_meter_total = $distance_meter1 + $distance_meter2;
         $jarak_rute = round($distance_meter_total / 1000); //pembulatan angka dibelakang koma
 
-        $id_bus_terpakai = Reservasi::whereBetween('tanggal_mulai', [$tanggal_mulai, $tanggal_selesai])
-                                    ->orWhereBetween('tanggal_selesai', [$tanggal_mulai, $tanggal_selesai])
-                                    ->orWhere(function($query) use($tanggal_mulai, $tanggal_selesai){
-                                        $query->where('tanggal_mulai', '<=', $tanggal_mulai)
-                                            ->where('tanggal_selesai', '>=', $tanggal_selesai);
-                                    })->pluck('id');
+        // $id_bus_terpakai = Reservasi::whereBetween('tanggal_mulai', [$tanggal_mulai, $tanggal_selesai])
+        //                             ->orWhereBetween('tanggal_selesai', [$tanggal_mulai, $tanggal_selesai])
+        //                             ->orWhere(function($query) use($tanggal_mulai, $tanggal_selesai){
+        //                                 $query->where('tanggal_mulai', '<=', $tanggal_mulai)
+        //                                     ->where('tanggal_selesai', '>=', $tanggal_selesai);
+        //                             })
+        //                             ->where('status', '!=', 'batal')
+        //                             ->pluck('id');
+        $id_bus_terpakai = Reservasi::where(function($query) use($tanggal_mulai, $tanggal_selesai){
+                                          $query->whereBetween('tanggal_mulai', [$tanggal_mulai, $tanggal_selesai])
+                                              ->orWhereBetween('tanggal_selesai', [$tanggal_mulai, $tanggal_selesai])
+                                              ->orWhere(function($query) use($tanggal_mulai, $tanggal_selesai){
+                                                  $query->where('tanggal_mulai', '<=', $tanggal_mulai)
+                                                      ->where('tanggal_selesai', '>=', $tanggal_selesai);
+                                              });
+                                      })
+                                      ->where('status', '!=', 'batal')
+                                      ->pluck('id');
         $data_bus_tidak_terpakai = ArmadaBus::whereNotIn('id', function($query) use($id_bus_terpakai){
-            $query->select('armada_bus_id')->from('reservasi_armada_bus')->whereIn('reservasi_id', $id_bus_terpakai);
-        })->get();
+                                                $query->select('armada_bus_id')->from('reservasi_armada_bus')->whereIn('reservasi_id', $id_bus_terpakai);
+                                            })->get();
 
         return view('user.reservasi', compact('disableInput', 'events', 'tanggal_mulai', 'tanggal_selesai', 'kota_jemput', 'kota_tujuan', 'jarak_rute', 'data_bus_tidak_terpakai'));
     }
@@ -195,7 +207,8 @@ class UserController extends Controller
                     //sub_total = 3jt
                     foreach ($data_selected_armada_bus as $armadaBus) {
                         $harga_sewa_bus = 3000000;
-                        $sub_total = $harga_sewa_bus + ($durasi * ($harga_sewa_bus / 2));
+                        $harga_sewa_bus_tambahan = 1500000;
+                        $sub_total = $harga_sewa_bus + (($durasi - 1) * ($harga_sewa_bus_tambahan));
                         $sub_totals[] = $sub_total;
                         $total_harga += $sub_total;
                     }
@@ -204,7 +217,7 @@ class UserController extends Controller
                     foreach ($data_selected_armada_bus as $armadaBus) {
                         $harga_sewa_bus = $armadaBus->harga_sewa;
                         $harga_sewa_bus_tambahan = 1500000;
-                        $sub_total = $harga_sewa_bus * (2 * $jarak_rute) + $harga_sewa_bus_tambahan;
+                        $sub_total = $harga_sewa_bus * (2 * $jarak_rute) + (($durasi - 1) * $harga_sewa_bus_tambahan);
                         $sub_totals[] = $sub_total;
                         $total_harga += $sub_total;
                     }
@@ -225,7 +238,7 @@ class UserController extends Controller
                     // $harga_sewa_bus = 4000000; //BINGUNG BUS KECIL BESAR
                     $harga_sewa_bus = $armadaBus->harga_sewa;
                     $harga_sewa_bus_tambahan = 2000000;
-                    $sub_total = $harga_sewa_bus * (2 * $jarak_rute) + $harga_sewa_bus_tambahan;
+                    $sub_total = $harga_sewa_bus * (2 * $jarak_rute) + (($durasi - 2) * $harga_sewa_bus_tambahan);
                     $sub_totals[] = $sub_total;
                     $total_harga += $sub_total;
                 }
@@ -246,7 +259,7 @@ class UserController extends Controller
                     // $harga_sewa_bus_tambahan = ($durasi - 4) * (($harga_sewa_bus * (2 * $jarak_rute)) / 2);
                     $harga_sewa_bus = $armadaBus->harga_sewa;
                     $harga_sewa_bus_tambahan = 2000000;
-                    $sub_total = $harga_sewa_bus * (2 * $jarak_rute) + $harga_sewa_bus_tambahan;
+                    $sub_total = $harga_sewa_bus * (2 * $jarak_rute) + (($durasi - 4) * $harga_sewa_bus_tambahan);
                     $sub_totals[] = $sub_total;
                     $total_harga += $sub_total;
                 }
@@ -282,7 +295,6 @@ class UserController extends Controller
             $user_pegawai->save();
         }
 
-        //for send email
         foreach($request->selected_armada_bus_id as $key => $id_armada_bus){
             $armada_bus = ArmadaBus::find($id_armada_bus);
             $array_nama_armada_bus[] = $armada_bus->nama;
@@ -304,7 +316,7 @@ class UserController extends Controller
         Mail::to($email_user)->send(new PostReservation($nama_user, $kode_reservasi, $tanggal_mulai, $tanggal_selesai, $kota_jemput, $kota_tujuan, $armada_bus, $total_harga));
         Mail::to('admin@transtalia.com')->send(new PostReservationToAdmin($nama_user, $kode_reservasi, $tanggal_mulai, $tanggal_selesai, $kota_jemput, $kota_tujuan, $armada_bus, $total_harga));
 
-        return redirect('/reservasi/riwayat')->with('success', 'Reservasi berhasil, data anda akan segera diproses');
+        return redirect('/reservasi/riwayat')->with('success', 'Reservasi berhasil, data anda akan segera diproses oleh admin');
     }
 
     public function reservationHistory(){
