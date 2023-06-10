@@ -17,9 +17,12 @@ class ReservasiController extends Controller
 
     public function index(Request $request){
         $search_key = $request->search;
-        $filter = $request->filter;
-        $data_reservasi = Reservasi::when($request->filter, function($query) use($request){
-            $query->where('status', 'LIKE', $request->filter);
+        $filter_year = $request->filter_year;
+        $filter_status = $request->filter_status;
+        $data_reservasi = Reservasi::when($request->filter_year, function($query) use($request){
+            $query->whereYear('created_at', $request->filter_year);
+        })->when($request->filter_status, function($query) use($request){
+            $query->where('status', 'LIKE', $request->filter_status);
         })->when($request->search, function($query) use($request){
             $query->where('kode', 'LIKE', '%'.$request->search.'%')
             ->orWhere('kota_tujuan', 'LIKE', '%'.$request->search.'%')
@@ -31,7 +34,7 @@ class ReservasiController extends Controller
             });
         })->orderBy('created_at', 'desc')->paginate(25);
 
-        return view('admin.reservasi.index', compact('data_reservasi', 'filter', 'search_key'));
+        return view('admin.reservasi.index', compact('data_reservasi', 'filter_year', 'filter_status', 'search_key'));
     }
 
     public function edit($id){
