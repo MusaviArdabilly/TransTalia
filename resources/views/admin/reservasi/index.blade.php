@@ -42,10 +42,10 @@
                     <h6 class="m-0 font-weight-bold text-primary">Reservasi</h6>
                     <div>
                         <form method="GET" action="/admin/reservasi"
-                            class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search dropshadowlight">
+                            class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search dropshadowlight" id="filter-tahun">
                             <div class="input-group">
                                 <select class="form-control bg-light border-0 small" name="filter_year">
-                                    <option {{ $filter_year === '' ? 'selected' : '' }} value="">Semua</option>
+                                    <option {{ $filter_year === '' ? 'selected' : '' }} value="">Semua Tahun</option>
                                     @foreach ($yearRange as $year)
                                     <option {{ $year === $filter_year ? 'selected' : '' }} value="{{ $year }}">{{ $year }}</option>
                                     @endforeach
@@ -58,10 +58,10 @@
                             </div>
                         </form>
                         <form method="GET" action="/admin/reservasi"
-                            class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search dropshadowlight">
+                            class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search dropshadowlight" id="filter-status">
                             <div class="input-group">
                                 <select class="form-control bg-light border-0 small" name="filter_status">
-                                    <option {{ $filter_status === '' ? 'selected' : '' }} value="">Semua</option>
+                                    <option {{ $filter_status === '' ? 'selected' : '' }} value="">Semua Status</option>
                                     <option {{ $filter_status === 'menunggu' ? 'selected' : '' }} value="menunggu">Menunggu</option>
                                     <option {{ $filter_status === 'dibayar' ? 'selected' : '' }} value="dibayar">Dibayar</option>
                                     <option {{ $filter_status === 'lunas' ? 'selected' : '' }} value="lunas">Lunas</option>
