@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\ArmadaBusController;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\jadwalController;
+use App\Http\Controllers\Admin\JadwalController;
 use App\Http\Controllers\Admin\KodePerawatanController;
 use App\Http\Controllers\Admin\PegawaiController;
 use App\Http\Controllers\Admin\PembaruanArmadaController;
