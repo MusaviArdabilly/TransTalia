@@ -24,12 +24,14 @@
                                 @csrf
                                 <div class="mb-3">
                                     <label for="inputReservasi">Cari Reservasi</label>
-                                    <select readonly name="reservasi_id" class="form-control select2 readonly" aria-label="Default select" id="inputReservasi">
+                                    <input type="hidden" name="reservasi_id" class="form-control" value="{{ $reservasi->id }}">
+                                    <input readonly ="text" class="form-control" value="{{ $reservasi->kode }} - {{ $reservasi->user->nama_depan }} {{ $reservasi->user->nama_belakang }}">
+                                    {{-- <select readonly name="reservasi_id" class="form-control select2 readonly" aria-label="Default select" id="inputReservasi">
                                         @foreach ($data_reservasi as $reservasi)
-                                        <option value="{{ $reservasi->id }}">{{ $reservasi->kode }} - {{ $reservasi->user->nama_depan }} {{ $reservasi->user->nama_belakang }}</option>
+                                        <option value="{{ $reservasi->id }}">{{ $reservasi->kode }} - {{ $reservasi->user->nama_depan }} {{ $reservasi->user->nama_belakang }}</option> --}}
                                         {{-- <option value="{{ $reservasi->id }}">{{ $reservasi->kode }} - {{ $reservasi->user->nama_depan }} {{ $reservasi->user->nama_belakang }} - {{ $reservasi->total_harga }} -> {{ $reservasi->dibayar }}</option> --}}
-                                        @endforeach
-                                    </select>
+                                        {{-- @endforeach
+                                    </select> --}}
                                     @if ($errors->has('user_id'))
                                     <span class="ps-3 text-danger"><i class="fas fa-exclamation-circle"></i>&nbsp;{{ $errors->first('user_id') }}</span>
                                     @endif

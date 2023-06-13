@@ -30,7 +30,7 @@ class TransaksiController extends Controller
     }
 
     public function add(){
-        $data_reservasi = Reservasi::where('status', '!=', 'lunas')->get();
+        $data_reservasi = Reservasi::where('status', '!=', 'lunas')->orderBy('created_at', 'desc')->get();
 
         return view('admin.transaksi.tambah', compact('data_reservasi'));
     }
@@ -59,21 +59,22 @@ class TransaksiController extends Controller
             }
         }
 
-        if($reservasi->total_harga == $reservasi->dibayar){
+        if($reservasi->total_harga == $reservasi->dibayar || $reservasi->dibayar >= $reservasi->total_harga){
             $reservasi->status = 'lunas';
             $reservasi->save();
         }else{
             $reservasi->status = 'dibayar';
             $reservasi->save();
         }
+
         return redirect('/admin/transaksi')->with('success', 'Data Transaksi Berhasil Ditambahkan!');
     }
 
     public function edit($id){
         $transaksi = Transaksi::find($id);
-        $data_reservasi = Reservasi::all();
-
-        return view('admin.transaksi.ubah', compact('transaksi', 'data_reservasi'));
+        $reservasi = Reservasi::where('id', $transaksi->reservasi_id)->first();
+        // return $data_reservasi;
+        return view('admin.transaksi.ubah', compact('transaksi', 'reservasi'));
     }
 
     public function update(Request $request, $id){
@@ -86,9 +87,20 @@ class TransaksiController extends Controller
 
         $transaksi->nominal = $request->nominal;
         $transaksi->keterangan = $request->keterangan;
-
         $transaksi->save();
         $reservasi->save();
+
+        if($reservasi->total_harga == $reservasi->dibayar || $reservasi->dibayar >= $reservasi->total_harga){
+            $reservasi->status = 'lunas';
+            $reservasi->save();
+        }elseif($reservasi->dibayar > 0){
+            $reservasi->status = 'dibayar';
+            $reservasi->save();
+        }elseif($reservasi->dibayar == 0){
+            $reservasi->status = 'dibayar';
+            $reservasi->save();
+        }
+
 
         return redirect('/admin/transaksi')->with('success', 'Data Transaksi Berhasil Diubah!');
     }
@@ -101,6 +113,15 @@ class TransaksiController extends Controller
         $reservasi = Reservasi::find($reservasi_id);
         $reservasi->dibayar -= $transaksi->nominal;
         $reservasi->save();
+
+        if($reservasi->dibayar == 0){
+            $reservasi->status = 'menunggu';
+            $reservasi->save();
+        }else{
+            $reservasi->status = 'dibayar';
+            $reservasi->save();
+        }
+
 
         return redirect('/admin/transaksi')->with('success', 'Data Transaksi Berhasil Dihapus!');
     }
