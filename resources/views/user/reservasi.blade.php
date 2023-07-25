@@ -135,7 +135,7 @@
         var deliverInputAutocomplete = new google.maps.places.Autocomplete(deliverInput, options);
     }
 </script>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3NfQbLS6VzWjfJqKAa-2UiHYyzAlfMRI&libraries=places&language=id&callback=cities"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=GOOGLE_AUTOCOMPLETE_API&libraries=places&language=id&callback=cities"></script>
 
 {{-- FullCalendar --}}
 <script src='{{ asset('vendor/fullcalendar/dist/index.global.js') }}'></script>

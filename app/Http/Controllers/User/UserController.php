@@ -94,7 +94,7 @@ class UserController extends Controller
         $origin = urldecode("Mojoagung, Jombang Regency, East Java, Indonesia");
         $destination1 = urlencode($kota_jemput);
         $destination2 = urlencode($kota_tujuan);
-        $api_key = "AIzaSyD3NfQbLS6VzWjfJqKAa-2UiHYyzAlfMRI";
+        $api_key = "GOOGLE_DISTANCE_MATRIX_API";
         $url1 = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=$origin&destinations=$destination1&avoid=tolls&units=metric&key=$api_key";
         $url2 = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=$destination1&destinations=$destination2&avoid=tolls&units=metric&key=$api_key";
 
