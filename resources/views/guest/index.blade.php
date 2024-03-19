@@ -9,37 +9,36 @@
   <section id="hero">
     <div class="hero-container">
       <h1>Trans Talia</h1>
-      <h2>Menyediakan jasa yang bergerak di bidang transportasi darat</h2>
-      <a href="/jadwal" class="btn-get-started text-light">Lihat Jadwal</a>
+      <h2>Temukan pengalaman transportasi darat yang menarik bersama Trans Talia</h2>
+      <a href="/jadwal" class="btn-get-started text-light">Cek Jadwalmu Sekarang!</a>
     </div>
   </section>
 
-  <section class="min-vh-100 bg-public-1">
-    <div class="container py-3 py-md-5">
-      <div class="row mt-3 mt-md-5">
+  <section class="bg-public-1 py-3 py-md-5">
+    <div class="container my-5">
+      <div class="row mt-3 mt-md-5 d-flex align-items-center flex-column-reverse flex-md-row">
         <div class="col-12 col-md-5">
           <div class="row mb-4">
             <div class="col-4 text-center">
               <div class="me-auto">
-                <i class="fs-40 mb-3 ascent-public-2 fa-regular fa-calendar-days"></i>
+                <i class="fs-40 mb-3 ascent-public-1 fa-regular fa-calendar-days"></i>
                 <h1 class="fs-16 mb-1">Pengalaman (Tahun)</h1>
-                <h1 class="fs-20 fw-600">8</h1>
+                <h1 class="fs-16 fs-md-20 fw-600">8</h1>
               </div>
             </div>
             <div class="col-4 text-center">
-              <i class="fs-40 mb-3 ascent-public-2 fa-regular fa-face-smile"></i>
+              <i class="fs-40 mb-3 ascent-public-1 fa-regular fa-face-smile"></i>
               <h1 class="fs-16 mb-1">Pelanggan Terupaskan</h1>
-              <h1 class="fs-20 fw-600">5000</h1>
+              <h1 class="fs-16 fs-md-20 fw-600">5000</h1>
             </div>
             <div class="col-4 ms-auto text-center">
-              <i class="fs-40 mb-3 ascent-public-2 fa-solid fa-globe"></i>
+              <i class="fs-40 mb-3 ascent-public-1 fa-solid fa-globe"></i>
               <h1 class="fs-16 mb-1">Jangkauan Destinasi</h1>
-              <h1 class="fs-20 fw-600">Jawa - Bali</h1>
+              <h1 class="fs-16 fs-md-20 fw-600">Jawa - Bali</h1>
             </div>
           </div>
           <div class="row">
             <div class="col">
-              Temukan pengalaman transportasi darat yang menarik bersama Trans Talia. 
               Sejak didirikan pada tahun 2008, kami telah menjadi simbol keunggulan dalam industri ini. 
               Apa yang dimulai dengan satu bus berukuran medium kini berkembang menjadi armada 12 kendaraan yang dipelihara dengan cermat. 
               Armada kami terdiri dari bus besar yang luas dan bus medium yang lincah, menjamin kenyamanan dan kemudahan dalam setiap perjalanan. <br>
@@ -48,16 +47,16 @@
             </div>
           </div>
         </div>
-        <div class="col-12 col-md-7">
+        <div class="col-12 col-md-7 mb-5 mb-md-0">
           <div class="d-flex align-items-center justify-content-center justify-content-md-end">
             <div class="banner-landing-page-container-left">
-              <img class="banner-landing-page-left" src="{{ asset('assets/banner/mercyjb5.jpeg') }}" alt="">
+              <img class="banner-landing-page" src="{{ asset('assets/banner/jb5-1.jpg') }}" alt="">
             </div>
             <div class="banner-landing-page-container-mid">
-              <img class="banner-landing-page-mid" src="{{ asset('assets/banner/mercyjb5.jpeg') }}" alt="">
+              <img class="banner-landing-page" src="{{ asset('assets/banner/jb5-2.jpg') }}" alt="">
             </div>
             <div class="banner-landing-page-container-right">
-              <img class="banner-landing-page-right" src="{{ asset('assets/banner/mercyjb5.jpeg') }}" alt="">
+              <img class="banner-landing-page" src="{{ asset('assets/banner/jb5-3.webp') }}" alt="">
             </div>
           </div>
         </div>
