@@ -257,7 +257,6 @@ a {
 }
 
 .banner-landing-page-container-right {
-    height: 240px;
     width: 100%;
     aspect-ratio: 4/6;
     overflow: hidden;
@@ -268,7 +267,6 @@ a {
 }
 
 .banner-landing-page-container-mid {
-    height: 200px;
     width: 100%;
     aspect-ratio: 4/6;
     overflow: hidden;
@@ -280,7 +278,6 @@ a {
 }
 
 .banner-landing-page-container-left {
-    height: 160px;
     width: 100%;
     aspect-ratio: 4/6;
     overflow: hidden;
